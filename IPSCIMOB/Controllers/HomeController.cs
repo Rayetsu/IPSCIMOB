@@ -15,19 +15,49 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult SobreCIMOB()
         {
-            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult BolsaDeEstudos()
         {
-            ViewData["Message"] = "Your contact page.";
+            //ViewData["Message"] = "Your contact page.";
 
             return View();
         }
+
+        public IActionResult ProgramaVascoDaGama()
+        {
+
+            return View();
+        }
+
+        public IActionResult ProgramaPolitecnicoDeMacau()
+        {
+
+            return View();
+        }
+
+        public IActionResult ProgramaErasmus()
+        {
+
+            return View();
+        }
+
+        public IActionResult ProgramaSantanderUniversidades()
+        {
+
+            return View();
+        }
+
+        public IActionResult ProgramaSantanderMissoes()
+        {
+
+            return View();
+        }
+
 
         public IActionResult Error()
         {
