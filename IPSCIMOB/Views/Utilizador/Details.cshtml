@@ -1,0 +1,90 @@
+﻿@model IPSCIMOB.Models.Utilizador
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Utilizador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NomeCompleto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroInterno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroInterno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDoBI)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDoBI)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Curso)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDeNascimento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataDeNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Morada)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Morada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PalavraPasse)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PalavraPasse)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PartilhaMobilidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PartilhaMobilidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAdministrador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsAdministrador)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UtilizadorID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

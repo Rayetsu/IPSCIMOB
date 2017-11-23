@@ -20,7 +20,9 @@ namespace IPSCIMOB.Models
         public int NumeroDoBI { get; set; }
         public string Curso { get; set; }
         public string Ano { get; set; }
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
+        [Display(Name = "Data de Nascimento", Prompt = "Ex: 10/10/2017")]
         public DateTime DataDeNascimento { get; set; }
         [Required]
         public string Morada { get; set; }
