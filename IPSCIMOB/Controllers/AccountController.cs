@@ -59,6 +59,19 @@ namespace IPSCIMOB.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+              
+
+            var user = await _userManager.FindByNameAsync(model.Email);
+                if (user != null)
+                {
+                    if (!await _userManager.IsEmailConfirmedAsync(user))
+                    {
+                        ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                        return View("Error");
+                    }
+                }
+
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
@@ -227,12 +240,26 @@ namespace IPSCIMOB.Controllers
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account",
+                        new { userId = user.Id, code = code }, protocol: Request.Scheme);
+                    new Notificacao(model.Email,
+                       "Confirm your account", "Please confirm your account by clicking <a href=\""
+                       + callbackUrl + "\">here</a>");
+
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                         + "before you can log in.";
+
+                    return View("Info");
+
+                    //return RedirectToAction("Index", "Home");
+
+                    /*var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl);*/
                 }
                 AddErrors(result);
             }
@@ -364,16 +391,26 @@ namespace IPSCIMOB.Controllers
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
+
                     return RedirectToAction(nameof(ForgotPasswordConfirmation));
                 }
 
                 // For more information on how to enable account confirmation and password reset please
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
+
+                /*var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Scheme);
+                await _emailSender.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");*/
+
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                new Notificacao(model.Email, "Reset Password",
+                $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+
+                /*var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
                 await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                    $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return RedirectToAction(nameof(ForgotPasswordConfirmation));
+                return RedirectToAction(nameof(ForgotPasswordConfirmation));*/
             }
 
             // If we got this far, something failed, redisplay form
