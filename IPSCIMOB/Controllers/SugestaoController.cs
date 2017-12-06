@@ -62,7 +62,7 @@ namespace IPSCIMOB.Controllers
                 sugestao.EmailUtilizador = User.Identity.Name;
                 _context.Add(sugestao);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Sugestao");
             }
             return View(sugestao);
         }
