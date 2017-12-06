@@ -27,5 +27,7 @@ namespace IPSCIMOB.Data
         }
 
         public DbSet<IPSCIMOB.Models.Utilizador> Utilizador { get; set; }
+
+        public DbSet<IPSCIMOB.Models.Sugestao> Sugestao { get; set; }
     }
 }
