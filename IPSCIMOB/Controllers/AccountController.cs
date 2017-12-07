@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using IPSCIMOB.Models;
 using IPSCIMOB.Models.AccountViewModels;
 using IPSCIMOB.Services;
+using IPSCIMOB.Data;
 
 namespace IPSCIMOB.Controllers
 {
@@ -24,6 +25,7 @@ namespace IPSCIMOB.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private ApplicationDbContext dbContext;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -57,6 +59,14 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+            //var utilizadores = from u in dbContext.Utilizador
+            //               select u;
+
+            //var usersLog = from u in dbContext.Users
+            //                   select u;
+            //var userLoggedEmail = User.Identity.Name;
+            
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -65,7 +75,21 @@ namespace IPSCIMOB.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
+
+                    return RedirectToAction("Index", "Home");
+
+                    //foreach (var a in utilizadores)
+                    //{
+                        
+                    //        if (a.Email == userLoggedEmail)
+                    //        {
+                    //        // return RedirectToAction("Index", "Home");
+                    //    }
+                    //    //else !a.isDadosConfirmador return RedirectToAction("Aguarde", "Home");
+                    //    //else return RedirectToAction("Create", "Utilizador");
+
+                    //}
+
                 }
                 if (result.RequiresTwoFactor)
                 {

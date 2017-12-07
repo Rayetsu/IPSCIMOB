@@ -10,31 +10,49 @@ namespace IPSCIMOB.Models
     {
         [Key]
         public int UtilizadorID { get; set; }
+
         [Required]
+        [Display(Name = "Nome Completo")]
         public string NomeCompleto { get; set; }
+
         [Required]
-        [RegularExpression(@"[0-9]{9,9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [Display(Name = "Número Interno")]
+        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int NumeroInterno { get; set; }
+
         [Required]
-        [RegularExpression(@"[0-9]{9,9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [Display(Name = "Numero do BI")]
+        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int NumeroDoBI { get; set; }
+
         public string Curso { get; set; }
+
         public string Ano { get; set; }
+
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Required]
         [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
         [Display(Name = "Data de Nascimento", Prompt = "Ex: 10/10/2017")]
         public DateTime DataDeNascimento { get; set; }
+
         [Required]
         public string Morada { get; set; }
+
         [Required]
-        [RegularExpression(@"[0-9]{9,9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int Telefone { get; set; }
+
         [Required]
         public string Email { get; set; }
+
         [Required]
-        [StringLength(20, MinimumLength = 8)]
+        [StringLength(20, MinimumLength = 6)]
         public string PalavraPasse { get; set; }
+
         public bool PartilhaMobilidade { get; set; }
+
         public bool IsAdministrador { get; set; }
+
+        public bool IsDadosConfirmados { get; set; }
     }
 }
