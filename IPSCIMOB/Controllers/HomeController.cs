@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -17,10 +18,10 @@ namespace IPSCIMOB.Controllers
 
         public IActionResult SobreCIMOB()
         {
-
             return View();
         }
 
+        [Authorize]
         public IActionResult BolsaDeEstudos()
         {
             //ViewData["Message"] = "Your contact page.";
