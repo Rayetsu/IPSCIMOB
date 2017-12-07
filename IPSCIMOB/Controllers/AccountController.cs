@@ -244,7 +244,9 @@ namespace IPSCIMOB.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Nome = model.Nome, NumeroInterno = model.NumeroInterno,
+                    NumeroDoBI = model.NumeroDoBI, DataDeNascimento = model.DataDeNascimento, Morada = model.Morada, Telefone = model.Telefone,
+                    Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
