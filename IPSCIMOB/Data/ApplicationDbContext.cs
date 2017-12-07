@@ -26,7 +26,6 @@ namespace IPSCIMOB.Data
             
         }
 
-        public DbSet<Utilizador> Utilizador { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }

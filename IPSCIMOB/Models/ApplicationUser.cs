@@ -24,5 +24,7 @@ namespace IPSCIMOB.Models
         public string Morada { get; set; }
 
         public int Telefone { get; set; }
+
+        public bool PartilhaMobilidade { get; set; }
     }
 }

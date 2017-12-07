@@ -11,9 +11,10 @@ using System;
 namespace IPSCIMOB.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171207143309_UtilizadorRemoved")]
+    partial class UtilizadorRemoved
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,8 +57,6 @@ namespace IPSCIMOB.Data.Migrations
                     b.Property<int>("NumeroDoBI");
 
                     b.Property<int>("NumeroInterno");
-
-                    b.Property<bool>("PartilhaMobilidade");
 
                     b.Property<string>("PasswordHash");
 
