@@ -66,13 +66,13 @@ namespace IPSCIMOB.Controllers
             //var usersLog = from u in dbContext.Users
             //                   select u;
             //var userLoggedEmail = User.Identity.Name;
-            
+
 
             if (ModelState.IsValid)
             {
-              
-
-            var user = await _userManager.FindByNameAsync(model.Email);
+               
+                //var confirmed = _userManager.GetUserAsync(User).Result.IsDadosVerificados.ToString();
+                var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
                     if (!await _userManager.IsEmailConfirmedAsync(user))
@@ -80,6 +80,8 @@ namespace IPSCIMOB.Controllers
                         ViewBag.errorMessage = "You must have a confirmed email to log on.";
                         return View("Error");
                     }
+
+
                 }
 
 
@@ -90,7 +92,19 @@ namespace IPSCIMOB.Controllers
                 {
                     _logger.LogInformation("User logged in.");
 
-                    return RedirectToAction("Index", "Home");
+                    bool confirmed = _userManager.GetUserAsync(User).Result.IsDadosVerificados;
+
+                    if (!confirmed)
+                    {
+                        ViewBag.errorMessage = "Wait for your data to be confirmed by CIMOB";
+                        return View("Error");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    
 
                     //foreach (var a in utilizadores)
                     //{

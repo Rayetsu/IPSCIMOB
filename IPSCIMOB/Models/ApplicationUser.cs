@@ -28,5 +28,7 @@ namespace IPSCIMOB.Models
         public bool PartilhaMobilidade { get; set; }
 
         public bool IsFuncionario { get; set; }
+
+        public bool IsDadosVerificados { get; set; }
     }
 }
