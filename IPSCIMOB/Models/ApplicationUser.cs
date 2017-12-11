@@ -26,5 +26,7 @@ namespace IPSCIMOB.Models
         public int Telefone { get; set; }
 
         public bool PartilhaMobilidade { get; set; }
+
+        public bool IsFuncionario { get; set; }
     }
 }

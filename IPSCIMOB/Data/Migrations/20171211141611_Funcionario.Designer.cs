@@ -11,8 +11,8 @@ using System;
 namespace IPSCIMOB.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171207153515_SugestionUserExpansionMerge")]
-    partial class SugestionUserExpansionMerge
+    [Migration("20171211141611_Funcionario")]
+    partial class Funcionario
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,8 @@ namespace IPSCIMOB.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<bool>("IsFuncionario");
 
                     b.Property<bool>("LockoutEnabled");
 
