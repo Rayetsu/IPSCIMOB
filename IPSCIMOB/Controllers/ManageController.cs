@@ -13,6 +13,9 @@ using Microsoft.Extensions.Options;
 using IPSCIMOB.Models;
 using IPSCIMOB.Models.ManageViewModels;
 using IPSCIMOB.Services;
+using System.Data.SqlClient;
+using IPSCIMOB.Data;
+using System.Data;
 
 namespace IPSCIMOB.Controllers
 {
@@ -58,7 +61,12 @@ namespace IPSCIMOB.Controllers
             {
                 Username = user.UserName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
+                Nome = user.Nome,
+                NumeroInterno = user.NumeroInterno,
+                NumeroDoBI = user.NumeroDoBI,
+                DataDeNascimento = user.DataDeNascimento,
+                Morada = user.Morada,
+                Telefone = user.Telefone,
                 IsEmailConfirmed = user.EmailConfirmed,
                 StatusMessage = StatusMessage
             };
@@ -70,6 +78,9 @@ namespace IPSCIMOB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(IndexViewModel model)
         {
+            SqlConnection cn = new SqlConnection(@"Data Source=ASUS-PC\MSSQLSERVER5;Initial Catalog=aspnet-IPSCIMOB-62721098-BD60-4CA2-8125-8EB3F02474C3;Integrated Security=True");
+            cn.Open();
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -84,6 +95,7 @@ namespace IPSCIMOB.Controllers
             var email = user.Email;
             if (model.Email != email)
             {
+                user.Email = model.Email;
                 var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
                 if (!setEmailResult.Succeeded)
                 {
@@ -91,10 +103,79 @@ namespace IPSCIMOB.Controllers
                 }
             }
 
-            var phoneNumber = user.PhoneNumber;
-            if (model.PhoneNumber != phoneNumber)
+            var nome = user.Nome;
+            if (model.Nome != nome)
             {
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
+                SqlCommand cmd = new SqlCommand("update AspNetUsers set Nome = @a1 where Email = @a2", cn);
+                cmd.Parameters.Add(new SqlParameter("a1", model.Nome));
+                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
+                cmd.ExecuteNonQuery();
+
+                /*if (!setNomeResult.Succeeded)
+                {
+                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
+                }*/
+            }
+
+            var numeroInterno = user.NumeroInterno;
+            if (model.NumeroInterno != numeroInterno)
+            {
+                SqlCommand cmd = new SqlCommand("update AspNetUsers set NumeroInterno = @a1 where Email = @a2", cn);
+                cmd.Parameters.Add(new SqlParameter("a1", model.NumeroInterno));
+                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
+                cmd.ExecuteNonQuery();
+
+                /*if (!setNomeResult.Succeeded)
+                {
+                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
+                }*/
+            }
+
+            var numeroBI = user.NumeroDoBI;
+            if (model.NumeroDoBI != numeroBI)
+            {
+                SqlCommand cmd = new SqlCommand("update AspNetUsers set NumeroDoBI = @a1 where Email = @a2", cn);
+                cmd.Parameters.Add(new SqlParameter("a1", model.NumeroDoBI));
+                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
+                cmd.ExecuteNonQuery();
+
+                /*if (!setNomeResult.Succeeded)
+                {
+                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
+                }*/
+            }
+
+            if (model.DataDeNascimento != user.DataDeNascimento)
+            {
+                SqlCommand cmd = new SqlCommand("update AspNetUsers set DataDeNascimento = @a1 where Email = @a2", cn);
+                cmd.Parameters.Add(new SqlParameter("a1", model.DataDeNascimento));
+                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
+                cmd.ExecuteNonQuery();
+
+                /*if (!setNomeResult.Succeeded)
+                {
+                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
+                }*/
+            }
+
+            if (model.Morada != user.Morada)
+            {
+                SqlCommand cmd = new SqlCommand("update AspNetUsers set Morada = @a1 where Email = @a2", cn);
+                cmd.Parameters.Add(new SqlParameter("a1", model.Morada));
+                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
+                cmd.ExecuteNonQuery();
+
+                /*if (!setNomeResult.Succeeded)
+                {
+                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
+                }*/
+            }
+
+            var phoneNumber = user.Telefone;
+            if (model.Telefone != phoneNumber)
+            {
+                user.Telefone = model.Telefone;
+                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, "" + model.Telefone);
                 if (!setPhoneResult.Succeeded)
                 {
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
