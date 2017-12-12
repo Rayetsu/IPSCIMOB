@@ -33,6 +33,8 @@ namespace IPSCIMOB
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, MyUserClaimsPrincipalFactory>();
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 

@@ -14,6 +14,7 @@ using IPSCIMOB.Models;
 using IPSCIMOB.Models.AccountViewModels;
 using IPSCIMOB.Services;
 using IPSCIMOB.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace IPSCIMOB.Controllers
 {
@@ -26,6 +27,8 @@ namespace IPSCIMOB.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private ApplicationDbContext dbContext;
+        private IHttpContextAccessor _httpContextAccessor;
+        private string _currentUserId;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -54,6 +57,15 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /*public async Task<bool> ConfirmUserAsync()
+        {
+            if(_userManager.GetUserAsync(User).Result.IsDadosVerificados.ToString() == "false")
+            {
+                return false;
+            }
+            return true;
+        }*/
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -67,10 +79,11 @@ namespace IPSCIMOB.Controllers
             //                   select u;
             //var userLoggedEmail = User.Identity.Name;
 
+            //_currentUserId = await _userManager.GetUserId(User);
 
             if (ModelState.IsValid)
             {
-               
+                //string confirmed = User.Claims.FirstOrDefault(v => v.Type == ClaimTypes.MobilePhone).Value;
                 //var confirmed = _userManager.GetUserAsync(User).Result.IsDadosVerificados.ToString();
                 var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null)
@@ -80,9 +93,15 @@ namespace IPSCIMOB.Controllers
                         ViewBag.errorMessage = "You must have a confirmed email to log on.";
                         return View("Error");
                     }
+                
+                //else if (!await ConfirmUserAsync())
+                //{
+                //    ViewBag.errorMessage = "Wait for your data to be confirmed by CIMOB";
+                //    return View("Error");
+                //}
 
 
-                }
+            }
 
 
                 // This doesn't count login failures towards account lockout
@@ -92,23 +111,25 @@ namespace IPSCIMOB.Controllers
                 {
                     _logger.LogInformation("User logged in.");
 
-                    bool confirmed = _userManager.GetUserAsync(User).Result.IsDadosVerificados;
+                    //bool confirmed = _userManager.GetUserAsync(User).Result.IsDadosVerificados;
+                    //string confirmed = User.Claims.FirstOrDefault(v => v.Type == ClaimTypes.MobilePhone).Value;
 
-                    if (!confirmed)
-                    {
-                        ViewBag.errorMessage = "Wait for your data to be confirmed by CIMOB";
-                        return View("Error");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    //if (confirmed == "false")
+                    //{
+                    //    ViewBag.errorMessage = "Wait for your data to be confirmed by CIMOB";
+                    //    return View("Error");
+                    //}
+                    //else
+                    //{
+                    //    return RedirectToAction("Index", "Home");
+                    //}
 
-                    
+                    return RedirectToAction("Index", "Home");
+
 
                     //foreach (var a in utilizadores)
                     //{
-                        
+
                     //        if (a.Email == userLoggedEmail)
                     //        {
                     //        // return RedirectToAction("Index", "Home");
