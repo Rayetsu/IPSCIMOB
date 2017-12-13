@@ -79,9 +79,6 @@ namespace IPSCIMOB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(IndexViewModel model)
         {
-            //SqlConnection cn = new SqlConnection(@"Data Source=projetocimobserver.database.windows.net;Initial Catalog=ProjetoCIMOBD;Persist Security Info=True;User ID=Cimob;Password=***********");
-            SqlConnection cn = new SqlConnection(@"Data Source=ASUS-PC\MSSQLSERVER5;Initial Catalog=aspnet-IPSCIMOB-62721098-BD60-4CA2-8125-8EB3F02474C3;Integrated Security=True");
-            cn.Open();
 
             if (!ModelState.IsValid)
             {

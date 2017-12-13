@@ -59,6 +59,13 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult Sugestoes()
+        {
+
+            return View();
+        }
+
 
         public IActionResult Error()
         {

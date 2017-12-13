@@ -434,6 +434,8 @@ namespace IPSCIMOB.Controllers
                 new Notificacao(model.Email, "Reset Password",
                 $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
 
+                return RedirectToAction(nameof(ForgotPasswordConfirmation));
+
                 /*var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
                 await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                    $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
