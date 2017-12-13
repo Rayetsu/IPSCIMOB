@@ -67,6 +67,7 @@ namespace IPSCIMOB.Controllers
                 DataDeNascimento = user.DataDeNascimento,
                 Morada = user.Morada,
                 Telefone = user.Telefone,
+                PartilhaMobilidade = user.PartilhaMobilidade,
                 IsEmailConfirmed = user.EmailConfirmed,
                 StatusMessage = StatusMessage
             };
@@ -78,6 +79,7 @@ namespace IPSCIMOB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(IndexViewModel model)
         {
+            //SqlConnection cn = new SqlConnection(@"Data Source=projetocimobserver.database.windows.net;Initial Catalog=ProjetoCIMOBD;Persist Security Info=True;User ID=Cimob;Password=***********");
             SqlConnection cn = new SqlConnection(@"Data Source=ASUS-PC\MSSQLSERVER5;Initial Catalog=aspnet-IPSCIMOB-62721098-BD60-4CA2-8125-8EB3F02474C3;Integrated Security=True");
             cn.Open();
 
@@ -87,99 +89,26 @@ namespace IPSCIMOB.Controllers
             }
 
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var email = user.Email;
-            if (model.Email != email)
+            user.Email = model.Email;
+            user.Nome = model.Nome;
+            user.NumeroInterno = model.NumeroInterno;
+            user.NumeroDoBI = model.NumeroDoBI;
+            user.DataDeNascimento = model.DataDeNascimento;
+            user.Morada = model.Morada;
+            user.Telefone = model.Telefone;
+            user.PartilhaMobilidade = model.PartilhaMobilidade;
+
+            var setUserResult = await _userManager.UpdateAsync(user);
+
+            if (!setUserResult.Succeeded)
             {
-                user.Email = model.Email;
-                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
-                if (!setEmailResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
-                }
-            }
-
-            var nome = user.Nome;
-            if (model.Nome != nome)
-            {
-                SqlCommand cmd = new SqlCommand("update AspNetUsers set Nome = @a1 where Email = @a2", cn);
-                cmd.Parameters.Add(new SqlParameter("a1", model.Nome));
-                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
-                cmd.ExecuteNonQuery();
-
-                /*if (!setNomeResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
-                }*/
-            }
-
-            var numeroInterno = user.NumeroInterno;
-            if (model.NumeroInterno != numeroInterno)
-            {
-                SqlCommand cmd = new SqlCommand("update AspNetUsers set NumeroInterno = @a1 where Email = @a2", cn);
-                cmd.Parameters.Add(new SqlParameter("a1", model.NumeroInterno));
-                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
-                cmd.ExecuteNonQuery();
-
-                /*if (!setNomeResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
-                }*/
-            }
-
-            var numeroBI = user.NumeroDoBI;
-            if (model.NumeroDoBI != numeroBI)
-            {
-                SqlCommand cmd = new SqlCommand("update AspNetUsers set NumeroDoBI = @a1 where Email = @a2", cn);
-                cmd.Parameters.Add(new SqlParameter("a1", model.NumeroDoBI));
-                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
-                cmd.ExecuteNonQuery();
-
-                /*if (!setNomeResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
-                }*/
-            }
-
-            if (model.DataDeNascimento != user.DataDeNascimento)
-            {
-                SqlCommand cmd = new SqlCommand("update AspNetUsers set DataDeNascimento = @a1 where Email = @a2", cn);
-                cmd.Parameters.Add(new SqlParameter("a1", model.DataDeNascimento));
-                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
-                cmd.ExecuteNonQuery();
-
-                /*if (!setNomeResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
-                }*/
-            }
-
-            if (model.Morada != user.Morada)
-            {
-                SqlCommand cmd = new SqlCommand("update AspNetUsers set Morada = @a1 where Email = @a2", cn);
-                cmd.Parameters.Add(new SqlParameter("a1", model.Morada));
-                cmd.Parameters.Add(new SqlParameter("a2", user.Email));
-                cmd.ExecuteNonQuery();
-
-                /*if (!setNomeResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
-                }*/
-            }
-
-            var phoneNumber = user.Telefone;
-            if (model.Telefone != phoneNumber)
-            {
-                user.Telefone = model.Telefone;
-                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, "" + model.Telefone);
-                if (!setPhoneResult.Succeeded)
-                {
-                    throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
-                }
+                throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
             }
 
             StatusMessage = "Your profile has been updated";

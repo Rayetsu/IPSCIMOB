@@ -40,6 +40,9 @@ namespace IPSCIMOB.Models.ManageViewModels
         [StringLength(50)]
         public string Morada { get; set; }
 
+        [Display(Name = "Partilha de Mobilidade")]
+        public bool PartilhaMobilidade { get; set; }
+
         [Required]
         //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int Telefone { get; set; }
