@@ -14,6 +14,7 @@ namespace IPSCIMOB.Controllers
     {
         public IActionResult Index()
         {
+
             return View();
         }
 

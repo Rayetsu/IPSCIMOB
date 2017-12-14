@@ -14,6 +14,7 @@ using IPSCIMOB.Models;
 using IPSCIMOB.Models.AccountViewModels;
 using IPSCIMOB.Services;
 using IPSCIMOB.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace IPSCIMOB.Controllers
 {
@@ -25,18 +26,20 @@ namespace IPSCIMOB.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
-        private ApplicationDbContext dbContext;
+        private ApplicationDbContext _dbContext;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         [TempData]
@@ -301,6 +304,7 @@ namespace IPSCIMOB.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+            //_dbContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('InformacaoGeral', RESEED, 0)");
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 

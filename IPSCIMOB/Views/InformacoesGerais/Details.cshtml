@@ -1,0 +1,38 @@
+﻿@model IPSCIMOB.Models.InformacaoGeral
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div align="center"
+>
+    <h1>@Model.Titulo</h1>
+
+
+    @Html.Raw(@Model.Descricao)
+
+</div>
+@*<div>
+    <h4>InformacaoGeral</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+    </dl>
+</div>*@
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.InformacaoGeralID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
