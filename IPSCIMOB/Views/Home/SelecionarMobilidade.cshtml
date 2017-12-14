@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Selecione a Mobilidade ";
+}
+
+<h1 align="center">Escolha o Processo de Mobilidade Pretendido</h1>
+<div align="center">
+    @using (Html.BeginForm("MobilidadeEscolhida", "Home", FormMethod.Get))
+    {
+
+        <fieldset>
+
+            @*Mobilidade*@
+
+            @Html.DropDownList("TipoDeMobilidade")
+
+            <p>
+
+                <input type="submit" value="Escolher Mobilidade" />
+
+            </p>
+
+        </fieldset>
+
+    }
+</div>
