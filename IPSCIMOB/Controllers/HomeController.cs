@@ -18,18 +18,6 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
-        public IActionResult SobreCIMOB()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult BolsaDeEstudos()
-        {
-            //ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult CIMOB()
         {
@@ -66,36 +54,6 @@ namespace IPSCIMOB.Controllers
 
             return View("Information");
 
-        }
-
-        public IActionResult ProgramaVascoDaGama()
-        {
-
-            return View();
-        }
-
-        public IActionResult ProgramaPolitecnicoDeMacau()
-        {
-
-            return View();
-        }
-
-        public IActionResult ProgramaErasmus()
-        {
-
-            return View();
-        }
-
-        public IActionResult ProgramaSantanderUniversidades()
-        {
-
-            return View();
-        }
-
-        public IActionResult ProgramaSantanderMissoes()
-        {
-
-            return View();
         }
 
         [Authorize]
