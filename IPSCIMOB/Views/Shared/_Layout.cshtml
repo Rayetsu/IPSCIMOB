@@ -38,16 +38,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Programas de Mobilidade <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Programa Vasco da Gama", "ProgramaVascoDaGama", "Home")</li>
-                            <li>@Html.ActionLink("Programa Politécnico de Macau", "ProgramaPolitecnicoDeMacau", "Home")</li>
-                            <li>@Html.ActionLink("Programa Erasmus", "ProgramaErasmus", "Home")</li>
-                            <li>@Html.ActionLink("Programa Santander Universidades", "ProgramaSantanderUniversidades", "Home")</li>
-                            <li>@Html.ActionLink("Programa Santander Missões de Ensino e Formação", "ProgramaSantanderMissoes", "Home")</li>
                             <li>@Html.ActionLink("Programa Vasco da Gama", "Details", "InformacoesGerais", new { id = 1 }, null)</li>
+                            <li>@Html.ActionLink("Programa Politécnico de Macau", "Details", "InformacoesGerais", new { id = 2 }, null)</li>
+                            <li>@Html.ActionLink("Programa Erasmus+", "Details", "InformacoesGerais", new { id = 3 }, null)</li>
+                            <li>@Html.ActionLink("Programa Santander Universidades", "Details", "InformacoesGerais", new { id = 4 }, null)</li>
+                            <li>@Html.ActionLink("Santander Missões de Ensino e Formação", "Details", "InformacoesGerais", new { id = 5 }, null)</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Sobre o CIMOB", "SobreCIMOB", "Home")</li>
-                    <li>@Html.ActionLink("Bolsa de Estudos", "BolsaDeEstudos", "Home")</li>
+                    <li>@Html.ActionLink("Sobre o CIMOB", "Details", "InformacoesGerais", new { id = 6 }, null)</li>
+                    <li>@Html.ActionLink("Bolsa de Estudos", "Details", "InformacoesGerais", new { id = 7 }, null)</li>
                     <li>@Html.ActionLink("Sugestões", "Sugestoes", "Home")</li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
