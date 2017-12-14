@@ -29,7 +29,8 @@ namespace IPSCIMOB.Models.AccountViewModels
         public int NumeroDoBI { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data de Nascimento", Prompt = "Ex: 10/10/2017")]
         public DateTime DataDeNascimento { get; set; }
 

@@ -17,7 +17,8 @@ namespace IPSCIMOB.Models
 
         public int NumeroDoBI { get; set; }
 
-        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataDeNascimento { get; set; }
 
         [StringLength(50)]
