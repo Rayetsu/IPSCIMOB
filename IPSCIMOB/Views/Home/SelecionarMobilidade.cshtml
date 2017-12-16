@@ -4,13 +4,43 @@
 }
 
 <h1 align="center">Escolha o Processo de Mobilidade Pretendido</h1>
+
+
 <div align="center">
+        <select id="UrlList">
+            <option value="">Select a Page...</option>
+            <option value="@Url.Action("VascoDaGama", "Home")">Vasco da Gama</option>
+            <option value="@Url.Action("PolitecnicoDeMacau", "Home")">Politécnico de Macau</option>
+            <option value="@Url.Action("Erasmus", "Home")">Erasmus+</option>
+            <option value="@Url.Action("ErasmusFormacaoTrabalho", "Home")">Erasmus+ Formação/Trabalho</option>
+            <option value="@Url.Action("SantanderUniversidades", "Home")">Santander Universidades</option>
+            <option value="@Url.Action("SantanderMissoes", "Home")">Santander Missões de Ensino e Formação</option>
+        </select>
+
+        <p>
+            <input type="submit" value="Escolher Mobilidade" onclick="doNavigate()"/>
+        </p>
+
+        <script>
+            function doNavigate() {
+                window.location.href = document.getElementById("UrlList").value;
+                
+            }
+        </script>
+
+
+    </div>
+
+
+
+
+@*<div align="center">
     @using (Html.BeginForm("MobilidadeEscolhida", "Home", FormMethod.Get))
     {
 
         <fieldset>
 
-            @*Mobilidade*@
+            Mobilidade
 
             @Html.DropDownList("TipoDeMobilidade")
 
@@ -23,4 +53,4 @@
         </fieldset>
 
     }
-</div>
+</div>*@
