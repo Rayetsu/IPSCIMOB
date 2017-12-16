@@ -52,5 +52,8 @@ namespace IPSCIMOB.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "É funcionário do IPS?")]
+        public bool IsFuncionario { get; set; }
     }
 }

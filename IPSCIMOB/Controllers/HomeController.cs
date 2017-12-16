@@ -56,7 +56,7 @@ namespace IPSCIMOB.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Aluno, Funcionário")]
         public IActionResult Sugestoes()
         {
 
