@@ -21,7 +21,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InformacoesGerais
-        [Authorize(Roles = "CIMOB")]
+        //[Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.InformacaoGeral.ToListAsync());
@@ -69,7 +69,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InformacoesGerais/Edit/5
-        [Authorize(Roles = "CIMOB")]
+        //[Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,7 +90,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "CIMOB")]
+        //[Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("InformacaoGeralID,Titulo,Descricao")] InformacaoGeral informacaoGeral)
         {
             if (id != informacaoGeral.InformacaoGeralID)

@@ -36,11 +36,12 @@ namespace IPSCIMOB
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddTransient<Seed>();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -87,6 +88,8 @@ namespace IPSCIMOB
 
             Task task = func();
             task.Wait();
+
+            seeder.Initialize();
         }
 
 
