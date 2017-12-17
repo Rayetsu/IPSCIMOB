@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace IPSCIMOB.Data.Migrations
+namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171123150046_Utilizador")]
-    partial class Utilizador
+    [Migration("20171217202412_DataMigration")]
+    partial class DataMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,20 +31,38 @@ namespace IPSCIMOB.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<DateTime>("DataDeNascimento");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<bool>("IsDadosVerificados");
+
+                    b.Property<bool>("IsFuncionario");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Morada")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Nome")
+                        .HasMaxLength(50);
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
+
+                    b.Property<int>("NumeroDoBI");
+
+                    b.Property<int>("NumeroInterno");
+
+                    b.Property<bool>("PartilhaMobilidade");
 
                     b.Property<string>("PasswordHash");
 
@@ -53,6 +71,8 @@ namespace IPSCIMOB.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<int>("Telefone");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -72,43 +92,34 @@ namespace IPSCIMOB.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("IPSCIMOB.Models.Utilizador", b =>
+            modelBuilder.Entity("IPSCIMOB.Models.InformacaoGeral", b =>
                 {
-                    b.Property<int>("UtilizadorID")
+                    b.Property<int>("InformacaoGeralID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Ano");
-
-                    b.Property<string>("Curso");
-
-                    b.Property<DateTime>("DataDeNascimento");
-
-                    b.Property<string>("Email")
+                    b.Property<string>("Descricao")
                         .IsRequired();
 
-                    b.Property<bool>("IsAdministrador");
-
-                    b.Property<string>("Morada")
+                    b.Property<string>("Titulo")
                         .IsRequired();
 
-                    b.Property<string>("NomeCompleto")
-                        .IsRequired();
+                    b.HasKey("InformacaoGeralID");
 
-                    b.Property<int>("NumeroDoBI");
+                    b.ToTable("InformacaoGeral");
+                });
 
-                    b.Property<int>("NumeroInterno");
+            modelBuilder.Entity("IPSCIMOB.Models.Sugestao", b =>
+                {
+                    b.Property<int>("SugestaoID")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("PalavraPasse")
-                        .IsRequired()
-                        .HasMaxLength(20);
+                    b.Property<string>("EmailUtilizador");
 
-                    b.Property<bool>("PartilhaMobilidade");
+                    b.Property<string>("TextoSugestao");
 
-                    b.Property<int>("Telefone");
+                    b.HasKey("SugestaoID");
 
-                    b.HasKey("UtilizadorID");
-
-                    b.ToTable("Utilizador");
+                    b.ToTable("Sugestao");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
