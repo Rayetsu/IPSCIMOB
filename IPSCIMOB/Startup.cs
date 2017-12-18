@@ -28,6 +28,8 @@ namespace IPSCIMOB
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //var connection = @"Server=(localdb)\\mssqllocaldb;Database=aspnet-IPSCIMOB-62721098-BD60-4CA2-8125-8EB3F02474C3;Trusted_Connection=True;MultipleActiveResultSets=true";
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -36,11 +38,12 @@ namespace IPSCIMOB
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+            //services.AddTransient<Seed>();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -87,6 +90,12 @@ namespace IPSCIMOB
 
             Task task = func();
             task.Wait();
+
+            //seeder.Initialize();
+
+            //seeder.SeedUsers(userManager);
+
+             Seed.SeedData(context, userManager);
         }
 
 

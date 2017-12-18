@@ -6,9 +6,9 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -32,8 +32,8 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.InformacaoGeralID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.InformacaoGeralID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.InformacaoGeralID">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.InformacaoGeralID">Details</a> 
+                @*<a asp-action="Delete" asp-route-id="@item.InformacaoGeralID">Delete</a>*@
             </td>
         </tr>
 }
