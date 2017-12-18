@@ -149,8 +149,29 @@ namespace IPSCIMOB.Data
                 Descricao = "<div class=\"center-justified\"><p>O Programa Erasmus destina-se a apoiar as actividades europeias das instituições de ensino superior(IES), promovendo a mobilidade e o intercâmbio de estudantes, professores e funcionários das Instituições de Ensino Superior.No que respeita à mobilidade de estudantes, visa oferecer a possibilidade de efectuar um período de estudos, com pleno reconhecimento académico, com a duração mínima de 5 meses e máxima de 1 ano lectivo, num estabelecimento de ensino superior de outro Estado elegível, dotado de Carta Universitária Erasmus. </p> </div>"
             });
 
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Santander Universidades",
+                Descricao = "<div class=\"center-justified\"><p>O Programa Santander universidades oferece bolsas para licenciatura e mestrado Ibero-América, bolsas de mobilidade luso-brasileiras e bolsas de estágio em Portugal.</p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" > Bolsas Santander</a></p></div>"
+            });
 
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Santander Universidades Missões de Ensino e Formação oferece bolsas ",
+                Descricao = "<div class=\"center-justified\"><p>O Programa Santander universidades Missões de Ensino e Formação oferece bolsas Ibero-América e bolsas luso-brasileiras.</p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" > Bolsas Santander</a></p></div>"
+            });
 
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Sobre o CIMOB",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Bolsas de Estudo",
+                Descricao = "Adicione Informações..."
+            });
 
             _context.Sugestao.Add(new Sugestao
             {
@@ -164,7 +185,7 @@ namespace IPSCIMOB.Data
 
         public static void SeedUsers(UserManager<ApplicationUser> userManager)
         {
-            if(userManager.FindByNameAsync("cimob").Result == null)
+            if (userManager.FindByNameAsync("cimob@email.com").Result == null)
             {
                 ApplicationUser user1 = new ApplicationUser
                 {
@@ -180,19 +201,66 @@ namespace IPSCIMOB.Data
                     IsDadosVerificados = true
                 };
 
-                IdentityResult result = userManager.CreateAsync(user1,"Ips123!").Result;
+                IdentityResult result = userManager.CreateAsync(user1, "Ips123!").Result;
 
                 if (result.Succeeded)
                 {
                     userManager.AddToRoleAsync(user1, "CIMOB").Wait();
                 }
-                else
+
+
+                if (userManager.FindByNameAsync("aluno@email.com").Result == null)
                 {
-                    var exception = new ApplicationException("Not working");
-                    
-                    throw exception;
+                    ApplicationUser user2 = new ApplicationUser
+                    {
+                        UserName = "aluno@email.com",
+                        Email = "aluno@email.com",
+                        Nome = "ALUNO",
+                        NumeroInterno = 142547145,
+                        NumeroDoBI = 325547456,
+                        Morada = "rua",
+                        Telefone = 123456789,
+                        DataDeNascimento = new DateTime(2000, 1, 1),
+                        EmailConfirmed = true,
+                        IsDadosVerificados = true,
+                        PartilhaMobilidade = true
+                    };
+
+                    IdentityResult result2 = userManager.CreateAsync(user2, "Ips123!").Result;
+
+                    if (result.Succeeded)
+                    {
+                        userManager.AddToRoleAsync(user2, "Aluno").Wait();
+                    }
+
+
                 }
 
+                if (userManager.FindByNameAsync("funcionario@email.com").Result == null)
+                {
+                    ApplicationUser user3 = new ApplicationUser
+                    {
+                        UserName = "funcionario@email.com",
+                        Email = "funcionario@email.com",
+                        Nome = "FUNCIONARIO",
+                        NumeroInterno = 142547145,
+                        NumeroDoBI = 325547456,
+                        Morada = "rua",
+                        Telefone = 123456789,
+                        DataDeNascimento = new DateTime(2000, 1, 1),
+                        EmailConfirmed = true,
+                        IsDadosVerificados = true,
+                        PartilhaMobilidade = true
+                    };
+
+                    IdentityResult result3 = userManager.CreateAsync(user3, "Ips123!").Result;
+
+                    if (result.Succeeded)
+                    {
+                        userManager.AddToRoleAsync(user3, "Funcionário").Wait();
+                    }
+
+                }
             }
         }
     }
