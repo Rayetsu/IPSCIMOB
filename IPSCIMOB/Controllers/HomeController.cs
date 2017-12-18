@@ -14,6 +14,21 @@ namespace IPSCIMOB.Controllers
     {
         public IActionResult Index()
         {
+            /*if (!this.User.Identity.IsAuthenticated)
+            {
+                return View();
+                //Layout = "_Layout";
+            }*/
+            if (this.User.IsInRole("Aluno") || this.User.IsInRole("Funcionário"))
+            {
+                return View("~/Views/Home/SelecionarMobilidade.cshtml");
+                //Layout = "_LayoutAluno";
+            }
+            else if (this.User.IsInRole("CIMOB"))
+            {
+                return View("~/Views/Home/CIMOB.cshtml");
+                //Layout = "_LayoutCIMOB";
+            }
 
             return View();
         }
