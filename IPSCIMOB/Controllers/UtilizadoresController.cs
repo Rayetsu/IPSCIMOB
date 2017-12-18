@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -20,12 +21,14 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Utilizadores
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.ApplicationUser.ToListAsync());
         }
 
         // GET: Utilizadores/Details/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -66,6 +69,7 @@ namespace IPSCIMOB.Controllers
         //}
 
         // GET: Utilizadores/Edit/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(string id, [Bind("Nome,NumeroInterno,NumeroDoBI,DataDeNascimento,Morada,Telefone,PartilhaMobilidade,IsFuncionario,IsDadosVerificados,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] ApplicationUser applicationUser)
         {
             if (id != applicationUser.Id)
@@ -117,6 +122,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Utilizadores/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -137,6 +143,7 @@ namespace IPSCIMOB.Controllers
         // POST: Utilizadores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var applicationUser = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);

@@ -40,7 +40,7 @@ namespace IPSCIMOB
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +63,33 @@ namespace IPSCIMOB
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            Func<Task> func = async () =>
+            {
+                if (!await roleManager.RoleExistsAsync("CIMOB"))
+                {
+                    var role = new IdentityRole("CIMOB");
+                    await roleManager.CreateAsync(role);
+                }
+
+                if (!await roleManager.RoleExistsAsync("Aluno"))
+                {
+                    var role = new IdentityRole("Aluno");
+                    await roleManager.CreateAsync(role);
+                }
+
+                if (!await roleManager.RoleExistsAsync("Funcionário"))
+                {
+                    var role = new IdentityRole("Funcionário");
+                    await roleManager.CreateAsync(role);
+                }
+            };
+
+            Task task = func();
+            task.Wait();
+        }
+
+
         }
     }
-}
+

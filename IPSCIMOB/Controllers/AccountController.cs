@@ -280,6 +280,15 @@ namespace IPSCIMOB.Controllers
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
                          + "before you can log in.";
 
+                    if (model.IsFuncionario)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Funcionário");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "Aluno");
+                    }
+
                     return View("Info");
 
                     //return RedirectToAction("Index", "Home");

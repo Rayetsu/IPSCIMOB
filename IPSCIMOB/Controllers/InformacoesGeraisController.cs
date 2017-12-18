@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -20,6 +21,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InformacoesGerais
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.InformacaoGeral.ToListAsync());
@@ -44,6 +46,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InformacoesGerais/Create
+        [Authorize(Roles = "CIMOB")]
         public IActionResult Create()
         {
             return View();
@@ -66,6 +69,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InformacoesGerais/Edit/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("InformacaoGeralID,Titulo,Descricao")] InformacaoGeral informacaoGeral)
         {
             if (id != informacaoGeral.InformacaoGeralID)
@@ -117,6 +122,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InformacoesGerais/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +143,7 @@ namespace IPSCIMOB.Controllers
         // POST: InformacoesGerais/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var informacaoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.InformacaoGeralID == id);
