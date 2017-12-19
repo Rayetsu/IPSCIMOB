@@ -20,12 +20,12 @@ namespace IPSCIMOB.Models.AccountViewModels
 
         [Required]
         [Display(Name = "Número Interno")]
-        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int NumeroInterno { get; set; }
 
         [Required]
         [Display(Name = "Numero do BI")]
-        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int NumeroDoBI { get; set; }
 
         [Required]
