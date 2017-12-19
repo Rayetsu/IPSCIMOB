@@ -1,0 +1,28 @@
+﻿{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "C:\\Users\\ASUS\\Documents\\GitHub\\IPSCIMOB\\IPSCIMOB"
+            /*"Lib.AspNetCore.Mvc.JqGrid.Infrastructure/Lib.AspNetCore.Mvc.JqGrid.Infrastructure.csproj",
+            "Lib.AspNetCore.Mvc.JqGrid.Core/Lib.AspNetCore.Mvc.JqGrid.Core.csproj",
+            "Lib.AspNetCore.Mvc.JqGrid.DataAnnotations/Lib.AspNetCore.Mvc.JqGrid.DataAnnotations.csproj",
+            "Lib.AspNetCore.Mvc.JqGrid.Helper/Lib.AspNetCore.Mvc.JqGrid.Helper.csproj"*/
+          ],
+          "exclude": [ "**/bin/**", "**/obj/**" ],
+          "src": ".."
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "api/*.yml" ]
+      }
+    ],
+    "dest": "wwwroot"
+  }
+}

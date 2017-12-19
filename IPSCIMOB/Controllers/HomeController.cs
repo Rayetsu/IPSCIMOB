@@ -12,6 +12,11 @@ namespace IPSCIMOB.Controllers
 {
     public class HomeController : Controller
     {
+
+        /**
+         * @return view
+         * define para cada utilizador a pagina home
+         */
         public IActionResult Index()
         {
             /*if (!this.User.Identity.IsAuthenticated)
@@ -33,6 +38,10 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view CIMOB que so o CIMOB é que tem autorização
+         * 
+         */
         [Authorize(Roles = "CIMOB")]
         public IActionResult CIMOB()
         {
@@ -40,6 +49,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view SelecionarMobilidade que só os Alunos e Funcionários é que têm acesso
+         */
         [Authorize(Roles = "Aluno, Funcionário")]
         public IActionResult SelecionarMobilidade()
         {
@@ -72,6 +84,9 @@ namespace IPSCIMOB.Controllers
 
         //}
 
+        /**
+         * @return view Sugestão que só os Alunos e Funcionários é que têm acesso
+         */
         [Authorize(Roles = "Aluno, Funcionário")]
         public IActionResult Sugestoes()
         {
@@ -79,6 +94,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view VascoDaGama que só os Alunos é que têm acesso
+         */
         [Authorize(Roles = "Aluno")]
         public IActionResult VascoDaGama()
         {
@@ -86,6 +104,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view PolitecnicoDeMacau que só os Alunos é que têm acesso
+         */
         [Authorize(Roles = "Aluno")]
         public IActionResult PolitecnicoDeMacau()
         {
@@ -93,6 +114,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view Erasmus que só os Alunos é que têm acesso
+         */
         [Authorize(Roles = "Aluno")]
         public IActionResult Erasmus()
         {
@@ -100,6 +124,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view ErasmusFormacaoTrabalho que só os Funcionarios é que têm acesso
+         */
         [Authorize(Roles = "Funcionário")]
         public IActionResult ErasmusFormacaoTrabalho()
         {
@@ -107,6 +134,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view SantanderUniversidades que só os Alunos é que têm acesso
+         */
         [Authorize(Roles = "Aluno")]
         public IActionResult SantanderUniversidades()
         {
@@ -114,6 +144,9 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         * @return view SantanderMissoes que só os Funcionarios é que têm acesso
+         */
         [Authorize(Roles ="Funcionário")]
         public IActionResult SantanderMissoes()
         {

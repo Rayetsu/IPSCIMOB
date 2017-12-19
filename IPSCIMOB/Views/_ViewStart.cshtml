@@ -1,14 +1,17 @@
 ﻿
 @{
-    
-    if (this.User.IsInRole("Aluno") || this.User.IsInRole("Funcionário"))
+    if (!this.User.Identity.IsAuthenticated)
     {
-    Layout = "_LayoutAluno";
+        Layout = "_Layout";
+    }
+    else if (this.User.IsInRole("Aluno") || this.User.IsInRole("Funcionário"))
+    {
+        Layout = "_LayoutAluno";
     }
     else if (this.User.IsInRole("CIMOB"))
     {
-    Layout = "_LayoutCIMOB";
+        Layout = "_LayoutCIMOB";
     }
 
-    Layout = "_Layout";
+
 }

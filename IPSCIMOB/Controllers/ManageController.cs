@@ -48,6 +48,10 @@ namespace IPSCIMOB.Controllers
         [TempData]
         public string StatusMessage { get; set; }
 
+        /**
+         * @return
+         * Põem as informações do utilizador nos campos correspondentes
+         */
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -81,6 +85,11 @@ namespace IPSCIMOB.Controllers
             return View(model);
         }
 
+        /**
+         * @param model
+         * @return
+         * Grava os informações que o utilizador alterou
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(IndexViewModel model)
@@ -105,6 +114,12 @@ namespace IPSCIMOB.Controllers
             user.DataDeNascimento = model.DataDeNascimento;
             user.Morada = model.Morada;
             user.Telefone = model.Telefone;
+            user.NumeroDaPorta = model.NumeroDaPorta;
+            user.Andar = model.Andar;
+            user.CodigoPostal = model.CodigoPostal;
+            user.Cidade = model.Cidade;
+            user.Distrito = model.Distrito;
+            user.Nacionalidade = model.Nacionalidade;
             user.PartilhaMobilidade = model.PartilhaMobilidade;
 
             var setUserResult = await _userManager.UpdateAsync(user);

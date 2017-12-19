@@ -26,6 +26,10 @@ namespace IPSCIMOB.Controllers
             return View(await _context.Sugestao.ToListAsync());
         }
 
+        /**
+         * @param id
+         * @return
+         */
         // GET: Sugestao/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,6 +50,10 @@ namespace IPSCIMOB.Controllers
 
         // GET: Sugestao/Create
 
+        /**
+         * @return view
+         * Mostra a view para criar uma sugestão
+         */
         public IActionResult Create()
         {
             return View();
@@ -54,6 +62,11 @@ namespace IPSCIMOB.Controllers
         // POST: Sugestao/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * @param sugestao
+         * @return
+         * Cria uma sugestão
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Aluno, Funcionário")]
@@ -120,6 +133,11 @@ namespace IPSCIMOB.Controllers
             return View(sugestao);
         }
 
+        /**
+         * @param id
+         * @return
+         * Apaga uma Sugestão
+         */
         // GET: Sugestao/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

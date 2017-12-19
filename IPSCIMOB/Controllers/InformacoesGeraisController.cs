@@ -27,6 +27,10 @@ namespace IPSCIMOB.Controllers
             return View(await _context.InformacaoGeral.ToListAsync());
         }
 
+        /**
+         * @ return
+         * Mostra as informações gerais que existem
+         */
         // GET: InformacoesGerais/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -69,6 +73,11 @@ namespace IPSCIMOB.Controllers
         //}
 
         // GET: InformacoesGerais/Edit/5
+
+        /**
+         * @return
+         * Edita as informações gerais. Só o CIMOB é que está autorizado
+         */
         [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {

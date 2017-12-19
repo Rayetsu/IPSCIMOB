@@ -27,6 +27,11 @@ namespace IPSCIMOB.Controllers
             return View(await _context.ApplicationUser.ToListAsync());
         }
 
+        /**
+         * @param id
+         * @return
+         * Mostra os utilizadores
+         */
         // GET: Utilizadores/Details/5
         [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Details(string id)
@@ -121,6 +126,11 @@ namespace IPSCIMOB.Controllers
             return View(applicationUser);
         }
 
+        /**
+         * @param id
+         * @return
+         * Apaga um utilizador
+         */
         // GET: Utilizadores/Delete/5
         [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(string id)
