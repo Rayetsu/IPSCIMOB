@@ -69,5 +69,11 @@ namespace IPSCIMOB.Models.ManageViewModels
         [Required]
         [RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int Telefone { get; set; }
+
+        [Display(Name = "Partilha de Mobilidade")]
+        public bool PartilhaMobilidade { get; set; }
+
+        public string StatusMessage { get; set; }
+
     }
 }
