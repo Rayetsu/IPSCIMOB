@@ -253,6 +253,12 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+
+        /**
+         * @param model
+         * @param returnUrl
+         * @return view
+         */
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -434,6 +440,10 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        /**
+         *@param model 
+         *@return view
+         */
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
