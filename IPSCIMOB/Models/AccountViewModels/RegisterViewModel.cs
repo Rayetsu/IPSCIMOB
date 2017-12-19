@@ -39,7 +39,31 @@ namespace IPSCIMOB.Models.AccountViewModels
         public string Morada { get; set; }
 
         [Required]
-        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [Display(Name = "Número Da Porta")]
+        public int NumeroDaPorta { get; set; }
+
+        [StringLength(50)]
+        public string Andar { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Código Postal")]
+        public string CodigoPostal { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Cidade { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Distrito { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Nacionalidade { get; set; }
+
+        [Required]
+        [RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int Telefone { get; set; }
 
         [Required]

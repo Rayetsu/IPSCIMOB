@@ -24,7 +24,7 @@ namespace IPSCIMOB.Data
         //    _context = context;
         //}
 
-            public static void SeedData(ApplicationDbContext _context, UserManager<ApplicationUser> _userManager)
+        public static void SeedData(ApplicationDbContext _context, UserManager<ApplicationUser> _userManager)
         {
             Initialize(_context);
             SeedUsers(_userManager);
@@ -44,8 +44,8 @@ namespace IPSCIMOB.Data
 
             //var now = DateTime.Now;
             //    var myDate = new DateTime(now.Year, now.Month, 1);
-                
-            
+
+
 
             //var user = new ApplicationUser
             //{
@@ -129,7 +129,7 @@ namespace IPSCIMOB.Data
 
             _context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('InformacaoGeral', RESEED, 0)");
 
-            _context.InformacaoGeral.Add( new InformacaoGeral
+            _context.InformacaoGeral.Add(new InformacaoGeral
             {
                 Titulo = "Programa Vasco Da Gama",
                 Descricao = "<div class=\"center-justified\"> <p>O programa Vasco da Gama é um programa de mobilidade de estudantes entre escolas do ensino politécnico.</p> <p>O intercâmbio de estudantes ao abrigo do programa implica um acordo prévio entre a instituição de origem e a instituição de acolhimento, assinado pelos respectivos responsáveis.</p> <p>A mobilidade de estudantes abrange também os estágios, trabalhos de fim de curso ou projectos finais, desde que as referidas actividades integrem o plano curricular do curso na escola de origem.</p> </div> <div class=\"center-justified\"> <h3>Período de candidatura:</h3> <ul> <li>Até 30 de abril para o 1º semestre</li> <li>Até 30 de novembro para o 2º semestre</li> </ul> </div>"
@@ -195,6 +195,12 @@ namespace IPSCIMOB.Data
                     NumeroInterno = 142547145,
                     NumeroDoBI = 325547456,
                     Morada = "rua",
+                    NumeroDaPorta = 3,
+                    Andar = "2ºDto.",
+                    CodigoPostal = "2800-064",
+                    Cidade = "Almada",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
                     Telefone = 123456789,
                     DataDeNascimento = new DateTime(2000, 1, 1),
                     EmailConfirmed = true,
@@ -219,6 +225,12 @@ namespace IPSCIMOB.Data
                         NumeroInterno = 142547145,
                         NumeroDoBI = 325547456,
                         Morada = "rua",
+                        NumeroDaPorta = 3,
+                        Andar = "2ºDto.",
+                        CodigoPostal = "2800-064",
+                        Cidade = "Almada",
+                        Distrito = "Setúbal",
+                        Nacionalidade = "Portugal",
                         Telefone = 123456789,
                         DataDeNascimento = new DateTime(2000, 1, 1),
                         EmailConfirmed = true,
@@ -246,6 +258,12 @@ namespace IPSCIMOB.Data
                         NumeroInterno = 142547145,
                         NumeroDoBI = 325547456,
                         Morada = "rua",
+                        NumeroDaPorta = 3,
+                        Andar = "2ºDto.",
+                        CodigoPostal = "2800-064",
+                        Cidade = "Almada",
+                        Distrito = "Setúbal",
+                        Nacionalidade = "Portugal",
                         Telefone = 123456789,
                         DataDeNascimento = new DateTime(2000, 1, 1),
                         EmailConfirmed = true,

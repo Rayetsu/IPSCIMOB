@@ -69,13 +69,13 @@ namespace IPSCIMOB.Controllers
             //var usersLog = from u in dbContext.Users
             //                   select u;
             //var userLoggedEmail = User.Identity.Name;
-            
+
 
             if (ModelState.IsValid)
             {
-              
 
-            var user = await _userManager.FindByNameAsync(model.Email);
+
+                var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
                     if (!await _userManager.IsEmailConfirmedAsync(user))
@@ -97,7 +97,7 @@ namespace IPSCIMOB.Controllers
 
                     //foreach (var a in utilizadores)
                     //{
-                        
+
                     //        if (a.Email == userLoggedEmail)
                     //        {
                     //        // return RedirectToAction("Index", "Home");
@@ -261,9 +261,23 @@ namespace IPSCIMOB.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Nome = model.Nome, NumeroInterno = model.NumeroInterno,
-                    NumeroDoBI = model.NumeroDoBI, DataDeNascimento = model.DataDeNascimento, Morada = model.Morada, Telefone = model.Telefone,
-                    Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Nome = model.Nome,
+                    NumeroInterno = model.NumeroInterno,
+                    NumeroDoBI = model.NumeroDoBI,
+                    DataDeNascimento = model.DataDeNascimento,
+                    Morada = model.Morada,
+                    NumeroDaPorta = model.NumeroDaPorta,
+                    Andar = model.Andar,
+                    CodigoPostal = model.CodigoPostal,
+                    Cidade = model.Cidade,
+                    Distrito = model.Distrito,
+                    Nacionalidade = model.Nacionalidade,
+                    Telefone = model.Telefone,
+                    Email = model.Email
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
