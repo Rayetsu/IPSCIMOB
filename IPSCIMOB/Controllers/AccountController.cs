@@ -288,11 +288,11 @@ namespace IPSCIMOB.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account",
                         new { userId = user.Id, code = code }, protocol: Request.Scheme);
                     new Notificacao(model.Email,
-                       "Confirm your account", "Please confirm your account by clicking <a href=\""
+                       "Confirme a sua conta", "Por favor confirme a sua conta ao clicar em: <a href=\""
                        + callbackUrl + "\">here</a>");
 
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                         + "before you can log in.";
+                    ViewBag.Message = "Verifique o seu email e confirme a sua conta, precisas estar confirmado "
+                         + "para efetuar o log in.";
 
                     if (model.IsFuncionario)
                     {

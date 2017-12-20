@@ -67,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CodigoPostal"></label>
-                <input asp-for="CodigoPostal" class="form-control" placeholder="exemplo 2800-064" pattern="[0-9]{4}[\-]?[0-9]{3}" />
+                <input asp-for="CodigoPostal" placeholder="exemplo 2800-064" class="form-control" pattern="[0-9]{4}[\-]?[0-9]{3}" />
                 <span asp-validation-for="CodigoPostal" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -83,6 +83,24 @@
             <div class="form-group">
                 <label asp-for="Nacionalidade"></label>
                 <input asp-for="Nacionalidade" class="form-control" />
+                @*<select asp-for="Distrito" nome ="Nacionalidade" class="form-control">
+                <option value=""></option>
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+                <option value="portugal">Portugal</option>
+                <option value="espanha">Espanha</option>
+                <option value="franca">França</option>
+                <option value="inglaterra">Inglaterra</option>
+                <option value="alemanha">Alemanhã</option>
+                <option value="suecia">Suécia</option>
+                <option value="italia">Itália</option>
+                <option value="uruguai">Uruguai</option>
+                <option value="brasil">Brasil</option>
+                <option value="holanda">Holanda</option>
+                <option value="irlanda">Irlanda</option>
+                <option value="argentina">Argentina</option>
+            </select>*@
                 <span asp-validation-for="Nacionalidade" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -96,7 +114,7 @@
                 <!--<input asp-for="PartilhaMobilidade" class="form-control" />
                 <span asp-validation-for="PartilhaMobilidade" class="text-danger"></span>-->
             </div>
-            <button type="submit" class="btn btn-default">Save</button>
+            <button type="submit" class="btn btn-default">Salvar</button>
         </form>
     </div>
 </div>
