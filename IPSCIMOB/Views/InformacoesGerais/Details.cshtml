@@ -1,7 +1,7 @@
 ﻿@model IPSCIMOB.Models.InformacaoGeral
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Programas";
 }
 
 
@@ -32,7 +32,12 @@
         </dd>
     </dl>
 </div>*@
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.InformacaoGeralID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@if (this.User.IsInRole("CIMOB"))
+{
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.InformacaoGeralID">Editar</a> |
+        <a asp-action="Index">Voltar à lista</a>
+    </div>
+}
+

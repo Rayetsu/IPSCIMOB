@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<IPSCIMOB.Models.ApplicationUser>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de utilizadores";
 }
 
-<h2>Index</h2>
+<h2>Utilizadores</h2>
 
 @*<p>
     <a asp-action="Create">Create New</a>
@@ -27,6 +27,24 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Morada)
                 </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroDaPorta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Andar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoPostal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distrito)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidade)
+            </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Telefone)
                 </th>
@@ -103,6 +121,24 @@
                 @Html.DisplayFor(modelItem => item.Morada)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.NumeroDaPorta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Andar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoPostal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distrito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidade)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Telefone)
             </td>  
             @*<td>
@@ -157,9 +193,9 @@
                 @Html.DisplayFor(modelItem => item.AccessFailedCount)
             </td>*@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Apagar</a>
             </td>
         </tr>
 }

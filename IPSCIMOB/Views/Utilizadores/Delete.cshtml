@@ -1,14 +1,14 @@
 ﻿@model IPSCIMOB.Models.ApplicationUser
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Apagar";
 }
 
-<h2>Delete</h2>
+<h2>Apagar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que quer apagas isto?</h3>
 <div>
-    <h4>ApplicationUser</h4>
+    <h4>Utilizador</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -40,6 +40,42 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Morada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDaPorta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDaPorta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Andar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Andar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoPostal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPostal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Distrito)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Distrito)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidade)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Telefone)
