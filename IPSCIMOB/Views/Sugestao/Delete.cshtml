@@ -1,14 +1,14 @@
 ﻿@model IPSCIMOB.Models.Sugestao
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Apagar";
 }
 
-<h2>Delete</h2>
+<h2>Apagar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que quer apagas isto?</h3>
 <div>
-    <h4>Sugestao</h4>
+    <h4>Feedback</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,7 +27,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="SugestaoID" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Apagar" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar à lista</a>
     </form>
 </div>

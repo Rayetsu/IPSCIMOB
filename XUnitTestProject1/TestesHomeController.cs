@@ -44,17 +44,6 @@ namespace XUnitTestProject1
             Assert.IsType<ViewResult>(result);
         }
 
-        public void TestSugestoes()
-        {
-            // Arrange
-            var sut = new HomeController();
-
-            // Act
-            IActionResult result = sut.Sugestoes();
-
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
         public void TestVascoDaGama()
         {
             // Arrange
