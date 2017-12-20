@@ -14,6 +14,7 @@ namespace IPSCIMOB.Models.ManageViewModels
 
         [Required]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
@@ -23,16 +24,17 @@ namespace IPSCIMOB.Models.ManageViewModels
 
         [Required]
         [Display(Name = "Número Interno")]
-        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int NumeroInterno { get; set; }
 
         [Required]
         [Display(Name = "Numero do BI")]
-        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Tem de ser um número com 9 digitos")]
         public int NumeroDoBI { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data de Nascimento", Prompt = "Ex: 10/10/2017")]
         public DateTime DataDeNascimento { get; set; }
 
@@ -40,13 +42,38 @@ namespace IPSCIMOB.Models.ManageViewModels
         [StringLength(50)]
         public string Morada { get; set; }
 
+        [Required]
+        [Display(Name = "Número Da Porta")]
+        public int NumeroDaPorta { get; set; }
+
+        [StringLength(50)]
+        public string Andar { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Código Postal")]
+        public string CodigoPostal { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Cidade { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Distrito { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Nacionalidade { get; set; }
+
+        [Required]
+        [RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        public int Telefone { get; set; }
+
         [Display(Name = "Partilha de Mobilidade")]
         public bool PartilhaMobilidade { get; set; }
 
-        [Required]
-        //[RegularExpression(@"[0-9]{9}", ErrorMessage = "Tem de ser um número com 9 digitos")]
-        public int Telefone { get; set; }
-
         public string StatusMessage { get; set; }
+
     }
 }
