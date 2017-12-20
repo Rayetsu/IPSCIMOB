@@ -1,0 +1,25 @@
+﻿{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "C:\\Users\\ASUS\\Documents\\GitHub\\IPSCIMOB\\IPSCIMOB"
+          ],
+          "exclude": [ "**/bin/**", "**/obj/**" ],
+          "src": ".."
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "api/*.yml" ]
+      }
+    ],
+    "dest": "wwwroot"
+  }
+}
+
