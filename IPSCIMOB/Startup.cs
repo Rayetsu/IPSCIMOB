@@ -40,7 +40,7 @@ namespace IPSCIMOB
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -87,6 +87,8 @@ namespace IPSCIMOB
 
             Task task = func();
             task.Wait();
+
+            Seed.SeedData(context, userManager);
         }
 
 
