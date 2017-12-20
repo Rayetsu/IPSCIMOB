@@ -56,6 +56,36 @@
                 <span asp-validation-for="Morada" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="NumeroDaPorta"></label>
+                <input asp-for="NumeroDaPorta" class="form-control" />
+                <span asp-validation-for="NumeroDaPorta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Andar"></label>
+                <input asp-for="Andar" class="form-control" />
+                <span asp-validation-for="Andar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodigoPostal"></label>
+                <input asp-for="CodigoPostal" class="form-control" placeholder="exemplo 2800-064" pattern="[0-9]{4}[\-]?[0-9]{3}" />
+                <span asp-validation-for="CodigoPostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cidade"></label>
+                <input asp-for="Cidade" class="form-control" />
+                <span asp-validation-for="Cidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Distrito"></label>
+                <input asp-for="Distrito" class="form-control" />
+                <span asp-validation-for="Distrito" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nacionalidade"></label>
+                <input asp-for="Nacionalidade" class="form-control" />
+                <span asp-validation-for="Nacionalidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Telefone"></label>
                 <input asp-for="Telefone" class="form-control" />
                 <span asp-validation-for="Telefone" class="text-danger"></span>
