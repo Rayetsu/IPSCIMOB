@@ -11,7 +11,7 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171220141202_DataMig")]
+    [Migration("20171221215328_DataMig")]
     partial class DataMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
