@@ -29,7 +29,7 @@ namespace IPSCIMOB.Models.ManageViewModels
 
         [Required]
         [Display(Name = "Numero do BI")]
-        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Tem de ser um número com 9 digitos")]
+        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Tem de ser um número com 8 digitos")]
         public int NumeroDoBI { get; set; }
 
         [Required]
