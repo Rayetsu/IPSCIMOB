@@ -91,7 +91,7 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(string id, [Bind("Nome,NumeroInterno,NumeroDoBI,DataDeNascimento,Morada,Telefone,PartilhaMobilidade,IsFuncionario,IsDadosVerificados,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] ApplicationUser applicationUser)
+        public async Task<IActionResult> Edit(string id, [Bind("Nome,NumeroInterno,NumeroDoBI,DataDeNascimento,Morada,NumeroDaPorta,Andar,CodigoPostal,Cidade,Distrito,Nacionalidade,Telefone,PartilhaMobilidade,IsFuncionario,IsDadosVerificados,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] ApplicationUser applicationUser)
         {
             if (id != applicationUser.Id)
             {
