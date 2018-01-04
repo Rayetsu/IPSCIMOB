@@ -1,0 +1,19 @@
+﻿@model CandidaturaModel
+@{
+    ViewData["Title"] = "SubmeterDocs";
+    Layout = "_LayoutCandidatura";
+}
+
+<div align="center">
+    <h2>Candidatura Programa de Mobilidade: </h2>
+    <h5>Passo 3 de 5</h5>
+</div>
+
+<div align="center">
+    <h4> Submeta aqui todos os seus Documentos</h4>
+
+</div>
+
+<div align="center">
+    <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("MarcarEntrevistas", "Candidatura") + "'");" />
+</div>

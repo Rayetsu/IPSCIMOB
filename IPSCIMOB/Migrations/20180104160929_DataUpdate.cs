@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class DataMig : Migration
+    public partial class DataUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,7 @@ namespace IPSCIMOB.Migrations
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Andar = table.Column<string>(maxLength: 50, nullable: true),
+                    CandidaturaAtual = table.Column<int>(nullable: false),
                     Cidade = table.Column<string>(maxLength: 50, nullable: false),
                     CodigoPostal = table.Column<string>(maxLength: 50, nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
@@ -197,6 +198,37 @@ namespace IPSCIMOB.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CandidaturaModel",
+                columns: table => new
+                {
+                    CandidaturaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Estado = table.Column<int>(nullable: false),
+                    IsBolsa = table.Column<bool>(nullable: false),
+                    IsConfirmado = table.Column<bool>(nullable: false),
+                    IsEstagio = table.Column<bool>(nullable: false),
+                    IsEstudo = table.Column<bool>(nullable: false),
+                    IsFormacao = table.Column<bool>(nullable: false),
+                    IsInvestigacao = table.Column<bool>(nullable: false),
+                    IsLecionar = table.Column<bool>(nullable: false),
+                    Nome = table.Column<string>(nullable: true),
+                    NumeroInterno = table.Column<string>(nullable: true),
+                    Pais = table.Column<string>(nullable: true),
+                    Programa = table.Column<string>(nullable: true),
+                    UtilizadorId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CandidaturaModel", x => x.CandidaturaID);
+                    table.ForeignKey(
+                        name: "FK_CandidaturaModel_AspNetUsers_UtilizadorId",
+                        column: x => x.UtilizadorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -235,6 +267,11 @@ namespace IPSCIMOB.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CandidaturaModel_UtilizadorId",
+                table: "CandidaturaModel",
+                column: "UtilizadorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -253,6 +290,9 @@ namespace IPSCIMOB.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "CandidaturaModel");
 
             migrationBuilder.DropTable(
                 name: "InformacaoGeral");

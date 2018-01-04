@@ -1,0 +1,96 @@
+﻿@model IPSCIMOB.Models.CandidaturaModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CandidaturaModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Programa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Programa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntrevistaID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntrevistaID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroInterno)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroInterno)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBolsa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsBolsa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEstudo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsEstudo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEstagio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsEstagio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsInvestigacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsInvestigacao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLecionar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsLecionar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFormacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsFormacao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsConfirmado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsConfirmado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CandidaturaID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,46 @@
+﻿@model IPSCIMOB.Models.CandidaturaModel
+@{
+    ViewData["Title"] = "EditCandidatura";
+    Layout = "_LayoutCandidatura";
+}
+
+@*<div align="center">*@
+    <h2>Candidatura Programa de Mobilidade: </h2>
+    <h5>Passo 2 de 5</h5>
+@*</div>*@
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCandidatura">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CandidaturaID" />
+            <div align="center">
+                <h3>Regulamento de Mobilidade</h3>
+
+            </div>
+
+            @*<div align="center">*@
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="IsConfirmado" /> @Html.DisplayNameFor(model => model.IsConfirmado)
+                        </label>
+                    </div>
+                </div>
+            @*</div>*@
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+
+           
+        </form>
+    </div>
+</div>
+
+
+
+<div align="center">
+    <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("SubmeterDocs", "Candidatura") + "'");" />
+</div>
+

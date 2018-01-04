@@ -1,0 +1,104 @@
+﻿@model IPSCIMOB.Models.CandidaturaModel
+@{
+    ViewData["Title"] = "ConsultarCandidaturaFuncionario";
+    Layout = "_LayoutCandidatura";
+}
+<h2>Create</h2>
+<h4>CandidaturaModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Programa" class="control-label"></label>
+                <input asp-for="Programa" class="form-control" />
+                <span asp-validation-for="Programa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntrevistaID" class="control-label"></label>
+                <input asp-for="EntrevistaID" class="form-control" />
+                <span asp-validation-for="EntrevistaID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroInterno" class="control-label"></label>
+                <input asp-for="NumeroInterno" class="form-control" />
+                <span asp-validation-for="NumeroInterno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsBolsa" /> @Html.DisplayNameFor(model => model.IsBolsa)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsEstudo" /> @Html.DisplayNameFor(model => model.IsEstudo)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsEstagio" /> @Html.DisplayNameFor(model => model.IsEstagio)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsInvestigacao" /> @Html.DisplayNameFor(model => model.IsInvestigacao)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsLecionar" /> @Html.DisplayNameFor(model => model.IsLecionar)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsFormacao" /> @Html.DisplayNameFor(model => model.IsFormacao)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsConfirmado" /> @Html.DisplayNameFor(model => model.IsConfirmado)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pais" class="control-label"></label>
+                <input asp-for="Pais" class="form-control" />
+                <span asp-validation-for="Pais" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <select asp-for="Estado" class="form-control"></select>
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
