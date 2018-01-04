@@ -10,8 +10,16 @@ namespace IPSCIMOB.Models
 {
     public enum EstadoCandidatura
     {
-        EmEspera, Aceite, Recusado, EmRealizacao1, EmRealizacao2, EmRealizacao3, EmRealizacao4, Desistiu
+        EmEspera,
+        Aceite,
+        Recusado,
+        EmRealizacao1,
+        EmRealizacao2,
+        EmRealizacao3,
+        EmRealizacao4,
+        Desistiu
     }
+
     public class CandidaturaModel
     {
 

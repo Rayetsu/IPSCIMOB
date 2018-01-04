@@ -117,9 +117,11 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Edit(/*int id,*/ [Bind("CandidaturaID,Programa,EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
         {
-            if (id != candidaturaModel.CandidaturaID)
+            var user = await _userManager.GetUserAsync(User);
+            var candidaturaModel1 = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
+            if (user.CandidaturaAtual != candidaturaModel1.CandidaturaID)
             {
                 return NotFound();
             }
@@ -128,12 +130,12 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
-                    _context.Update(candidaturaModel);
+                    _context.Update(candidaturaModel1);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CandidaturaModelExists(candidaturaModel.CandidaturaID))
+                    if (!CandidaturaModelExists(candidaturaModel1.CandidaturaID))
                     {
                         return NotFound();
                     }
@@ -144,32 +146,16 @@ namespace IPSCIMOB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(candidaturaModel);
-        }
-
-        // GET: Candidatura/Edit/5
-        public async Task<IActionResult> EditCandidatura(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == id);
-            if (candidaturaModel == null)
-            {
-                return NotFound();
-            }
-            return View(candidaturaModel);
+            return View(candidaturaModel1);
         }
 
         // POST: Candidatura/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         //[Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> EditCandidatura([Bind("CandidaturaID,Programa,EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        /*public async Task<IActionResult> EditCandidatura([Bind("CandidaturaID,Programa,EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user.CandidaturaAtual != candidaturaModel.CandidaturaID)
@@ -197,7 +183,7 @@ namespace IPSCIMOB.Controllers
                 }
                 return RedirectToAction(nameof(SubmeterDocs));
             }
-            return View(candidaturaModel);
+            return View(candidaturaModel);*/
 
 
 
@@ -238,7 +224,7 @@ namespace IPSCIMOB.Controllers
                 return RedirectToAction(nameof(SubmeterDocs));
             }
             return View(candidaturaModel1);*/
-        }
+        //}
 
 
         // GET: Candidatura/Delete/5

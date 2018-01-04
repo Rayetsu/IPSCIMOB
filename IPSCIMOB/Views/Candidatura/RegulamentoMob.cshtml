@@ -11,33 +11,83 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditCandidatura">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CandidaturaID" />
-            <div align="center">
-                <h3>Regulamento de Mobilidade</h3>
 
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Programa" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Utilizador" />
+
+            @*<div class="form-group">
+                    <label asp-for="EntrevistaID" class="control-label"></label>
+                    <input asp-for="EntrevistaID" class="form-control" />
+                    <span asp-validation-for="EntrevistaID" class="text-danger"></span>
+                </div>*@
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Nome" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NumeroInterno" />
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsBolsa" />
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsEstudo" />
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsEstagio" />
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsInvestigacao" />
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsLecionar" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsFormacao" />
+
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsConfirmado" /> @Html.DisplayNameFor(model => model.IsConfirmado)
+                    </label>
+                </div>
             </div>
 
-            @*<div align="center">*@
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input asp-for="IsConfirmado" /> @Html.DisplayNameFor(model => model.IsConfirmado)
-                        </label>
-                    </div>
-                </div>
-            @*</div>*@
-            
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Pais" />
+
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Estado" />
+
+
+
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
-
-           
         </form>
     </div>
 </div>
-
 
 
 <div align="center">
