@@ -16,6 +16,8 @@ namespace IPSCIMOB.Models.Upload
                             file.ContentDisposition).FileName.ToString().Trim('"');
         }
 
+      
+
         public static async Task<MemoryStream> GetFileStream(this IFormFile file)
         {
             MemoryStream filestream = new MemoryStream();

@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
 using IPSCIMOB.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace IPSCIMOB
 {
@@ -36,8 +38,17 @@ namespace IPSCIMOB
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+            services.AddSingleton<IFileProvider>(
+               new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+
+
             services.AddMvc();
+
+
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ApplicationDbContext context)
@@ -90,6 +101,8 @@ namespace IPSCIMOB
 
             Seed.SeedData(context, userManager);
         }
+
+
 
 
         }

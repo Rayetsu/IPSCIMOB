@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
 using IPSCIMOB.Models.Upload;
+using IPSCIMOB.Models;
 
 namespace IPSCIMOB.Controllers
 {
     public class UploadController : Controller
     {
         private readonly IFileProvider fileProvider;
+        
 
         public UploadController(IFileProvider fileProvider)
         {
             this.fileProvider = fileProvider;
+            
         }
 
         public IActionResult Index()
@@ -27,7 +30,7 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
-            if (file == null || file.Length == 0)
+            if (file == null || file.Length == 0 )
                 return Content("file not selected");
 
             var path = Path.Combine(
@@ -39,7 +42,9 @@ namespace IPSCIMOB.Controllers
                 await file.CopyToAsync(stream);
             }
 
+           
             return RedirectToAction("Files");
+            
         }
 
         [HttpPost]
@@ -59,7 +64,7 @@ namespace IPSCIMOB.Controllers
                     await file.CopyToAsync(stream);
                 }
             }
-
+            
             return RedirectToAction("Files");
         }
 
