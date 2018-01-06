@@ -31,5 +31,7 @@ namespace IPSCIMOB.Data
         public DbSet<IPSCIMOB.Models.Sugestao> Sugestao { get; set; }
 
         public DbSet<IPSCIMOB.Models.InformacaoGeral> InformacaoGeral { get; set; }
+
+        public DbSet<IPSCIMOB.Models.Entrevista> Entrevista { get; set; }
     }
 }
