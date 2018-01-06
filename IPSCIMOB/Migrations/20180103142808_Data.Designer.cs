@@ -11,8 +11,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171221215328_DataMig")]
-    partial class DataMig
+    [Migration("20180103142808_Data")]
+    partial class Data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,68 @@ namespace IPSCIMOB.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("IPSCIMOB.Models.ForeignStudents", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Andar")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("CodigoPostal")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("DataDeNascimento");
+
+                    b.Property<string>("Distrito")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("EscolaIPSECurso")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<bool>("IsBolseiro");
+
+                    b.Property<bool>("IsDadosVerificados");
+
+                    b.Property<bool>("IsFuncionario");
+
+                    b.Property<string>("Morada")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Nacionalidade")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<int>("NumeroDaPorta");
+
+                    b.Property<bool>("PartilhaMobilidade");
+
+                    b.Property<int>("Telefone");
+
+                    b.Property<string>("Universidade")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ForeignStudent");
                 });
 
             modelBuilder.Entity("IPSCIMOB.Models.InformacaoGeral", b =>
