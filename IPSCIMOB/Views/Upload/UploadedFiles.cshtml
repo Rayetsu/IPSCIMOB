@@ -1,0 +1,22 @@
+﻿
+@model IPSCIMOB.Models.Upload.FilesViewModel
+@{
+    ViewData["Title"] = "UploadedFiles";
+}
+
+<h2>UploadedFiles</h2>
+
+<p>List of Files</p>
+
+<ul>
+    @foreach (var item in Model.Files)
+    {
+        <li>
+            <a asp-action="Download"
+               asp-route-filename="@item.Name">
+                @item.Name
+            </a>
+        </li>
+    }
+</ul>
+
