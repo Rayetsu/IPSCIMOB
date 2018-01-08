@@ -5,10 +5,12 @@
     Layout = "_LayoutCandidatura";
 }
 
+
 <div align="center">
-    <h2>Candidatura Programa de Mobilidade: </h2>
+    <h2>Candidatura Programa de Mobilidade: @ViewBag.NomePrograma</h2>     
     <h5>Passo 1 de 5</h5>
 </div>
+
 
 
 <div class="row">
@@ -25,18 +27,20 @@
                 <input asp-for="EntrevistaID" class="form-control" />
                 <span asp-validation-for="EntrevistaID" class="text-danger"></span>
             </div>*@
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                @*<input asp-for="Nome" class="form-control" />*@
-                <span asp-validation-for="Nome" class="text-danger"> Nome dele aqui</span>
-            </div>
+
+    <div class="form-group">
+        <label asp-for="Nome" class="control-label"></label>
+        @*<input asp-for="Nome" class="form-control" />*@
+        <span asp-validation-for="Nome" class="text-danger"> </span>
+        
+    </div>
             <div class="form-group">
                 <label asp-for="NumeroInterno" class="control-label"></label>
                 @*<input asp-for="NumeroInterno" class="form-control" />*@
-                <span asp-validation-for="NumeroInterno" class="text-danger"> Numero dele Aqui </span>
+                <span asp-validation-for="NumeroInterno" class="text-danger">  </span>
             </div>
 
-
+            
             <div class="form-group">
                 <label>Se pretende ter direito a bolsa clique em baixo</label>
                 <div class="checkbox" align = "center">
@@ -57,16 +61,6 @@
                     </label>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
 
 
             @*<div class="form-group">
@@ -105,11 +99,19 @@
                 </div>
             </div>*@
 
+
             <div class="form-group">
-                <label asp-for="Pais" class="control-label"></label>
-                <input asp-for="Pais" class="form-control" />
-                <span asp-validation-for="Pais" class="text-danger"></span>
+                <label asp-for="Pais" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="Pais" asp-items="Html.GetEnumSelectList<Paises>()">
+                        <option selected="selected" value="">Escolha o País</option>
+                    </select>
+                    <span asp-validation-for="Pais" class="text-danger" />
+                </div>
+                <p></p>
             </div>
+
+           
 
             @*<div class="form-group">
                 <label asp-for="Estado" class="control-label"></label>
@@ -117,19 +119,11 @@
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>*@
 
-
-            <div class="form-group">
+            
+            <div id ="submitCandidatura" class="form-group" align="center">       
                 <input type="submit" value="Submeter Candidatura" class="btn btn-default" />
             </div>
 
         </form>
     </div>
 </div>
-
-
-
-
-@*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
-

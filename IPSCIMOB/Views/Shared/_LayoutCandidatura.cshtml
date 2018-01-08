@@ -13,6 +13,11 @@
                 display: block;
             }
 
+            textarea {
+                width: 600px;
+                height: 400px;
+                resize: none;
+            }
 
             .sidenav {
                 height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -47,6 +52,12 @@
                 padding: 0px 10px;
             }
 
+            .textDocsNecessarios {
+                width: 700px;
+                height: 500px;
+                resize: none;
+            }
+     
   
 
         </style>
@@ -59,12 +70,14 @@
     </environment>
 </head>
 <body>
+    
     <div class="sidenav" >
-        @Html.ActionLink("Inicio", "Erasmus" , "Candidatura")
+        @Html.ActionLink("Inicio", "CandidaturaInicio", "Candidatura")
         @Html.ActionLink("Consultar Candidatura", "ConsultarCandidatura", "Candidatura")
         @Html.ActionLink("Documentação", "Documentacao", "Candidatura")
         @Html.ActionLink("Entrevista", "Entrevista", "Candidatura")
     </div>
+
     <div class ="main">
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">

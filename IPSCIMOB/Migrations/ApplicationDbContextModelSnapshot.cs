@@ -124,6 +124,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<int>("Estado");
 
+                    b.Property<int>("EstadoBolsa");
+
                     b.Property<bool>("IsBolsa");
 
                     b.Property<bool>("IsConfirmado");
@@ -140,9 +142,9 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<string>("NumeroInterno");
+                    b.Property<int>("NumeroInterno");
 
-                    b.Property<string>("Pais");
+                    b.Property<int>("Pais");
 
                     b.Property<string>("Programa");
 
@@ -162,6 +164,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired();
+
+                    b.Property<bool>("ProgramaAtual");
 
                     b.Property<string>("Titulo")
                         .IsRequired();

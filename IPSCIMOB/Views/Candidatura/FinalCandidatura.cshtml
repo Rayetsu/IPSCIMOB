@@ -1,24 +1,30 @@
-﻿@model CandidaturaModel
+﻿@model IPSCIMOB.Models.CandidaturaModel
 @{
     ViewData["Title"] = "FinalCandidatura";
     Layout = "_LayoutCandidatura";
+    
 }
 
 <div align="center">
-    <h2>Candidatura Programa de Mobilidade: </h2>
+    <h2>Candidatura Programa de Mobilidade: @ViewBag.NomePrograma </h2>
     <h5>Passo 5 de 5</h5>
 </div>
 
 <div>
     <h4>Candidatura ao Programa de Mobilidade:</h4>
+    <h4 class="text-danger">@ViewBag.NomePrograma</h4>
     <h4>País: </h4>
-    <h4></h4>
-    <h4>Estado da Candidatura: </h4>
+    <h4 class="text-danger">@Model.Pais.ToString()</h4>
+
+   
+    <h4>Estado da sua Candidatura: </h4>
+    <h4 class="text-danger"> @Model.Estado.ToString()</h4>
     <h4>Estado da Bolsa: </h4>
+    <h4 class="text-danger">@Model.EstadoBolsa.ToString()</h4>
 
 
     <div class="form-group">
-        <input type="quit" value="Desistir" />
+        <input type="submit" value="Desistir" />
     </div>
 
 </div>

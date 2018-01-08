@@ -18,5 +18,10 @@ namespace IPSCIMOB.Models
         [Required]
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
+
+        [Display(Name = "Programa Atual")]
+        public Boolean ProgramaAtual { get; set; }
+
+
     }
 }

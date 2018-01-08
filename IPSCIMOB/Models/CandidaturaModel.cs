@@ -10,15 +10,88 @@ namespace IPSCIMOB.Models
 {
     public enum EstadoCandidatura
     {
-        EmEspera,
-        Aceite,
-        Recusado,
+        [Display(Name = "1ºPasso")]
         EmRealizacao1,
+        [Display(Name = "2ºPasso")]
         EmRealizacao2,
+        [Display(Name = "3ºPasso")]
         EmRealizacao3,
+        [Display(Name = "4ºPasso")]
         EmRealizacao4,
-        Desistiu
+        [Display(Name = "Em Espera")]
+        EmEspera,
+        [Display(Name = "Aceite")]
+        Aceite,
+        [Display(Name = "Recusado")]
+        Recusado,
+        [Display(Name = "Desistiu")]
+        Desistiu,
+        [Display(Name = "Em Mobilidade")]
+        EmMobilidade
     }
+
+    public enum Paises
+    {
+        [Display(Name = "Alemanhã")]
+        Alemanha,
+        [Display(Name = "Áustria")]
+        Austria,
+        [Display(Name = "Bélgica")]
+        Belgica,
+        [Display(Name = "Chipre")]
+        Chipre,
+        [Display(Name = "Dinamarca")]
+        Dinamarca,
+        [Display(Name = "Eslováquia")]
+        Eslovaquia,
+        [Display(Name = "Eslovénia")]
+        Eslovenia,
+        [Display(Name = "Espanha")]
+        Espanha,
+        [Display(Name = "Finlândia")]
+        Finlandia,
+        [Display(Name = "França")]
+        Franca,
+        [Display(Name = "Grécia")]
+        Grecia,
+        [Display(Name = "Hungria")]
+        Hungria,
+        [Display(Name = "Irlanda")]
+        Irlanda,
+        [Display(Name = "Itália")]
+        Italia,
+        [Display(Name = "Letónia")]
+        Letonia,
+        [Display(Name = "Lituania")]
+        Lituania,
+        [Display(Name = "Noruega")]
+        Noruega,
+        [Display(Name = "Países Baixos")]
+        PaisesBaixos,
+        [Display(Name = "Polónia")]
+        Polonia,
+        [Display(Name = "Reino Unido")]
+        ReinoUnido,
+        [Display(Name = "República Checa")]
+        RepublicaCheca,
+        [Display(Name = "Roménia")]
+        Romenia,
+        [Display(Name = "Suécia")]
+        Suecia,
+        [Display(Name = "Turquia")]
+        Turquia
+    }
+
+    public enum EstadoBolsa
+    {
+        [Display(Name = "Em Espera")]
+        EmEspera,
+        [Display(Name = "Aceite")]
+        Aceite,
+        [Display(Name = "Recusada")]
+        Recusada     
+    }
+
 
     public class CandidaturaModel
     {
@@ -46,11 +119,15 @@ namespace IPSCIMOB.Models
 
         //[Required]
         [Display(Name = "Número Interno")]
-        public string NumeroInterno { get; set; }
+        public int NumeroInterno { get; set; }
              
 
-        [Display(Name = "Candidatar-me à Bolsa")]
+        [Display(Name = "Candidato à Bolsa")]
         public bool IsBolsa { get; set; }
+
+        [EnumDataType(typeof(EstadoBolsa))]
+        [Display(Name = "Estado Bolsa")]
+        public EstadoBolsa EstadoBolsa { get; set; }
 
         [Display(Name = "Estudo")]
         public bool IsEstudo { get; set; }
@@ -67,12 +144,15 @@ namespace IPSCIMOB.Models
         [Display(Name = "Formação")]
         public bool IsFormacao { get; set; }
 
+        //[Required]
         [Display(Name = "Declaro que li o regulamento de mobilidade")]
         public bool IsConfirmado { get; set; }
 
+        [EnumDataType(typeof(Paises))]
         [Display(Name = "País")]
-        public string Pais { get; set; }
+        public Paises Pais { get; set; }
 
+        [EnumDataType(typeof(EstadoCandidatura))]
         [Display(Name = "Estado da Candidatura")]
         public EstadoCandidatura Estado { get; set; }
 

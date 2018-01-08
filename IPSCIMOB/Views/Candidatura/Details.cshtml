@@ -16,29 +16,35 @@
         <dd>
             @Html.DisplayFor(model => model.Programa)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EntrevistaID)
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Entrevista)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.EntrevistaID)
-        </dd>
+            @Html.DisplayFor(model => model.Entrevista)
+        </dd>*@
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Nome)
+            @Html.DisplayFor(model => model.Utilizador.Nome)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NumeroInterno)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.NumeroInterno)
+            @Html.DisplayFor(model => model.Utilizador.NumeroInterno)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.IsBolsa)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.IsBolsa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoBolsa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EstadoBolsa)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.IsEstudo)
@@ -91,6 +97,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CandidaturaID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.CandidaturaID">Editar</a> |
+    <a asp-action="Index">Voltar Atrás</a>
 </div>

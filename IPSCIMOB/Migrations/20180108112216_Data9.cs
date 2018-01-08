@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class DataUpdate : Migration
+    public partial class Data9 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,6 +71,7 @@ namespace IPSCIMOB.Migrations
                     InformacaoGeralID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Descricao = table.Column<string>(nullable: false),
+                    ProgramaAtual = table.Column<bool>(nullable: false),
                     Titulo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -205,6 +206,7 @@ namespace IPSCIMOB.Migrations
                     CandidaturaID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Estado = table.Column<int>(nullable: false),
+                    EstadoBolsa = table.Column<int>(nullable: false),
                     IsBolsa = table.Column<bool>(nullable: false),
                     IsConfirmado = table.Column<bool>(nullable: false),
                     IsEstagio = table.Column<bool>(nullable: false),
@@ -213,8 +215,8 @@ namespace IPSCIMOB.Migrations
                     IsInvestigacao = table.Column<bool>(nullable: false),
                     IsLecionar = table.Column<bool>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
-                    NumeroInterno = table.Column<string>(nullable: true),
-                    Pais = table.Column<string>(nullable: true),
+                    NumeroInterno = table.Column<int>(nullable: false),
+                    Pais = table.Column<int>(nullable: false),
                     Programa = table.Column<string>(nullable: true),
                     UtilizadorId = table.Column<string>(nullable: true)
                 },

@@ -12,8 +12,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180104160929_DataUpdate")]
-    partial class DataUpdate
+    [Migration("20180108112216_Data9")]
+    partial class Data9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,6 +125,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<int>("Estado");
 
+                    b.Property<int>("EstadoBolsa");
+
                     b.Property<bool>("IsBolsa");
 
                     b.Property<bool>("IsConfirmado");
@@ -141,9 +143,9 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<string>("NumeroInterno");
+                    b.Property<int>("NumeroInterno");
 
-                    b.Property<string>("Pais");
+                    b.Property<int>("Pais");
 
                     b.Property<string>("Programa");
 
@@ -163,6 +165,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired();
+
+                    b.Property<bool>("ProgramaAtual");
 
                     b.Property<string>("Titulo")
                         .IsRequired();

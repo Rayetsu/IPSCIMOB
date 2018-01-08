@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<IPSCIMOB.Models.CandidaturaModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AlunosEmMob";
 }
 
-<h2>Lista de todas as Candidaturas </h2>
+<h2>Lista de Utilizadores que se encontram em Mobilidade</h2>
 
 <table class="table">
     <thead>
@@ -12,12 +12,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Programa)
                 </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.Utilizador)
-                </th>*@
-                @*<th>
-                    @Html.DisplayNameFor(model => model.Entrevista)
-                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Nome)
                 </th>
@@ -27,9 +21,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.IsBolsa)
                 </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoBolsa)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoBolsa)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.IsEstudo)
                 </th>
@@ -46,7 +40,7 @@
                     @Html.DisplayNameFor(model => model.IsFormacao)
                 </th>
                 <th>
-                    Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
+                   Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Pais)
@@ -59,16 +53,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+
+    if (item.Estado == EstadoCandidatura.EmMobilidade) { 
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Programa)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Utilizador)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.EntrevistaID)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
@@ -78,9 +68,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsBolsa)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoBolsa)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoBolsa)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsEstudo)
             </td>
@@ -106,18 +96,17 @@
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CandidaturaID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.CandidaturaID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.CandidaturaID">Eliminar</a>
+                @*<a asp-action="Edit" asp-route-id="@item.CandidaturaID">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.CandidaturaID">Detalhes</a> 
+                @*<a asp-action="Delete" asp-route-id="@item.CandidaturaID">Delete</a>*@
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>
 
+
 <div align="center">
     <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
- </div>
-
-
-
+</div>
