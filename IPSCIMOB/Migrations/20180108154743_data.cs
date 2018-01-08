@@ -71,6 +71,7 @@ namespace IPSCIMOB.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DataDeEntrevista = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: true),
+                    Estado = table.Column<int>(nullable: false),
                     NumeroAluno = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

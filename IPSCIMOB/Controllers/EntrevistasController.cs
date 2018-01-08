@@ -58,9 +58,8 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista")] Entrevista entrevista)
+        public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado")] Entrevista entrevista)
         {
-
             var user = await _userManager.GetUserAsync(User);
             entrevista.Email = user.Email;
             entrevista.NumeroAluno = user.NumeroInterno;
@@ -95,7 +94,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista")] Entrevista entrevista)
+        public async Task<IActionResult> Edit(int id, [Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado")] Entrevista entrevista)
         {
             if (id != entrevista.EntrevistaId)
             {

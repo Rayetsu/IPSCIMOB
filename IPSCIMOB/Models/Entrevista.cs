@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 
 namespace IPSCIMOB.Models
 {
+    public enum EstadoCandidatura
+    {
+        [Display(Name = "Em espera")]
+        EmEspera,
+        Aceite,
+        Recusado,
+        Entrevistado,
+
+    }
+
     public class Entrevista
     {
         [Key]
@@ -25,8 +35,10 @@ namespace IPSCIMOB.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy HH:mm:ss}")]
         [Display(Name = "Data de Entrevista")]
         public DateTime DataDeEntrevista { get; set; }
-        
 
-       
+        [EnumDataType(typeof(EstadoCandidatura))]
+        [Display(Name = "Estado da Candidatura")]
+        public EstadoCandidatura Estado { get; set; }
+
     }
 }
