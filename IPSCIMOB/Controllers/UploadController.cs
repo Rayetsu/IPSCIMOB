@@ -93,7 +93,7 @@ namespace IPSCIMOB.Controllers
             foreach (var item in this.fileProvider.GetDirectoryContents(""))
             {
                 model.Files.Add(
-                    new FileDetails { Name = item.Name, Path = item.PhysicalPath });
+                    new FileDetails { Name = item.Name, Path = item.PhysicalPath});
             }
             return View(model);
         }

@@ -1,0 +1,12 @@
+public enum EstadoCandidatura
+    {
+[Display(Name = "Em espera")]        
+EmEspera,
+        Aceite,
+        Recusado,
+        Entrevistado,
+       
+    }
+
+[Display(Name = "Estado da Candidatura")]
+        public EstadoCandidatura Estado { get; set; }
