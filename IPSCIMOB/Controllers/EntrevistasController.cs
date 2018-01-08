@@ -16,13 +16,11 @@ namespace IPSCIMOB.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-
         public EntrevistasController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _context = context;
         }
-
         // GET: Entrevistas
         public async Task<IActionResult> Index()
         {
@@ -63,6 +61,7 @@ namespace IPSCIMOB.Controllers
             var user = await _userManager.GetUserAsync(User);
             entrevista.Email = user.Email;
             entrevista.NumeroAluno = user.NumeroInterno;
+            entrevista.Estado = EstadoEntrevista.EmEspera;
 
             if (ModelState.IsValid)
             {

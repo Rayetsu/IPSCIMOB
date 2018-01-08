@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IPSCIMOB.Models
 {
-    public enum EstadoCandidatura
+    public enum EstadoEntrevista
     {
         [Display(Name = "Em espera")]
         EmEspera,
@@ -22,7 +22,7 @@ namespace IPSCIMOB.Models
         [Key]
         public int EntrevistaId { get; set; }
 
-       
+        [Display(Name = "Número Interno")]
         public int? NumeroAluno{ get; set; }
 
 
@@ -36,9 +36,9 @@ namespace IPSCIMOB.Models
         [Display(Name = "Data de Entrevista")]
         public DateTime DataDeEntrevista { get; set; }
 
-        [EnumDataType(typeof(EstadoCandidatura))]
+        [EnumDataType(typeof(EstadoEntrevista))]
         [Display(Name = "Estado da Candidatura")]
-        public EstadoCandidatura Estado { get; set; }
+        public EstadoEntrevista Estado { get; set; }
 
     }
 }
