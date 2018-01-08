@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class DataMig : Migration
+    public partial class data : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,6 +61,21 @@ namespace IPSCIMOB.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Entrevista",
+                columns: table => new
+                {
+                    EntrevistaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DataDeEntrevista = table.Column<DateTime>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    NumeroAluno = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Entrevista", x => x.EntrevistaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -253,6 +268,9 @@ namespace IPSCIMOB.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Entrevista");
 
             migrationBuilder.DropTable(
                 name: "InformacaoGeral");

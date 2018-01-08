@@ -10,14 +10,13 @@ namespace IPSCIMOB.Models
     public class Entrevista
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public int EntrevistaId { get; set; }
 
-        [Required]
-        public int NumeroAluno{ get; set; }
+       
+        public int? NumeroAluno{ get; set; }
 
 
-        [Required]
+       
         [Display(Name = "Email")]
         public String Email { get; set; }
 

@@ -114,6 +114,22 @@ namespace IPSCIMOB.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("IPSCIMOB.Models.Entrevista", b =>
+                {
+                    b.Property<int>("EntrevistaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataDeEntrevista");
+
+                    b.Property<string>("Email");
+
+                    b.Property<int?>("NumeroAluno");
+
+                    b.HasKey("EntrevistaId");
+
+                    b.ToTable("Entrevista");
+                });
+
             modelBuilder.Entity("IPSCIMOB.Models.InformacaoGeral", b =>
                 {
                     b.Property<int>("InformacaoGeralID")

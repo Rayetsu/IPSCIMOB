@@ -11,8 +11,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20171221215328_DataMig")]
-    partial class DataMig
+    [Migration("20180108140448_data")]
+    partial class data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,22 @@ namespace IPSCIMOB.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("IPSCIMOB.Models.Entrevista", b =>
+                {
+                    b.Property<int>("EntrevistaId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataDeEntrevista");
+
+                    b.Property<string>("Email");
+
+                    b.Property<int?>("NumeroAluno");
+
+                    b.HasKey("EntrevistaId");
+
+                    b.ToTable("Entrevista");
                 });
 
             modelBuilder.Entity("IPSCIMOB.Models.InformacaoGeral", b =>
