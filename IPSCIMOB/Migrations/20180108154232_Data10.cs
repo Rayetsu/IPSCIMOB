@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class Data9 : Migration
+    public partial class Data10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

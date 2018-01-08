@@ -363,36 +363,29 @@ namespace IPSCIMOB.Controllers
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
 
-            if (this.User.IsInRole("Aluno")) {
-
-                if (candidaturaModel.Programa != programaAtual.Titulo)
-                {
-                    return View("ConsultarCandidaturaAluno");
-                }else
-                {
-                    if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao1)
+            if (this.User.IsInRole("Aluno")) {   
+                    if (candidaturaModel == null || candidaturaModel.Programa != programaAtual.Titulo )
                     {
-                        return View("ConsultarCandidaturaAluno");
+                         return View("ConsultarCandidaturaAluno");
+                    }else{                    
+                        if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao1){
+                            return View("ConsultarCandidaturaAluno");
+                        }
+                        else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2) {
+                            return View("RegulamentoMob");
+                        }
+                        else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3) {
+                            return View("SubmeterDocs");
+                        }
+                        else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4) {
+                            return View("Entrevista");
+                        }
+                        else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
+                                   candidaturaModel.Estado == EstadoCandidatura.Aceite ||
+                                       candidaturaModel.Estado == EstadoCandidatura.Recusado){
+                            return View("FinalCandidatura");
+                        }
                     }
-                    else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2)
-                    {
-                        return View("RegulamentoMob");
-                    }
-                    else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3)
-                    {
-                        return View("SubmeterDocs");
-                    }
-                    else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
-                    {
-                        return View("Entrevista");
-                    }
-                    else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
-                               candidaturaModel.Estado == EstadoCandidatura.Aceite ||
-                                   candidaturaModel.Estado == EstadoCandidatura.Recusado)
-                    {
-                        return View("FinalCandidatura");
-                    }
-                }
                 }
                 else if (this.User.IsInRole("Funcionário"))     //  FALTA   FAZER IGUAL COMO NO ALUNO 
                 {
