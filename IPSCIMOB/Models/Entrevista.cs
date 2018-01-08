@@ -14,8 +14,7 @@ namespace IPSCIMOB.Models
         public string Id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Nome { get; set; }
+        public int NumeroAluno{ get; set; }
 
 
         [Required]
