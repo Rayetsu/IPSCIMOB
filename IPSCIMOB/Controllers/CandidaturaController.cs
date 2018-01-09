@@ -16,8 +16,7 @@ namespace IPSCIMOB.Controllers
     public class CandidaturaController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly CandidaturaModel cadidaturaAtual;
+        private readonly UserManager<ApplicationUser> _userManager;        
 
         public CandidaturaController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -26,7 +25,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Candidatura
-        //[Authorize(Roles = "CIMOB")]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.CandidaturaModel.ToListAsync());
@@ -52,21 +51,9 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Candidatura/Create
-        public async Task<IActionResult> ConsultarCandidaturaAluno()
+        public IActionResult ConsultarCandidaturaAluno()
         {
-            //var user = await _userManager.GetUserAsync(User);
-            //if (user == null)
-            //{
-            //    throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            //}
-
-            //var model = new IndexViewModel
-            //{
-            //    Nome = user.Nome,
-            //    NumeroInterno = user.NumeroInterno
-            //};
-
-            return View();
+             return View();
         }
 
         public IActionResult ConsultarCandidaturaFuncionario()
@@ -79,7 +66,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa,EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa, Utilizador, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
@@ -90,7 +77,7 @@ namespace IPSCIMOB.Controllers
                 candidaturaModel.NumeroInterno = user.NumeroInterno;
 
                 candidaturaModel.Programa = programaAtual.Titulo;
-
+                
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao2;
                 _context.Add(candidaturaModel);
                 await _context.SaveChangesAsync();
@@ -126,8 +113,11 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa, Utilizador, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
         {
+            //   VER PORQUE NÃO DÁ PARA OBTER O USER DA  candidaturaModel.Utilizador
+                      //  var user = candidaturaModel.Utilizador;
+
             if (id != candidaturaModel.CandidaturaID)
             {
                 return NotFound();
@@ -139,6 +129,14 @@ namespace IPSCIMOB.Controllers
                 {
                     _context.Update(candidaturaModel);
                     await _context.SaveChangesAsync();
+                    //if(candidaturaModel.Estado == EstadoCandidatura.Aceite || candidaturaModel.Estado == EstadoCandidatura.Recusado
+                    //    || candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
+                    //{
+                    //    new Notificacao(user.Email, "CIMOB - Estado Candidatura", "A sua candidatura ao Programa " + candidaturaModel.Programa + " foi: " + candidaturaModel.Estado);
+                    //}                    
+                    //new Notificacao(user.Email, "CIMOB - Alteração", "A sua candidatura ao Programa "
+                    //        + candidaturaModel.Programa + " sofreu alterações de dados pelo CIMOB.");
+                                        
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -359,10 +357,12 @@ namespace IPSCIMOB.Controllers
         {
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Titulo;
-
+        
             var user = await _userManager.GetUserAsync(User);
-            
-     
+            ViewBag.Nome = user.Nome;
+            ViewBag.NumeroInterno = user.NumeroInterno;
+                 
+
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in  _context.CandidaturaModel) {
                 if (c.Nome.Equals(user.Nome)){
@@ -377,42 +377,33 @@ namespace IPSCIMOB.Controllers
                 {
                     candidaturaModel = c;
                 }
-            }           
+            }
 
-            if (this.User.IsInRole("Aluno")) {   
-                    if (candidaturaModel == null ) 
-                    {
-                         return View("ConsultarCandidaturaAluno");
-                    }else if (candidaturaModel.Programa != programaAtual.Titulo)
+            if (candidaturaModel == null || candidaturaModel.Programa != programaAtual.Titulo)
+            {
+                if (this.User.IsInRole("Aluno"))
                 {
                     return View("ConsultarCandidaturaAluno");
                 }
-                else{                    
-                        //if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao1){
-                        //    return View("ConsultarCandidaturaAluno");
-                        //}
-                        if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2) {
-                            return View("RegulamentoMob", candidaturaModel);
-                        }
-                        else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3) {
-                            return View("SubmeterDocs", candidaturaModel);
-                        }
-                        else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4) {
-                            return View("MarcarEntrevistas", candidaturaModel);
-                        }
-                        else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
-                                   candidaturaModel.Estado == EstadoCandidatura.Aceite ||
-                                       candidaturaModel.Estado == EstadoCandidatura.Recusado ||
-                                            candidaturaModel.Estado == EstadoCandidatura.EmMobilidade) {
-                            return View("FinalCandidatura", candidaturaModel);
-                        }
-                    }
-                }
-                else if (this.User.IsInRole("Funcionário"))     //  FALTA   FAZER IGUAL COMO NO ALUNO 
-                {
+                else if (this.User.IsInRole("Funcionário"))
                     return View("ConsultarCandidaturaFuncionario");
+            } else {
+                if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2) {
+                    return View("RegulamentoMob", candidaturaModel);
                 }
-       
+                else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3) {
+                    return View("SubmeterDocs", candidaturaModel);
+                }
+                else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4) {
+                    return View("MarcarEntrevistas", candidaturaModel);
+                }
+                else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
+                           candidaturaModel.Estado == EstadoCandidatura.Aceite ||
+                               candidaturaModel.Estado == EstadoCandidatura.Recusado ||
+                                    candidaturaModel.Estado == EstadoCandidatura.EmMobilidade) {
+                    return View("FinalCandidatura", candidaturaModel);
+                }
+            }
             return NotFound();
         }
 
@@ -460,18 +451,19 @@ namespace IPSCIMOB.Controllers
         {
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Titulo;            
-
+            
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
-            if(candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
+            
+            if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmEspera;
-            }      
+                new Notificacao(user.Email, "Candidatura Registada", "A sua candidatura no programa " + programaAtual.Titulo + " foi registada com sucesso!");
+            } 
             _context.Update(candidaturaModel);
             await _context.SaveChangesAsync();
 
             return View(candidaturaModel);
-            //return View(await _context.CandidaturaModel.ToListAsync());
         }
 
         [Authorize(Roles = "CIMOB")]
@@ -497,11 +489,15 @@ namespace IPSCIMOB.Controllers
             else if (programaAtual.Titulo == "Politécnico de Macau")
                 return View("PolitecnicoDeMacau");
 
-            // meter os restantes programas
-
             return NotFound();
         }
 
+
+        [Authorize(Roles = "CIMOB")]
+        public async Task<IActionResult> HistoricoCandidaturas()
+        {
+            return View(await _context.CandidaturaModel.ToListAsync());
+        }
 
     }
 }
