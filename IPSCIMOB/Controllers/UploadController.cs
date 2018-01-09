@@ -49,9 +49,12 @@ namespace IPSCIMOB.Controllers
 
             var user = await _userManager.GetUserAsync(User);
             
-            entrevista.Email = user.Email;
-            entrevista.NumeroAluno = user.NumeroInterno;
-            //var nomeDoFicheiro = file.GetFilename();
+            var email = user.Email;
+            var numeroAluno = user.NumeroInterno;
+            var nomeDoFicheiro = file.GetFilename();
+
+           var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
+            
 
 
 
