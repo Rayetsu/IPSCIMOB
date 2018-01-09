@@ -60,14 +60,16 @@ namespace IPSCIMOB.Controllers
             {
                 _context.Add(enviarMsg);
                 await _context.SaveChangesAsync();
+                var email = enviarMsg.ToEmail;
+                var subject = enviarMsg.EmailSubject;
+                var body = enviarMsg.EMailBody;
+
+                new Notificacao(email, subject, body);
+
                 return RedirectToAction(nameof(Index));
             }
 
-           // var email = enviarMsg.ToEmail;
-            var subject = enviarMsg.EmailSubject;
-            var body = enviarMsg.EMailBody;
-
-            new Notificacao("memphislzr@gmail.com", subject, body);
+            
 
             return View(enviarMsg);
 
