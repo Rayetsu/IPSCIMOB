@@ -8,18 +8,21 @@ using System.IO;
 using Microsoft.Extensions.FileProviders;
 using IPSCIMOB.Models.Upload;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace IPSCIMOB.Controllers
 {
     public class UploadController : Controller
     {
         private readonly IFileProvider fileProvider;
-        
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UploadController(IFileProvider fileProvider)
+
+        public UploadController(IFileProvider fileProvider, UserManager<ApplicationUser> userManager)
         {
             this.fileProvider = fileProvider;
-            
+            _userManager = userManager;
+
         }
 
         public IActionResult Index()
@@ -30,6 +33,8 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
+
+
             if (file == null || file.Length == 0 )
                 return Content("file not selected");
 
@@ -42,6 +47,10 @@ namespace IPSCIMOB.Controllers
                 await file.CopyToAsync(stream);
             }
 
+            var user = await _userManager.GetUserAsync(User);
+            
+            entrevista.Email = user.Email;
+            entrevista.NumeroAluno = user.NumeroInterno;
             //var nomeDoFicheiro = file.GetFilename();
 
 
