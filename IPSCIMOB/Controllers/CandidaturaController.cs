@@ -10,13 +10,16 @@ using IPSCIMOB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using IPSCIMOB.Models.ManageViewModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+
 
 namespace IPSCIMOB.Controllers
 {
     public class CandidaturaController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;        
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public CandidaturaController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -53,7 +56,7 @@ namespace IPSCIMOB.Controllers
         // GET: Candidatura/Create
         public IActionResult ConsultarCandidaturaAluno()
         {
-             return View();
+            return View();
         }
 
         public IActionResult ConsultarCandidaturaFuncionario()
@@ -77,13 +80,13 @@ namespace IPSCIMOB.Controllers
                 candidaturaModel.NumeroInterno = user.NumeroInterno;
 
                 candidaturaModel.Programa = programaAtual.Titulo;
-                
+
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao2;
                 _context.Add(candidaturaModel);
                 await _context.SaveChangesAsync();
                 user.CandidaturaAtual = candidaturaModel.CandidaturaID;
                 await _userManager.UpdateAsync(user);
-                
+
                 return RedirectToAction(nameof(RegulamentoMob));
             }
             return View(candidaturaModel);
@@ -185,7 +188,7 @@ namespace IPSCIMOB.Controllers
                     {
                         throw;
                     }
-                }              
+                }
 
                 return RedirectToAction(nameof(SubmeterDocs));
             }
@@ -356,17 +359,19 @@ namespace IPSCIMOB.Controllers
         {
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Titulo;
-        
+
             var user = await _userManager.GetUserAsync(User);
             ViewBag.Nome = user.Nome;
             ViewBag.NumeroInterno = user.NumeroInterno;
-                 
+
 
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
-            foreach (CandidaturaModel c in  _context.CandidaturaModel) {
-                if (c.Nome.Equals(user.Nome)){
+            foreach (CandidaturaModel c in _context.CandidaturaModel)
+            {
+                if (c.Nome.Equals(user.Nome))
+                {
                     candidaturasUser.Add(c);
-                }                   
+                }
             }
 
             CandidaturaModel candidaturaModel = null;
@@ -386,20 +391,26 @@ namespace IPSCIMOB.Controllers
                 }
                 else if (this.User.IsInRole("Funcionário"))
                     return View("ConsultarCandidaturaFuncionario");
-            } else {
-                if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2) {
+            }
+            else
+            {
+                if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2)
+                {
                     return View("RegulamentoMob", candidaturaModel);
                 }
-                else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3) {
+                else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3)
+                {
                     return View("SubmeterDocs", candidaturaModel);
                 }
-                else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4) {
+                else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
+                {
                     return View("MarcarEntrevistas", candidaturaModel);
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
                            candidaturaModel.Estado == EstadoCandidatura.Aceite ||
                                candidaturaModel.Estado == EstadoCandidatura.Recusado ||
-                                    candidaturaModel.Estado == EstadoCandidatura.EmMobilidade) {
+                                    candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
+                {
                     return View("FinalCandidatura", candidaturaModel);
                 }
             }
@@ -448,16 +459,16 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> FinalCandidatura()
         {
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;            
-            
+            ViewBag.NomePrograma = programaAtual.Titulo;
+
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
-            
+
             if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmEspera;
                 new Notificacao(user.Email, "Candidatura Registada", "A sua candidatura no programa " + programaAtual.Titulo + " foi registada com sucesso!");
-            } 
+            }
             _context.Update(candidaturaModel);
             await _context.SaveChangesAsync();
 
@@ -491,30 +502,49 @@ namespace IPSCIMOB.Controllers
 
 
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> HistoricoCandidaturas(int? numero)
+        public async Task<IActionResult> HistoricoCandidaturas(int? id)
         {
-            new Notificacao("someone1995@hotmail.com", "s", "" + numero);
-            var user = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.NumeroInterno == numero); 
-            ViewBag.NomeUtilizador = user.Nome;
+            var candidatura = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == id);
+            ViewBag.NomeUtilizador = candidatura.Nome;
+            ViewBag.NumeroInterno = candidatura.NumeroInterno;
 
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in _context.CandidaturaModel)
             {
-                if (c.NumeroInterno.Equals(user.NumeroInterno))
+                if (c.NumeroInterno.Equals(candidatura.NumeroInterno))
                 {
                     candidaturasUser.Add(c);
                 }
             }
-
             return View(candidaturasUser);
         }
 
-        [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> AlunosComCandidaturas()
+
+
+        public Boolean verificarAluno(int numero, List<CandidaturaModel> candidaturasUser)
         {
-            return View(await _context.CandidaturaModel.ToListAsync());
+            foreach (CandidaturaModel c in candidaturasUser)
+            {
+                if (c.NumeroInterno.Equals(numero))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
-
+        [Authorize(Roles = "CIMOB")]
+        public IActionResult AlunosComCandidaturas()
+        {
+            List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
+            foreach (CandidaturaModel c in _context.CandidaturaModel)
+            {
+                if (!verificarAluno(c.NumeroInterno, candidaturasUser))
+                {
+                    candidaturasUser.Add(c);
+                }
+            }
+            return View(candidaturasUser);
+        }
     }
-}
+ }
