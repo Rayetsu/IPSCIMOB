@@ -122,6 +122,8 @@ namespace IPSCIMOB.Migrations
                     b.Property<int>("CandidaturaID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Email");
+
                     b.Property<int>("Estado");
 
                     b.Property<int>("EstadoBolsa");
@@ -148,11 +150,7 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Programa");
 
-                    b.Property<string>("UtilizadorId");
-
                     b.HasKey("CandidaturaID");
-
-                    b.HasIndex("UtilizadorId");
 
                     b.ToTable("CandidaturaModel");
                 });
@@ -295,13 +293,6 @@ namespace IPSCIMOB.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("IPSCIMOB.Models.CandidaturaModel", b =>
-                {
-                    b.HasOne("IPSCIMOB.Models.ApplicationUser", "Utilizador")
-                        .WithMany()
-                        .HasForeignKey("UtilizadorId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -104,8 +104,8 @@ namespace IPSCIMOB.Models
         public string Programa { get; set; }
 
         //[Required]
-        [Display(Name = "Utilizador")]
-        public ApplicationUser Utilizador { get; set; }
+        [Display(Name = "Email")]
+        public String Email { get; set; }
 
         //[Required]
         //[Display(Name = "EntrevistaID")]

@@ -147,8 +147,10 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var applicationUser = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);
-            _context.ApplicationUser.Remove(applicationUser);
-            await _context.SaveChangesAsync();
+            var userEmail = applicationUser.Email;             
+            new Notificacao(userEmail, "CIMOB - Aviso", "O CIMOB vem por este meio avisar que: A sua conta no site CIMOB-IPS foi eliminada!");
+            _context.ApplicationUser.Remove(applicationUser);            
+            await _context.SaveChangesAsync();         
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IPSCIMOB.Models.CandidaturaModel>
+@{
+    ViewData["Title"] = "AlunosComCandidaturas";
+}
+<h2>AlunosComCandidaturas</h2>
+<form asp-action="Edit">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroInterno)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroInterno)
+                    </td>
+                    <td>
+                    <td>
+                        <a asp-action="HistoricoCandidaturas" asp-route-id="@item.NumeroInterno">Ver Candidaturas</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
