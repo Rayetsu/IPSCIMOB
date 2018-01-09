@@ -3,14 +3,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Fazer Upload de Documentos</h2>
 
-<form asp-controller="Upload" asp-action="UploadFile" method="post"
+<p>Nome do ficheiro deverá ser: "NumeroAluno_NomeDoDocumento"</p>
+
+@*<form asp-controller="Upload" asp-action="UploadFile" method="post"
       enctype="multipart/form-data">
 
     <input type="file" name="file" />
     <button type="submit">Upload File</button>
-</form>
+</form>*@
 <p></p>
 
 <form asp-controller="Upload" asp-action="UploadFiles" method="post"
@@ -22,12 +24,12 @@
 
 <p></p>
 
-<form asp-controller="Upload" asp-action="UploadFileViaModel" method="post"
+@*<form asp-controller="Upload" asp-action="UploadFileViaModel" method="post"
       enctype="multipart/form-data">
 
     <input type="file" name="FileToUpload" />
     <button type="submit">Upload File (model)</button>
-</form>
+</form>*@
 
 
 

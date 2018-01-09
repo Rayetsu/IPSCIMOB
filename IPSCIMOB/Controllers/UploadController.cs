@@ -53,12 +53,13 @@ namespace IPSCIMOB.Controllers
             var numeroAluno = user.NumeroInterno;
             var nomeDoFicheiro = file.GetFilename();
 
+            new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
+
            var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
-            
 
 
 
-            return RedirectToAction("Files");
+            return RedirectToAction("Index");
             
         }
 
@@ -78,7 +79,19 @@ namespace IPSCIMOB.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
+
+                var user = await _userManager.GetUserAsync(User);
+
+                var email = user.Email;
+                var numeroAluno = user.NumeroInterno;
+                var nomeDoFicheiro = file.GetFilename();
+
+                new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
+
+                var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
             }
+
+
             
             return RedirectToAction("Files");
         }
@@ -98,6 +111,16 @@ namespace IPSCIMOB.Controllers
             {
                 await model.FileToUpload.CopyToAsync(stream);
             }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var email = user.Email;
+            var numeroAluno = user.NumeroInterno;
+            var nomeDoFicheiro = model.FileToUpload.GetFilename();
+
+            new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
+
+            var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
 
             return RedirectToAction("Files");
         }
