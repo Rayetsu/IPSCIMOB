@@ -42,7 +42,10 @@ namespace IPSCIMOB.Controllers
                 await file.CopyToAsync(stream);
             }
 
-           
+            //var nomeDoFicheiro = file.GetFilename();
+
+
+
             return RedirectToAction("Files");
             
         }
