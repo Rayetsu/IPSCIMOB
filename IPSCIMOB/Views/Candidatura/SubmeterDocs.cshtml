@@ -29,6 +29,10 @@
 
 
 @if (Model.EstadoDocumentos.Equals(EstadoDocumentos.Aceites)) {
+    <br />
+    <h3>Os seus Documentos foram aceites, por favor complete a sua candidatura clicando em Passo Seguinte</h3>
+    <br />
+    <br />
 <div align="center">
     <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("MarcarEntrevistas", "Candidatura") + "'");" />
 </div>

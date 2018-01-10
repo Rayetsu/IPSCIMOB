@@ -31,8 +31,6 @@ namespace IPSCIMOB.Models
         EmMobilidade,
         [Display(Name = "Finalizou")]
         Finalizou
-        
-
     }
 
     public enum Paises
@@ -107,6 +105,16 @@ namespace IPSCIMOB.Models
         Recusados       
     }
 
+    //public enum EstadoEntrevista
+    //{
+    //    [Display(Name = "EmEspera")]
+    //    EmEspera,
+    //    [Display(Name = "Aceites")]
+    //    Aceites,
+    //    [Display(Name = "Recusados")]
+    //    Recusados
+    //}
+
     public class CandidaturaModel
     {
 
@@ -124,8 +132,6 @@ namespace IPSCIMOB.Models
         //[Required]
         [Display(Name = "Entrevista ID")]
         public int EntrevistaID { get; set; }
-
-        //public File Documentos { get; set; }
 
         //[Required]
         [Display(Name = "Nome Candidato")]
@@ -174,7 +180,9 @@ namespace IPSCIMOB.Models
         [Display(Name = "Estado da Documentos")]
         public EstadoDocumentos EstadoDocumentos { get; set; }
 
-
+        //[EnumDataType(typeof(EstadoEntrevista))]
+        //[Display(Name = "Estado da Entrevista")]
+        //public EstadoEntrevista EstatadoEntevista { get; set; }
 
     }
 }

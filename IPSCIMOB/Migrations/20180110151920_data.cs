@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class data21 : Migration
+    public partial class data : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -116,6 +116,7 @@ namespace IPSCIMOB.Migrations
                     DataDeEntrevista = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Estado = table.Column<int>(nullable: false),
+                    NomePrograma = table.Column<string>(nullable: true),
                     NumeroAluno = table.Column<int>(nullable: true)
                 },
                 constraints: table =>

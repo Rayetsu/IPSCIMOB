@@ -410,7 +410,7 @@ namespace IPSCIMOB.Controllers
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
                 {
-                    return View("MarcarEntrevistas", candidaturaModel);
+                    return RedirectToAction("Create", "Entrevistas"); //,GetEntrevista());
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
                            candidaturaModel.Estado == EstadoCandidatura.Aceite ||
@@ -448,12 +448,32 @@ namespace IPSCIMOB.Controllers
             return View(candidaturaModel);
         }
 
+
+
+        public async Task<Entrevista> GetEntrevista()
+        {
+            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            
+            var user = await _userManager.GetUserAsync(User);
+            
+            foreach (Entrevista e in _context.Entrevista)
+            {
+                if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo) && !e.Estado.Equals(EstadoEntrevista.Recusado))
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
+
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> MarcarEntrevistas()
         {
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Titulo;
             var user = await _userManager.GetUserAsync(User);
+            
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
             if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.EmEspera) 
                     || candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Recusados))
@@ -465,7 +485,7 @@ namespace IPSCIMOB.Controllers
             }           
             _context.Update(candidaturaModel);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Create", "Entrevistas");
+            return RedirectToAction("Create", "Entrevistas", GetEntrevista());
         }
 
         [Authorize(Roles = "Aluno, Funcionário")]
@@ -476,7 +496,7 @@ namespace IPSCIMOB.Controllers
 
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
-
+            
             if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmEspera;

@@ -170,6 +170,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<int>("Estado");
 
+                    b.Property<string>("NomePrograma");
+
                     b.Property<int?>("NumeroAluno");
 
                     b.HasKey("EntrevistaId");

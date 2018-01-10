@@ -28,14 +28,22 @@
                 <input asp-for="DataDeEntrevista" class="form-control" />
                 <span asp-validation-for="DataDeEntrevista" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Estado" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
                     <select asp-for="Estado" asp-items="Html.GetEnumSelectList<EstadoEntrevista>()">
-                        <option selected="selected" value="">Please select</option>
+                        <option selected="selected" value="">Selecione o Estado da Entrevista</option>
+
                     </select>
                     <span asp-validation-for="Estado" class="text-danger" />
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomePrograma" class="control-label"></label>
+                <input asp-for="NomePrograma" class="form-control" />
+                <span asp-validation-for="NomePrograma" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

@@ -21,6 +21,8 @@ namespace IPSCIMOB.Controllers
             _userManager = userManager;
             _context = context;
         }
+
+
         // GET: Entrevistas
         public async Task<IActionResult> Index()
         {
@@ -46,8 +48,25 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Entrevistas/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.Programa = programaAtual.Titulo;
+
+            var user = await _userManager.GetUserAsync(User);
+
+            foreach (Entrevista e in _context.Entrevista)
+            {
+                if (e.Estado.Equals(EstadoEntrevista.Entrevistado))
+                {
+                    return RedirectToAction("FinalCandidatura", "Candidatura");
+                }
+                else if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo))
+                {
+                    return View(e);
+                }
+            }
+
             return View();
         }
 
@@ -56,18 +75,21 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado")] Entrevista entrevista)
+        public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
         {
             var user = await _userManager.GetUserAsync(User);
+            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             entrevista.Email = user.Email;
             entrevista.NumeroAluno = user.NumeroInterno;
             entrevista.Estado = EstadoEntrevista.EmEspera;
+            entrevista.NomePrograma = programaAtual.Titulo;
 
             if (ModelState.IsValid)
             {
                 _context.Add(entrevista);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+               
+                //return RedirectToAction("FinalCandidatura", "Candidatura");
             }
             return View(entrevista);
         }
@@ -93,12 +115,9 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado")] Entrevista entrevista)
+        public async Task<IActionResult> Edit(int id, [Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
         {
-
-            var user = await _userManager.GetUserAsync(User);
-            var email = user.Email;
-
+            var userEmail = entrevista.Email;
 
             if (id != entrevista.EntrevistaId)
             {
@@ -111,10 +130,11 @@ namespace IPSCIMOB.Controllers
                 {
                     _context.Update(entrevista);
                     await _context.SaveChangesAsync();
-                    if(entrevista.Estado == EstadoEntrevista.Aceite || entrevista.Estado==EstadoEntrevista.EmEspera || entrevista.Estado==EstadoEntrevista.Entrevistado 
-                        || entrevista.Estado==EstadoEntrevista.Recusado)
+                    if (entrevista.Estado == EstadoEntrevista.Aceite) {
+                        new Notificacao(userEmail, "Cimob- Entrevista", "A sua entrevista foi aceite. Consulte o site para mais INFO.");
+                    }else if (entrevista.Estado == EstadoEntrevista.Recusado)
                     {
-                        new Notificacao(email, "Cimob-Estado Entrevista", "A sua entrevista está: " + entrevista.Estado);
+                        new Notificacao(userEmail, "Cimob- Entrevista", "A sua entrevista foi recusada. Por favor marque uma entrevista nova.");
                     }
                 }
                 catch (DbUpdateConcurrencyException)

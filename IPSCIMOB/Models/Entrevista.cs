@@ -11,10 +11,12 @@ namespace IPSCIMOB.Models
     {
         [Display(Name = "Em espera")]
         EmEspera,
+        [Display(Name = "Aceite")]
         Aceite,
+        [Display(Name = "Recusado")]
         Recusado,
-        Entrevistado,
-
+        [Display(Name = "Entrevistado")]
+        Entrevistado
     }
 
     public class Entrevista
@@ -24,8 +26,6 @@ namespace IPSCIMOB.Models
 
         [Display(Name = "Número Interno")]
         public int? NumeroAluno{ get; set; }
-
-
        
         [Display(Name = "Email")]
         public String Email { get; set; }
@@ -37,8 +37,11 @@ namespace IPSCIMOB.Models
         public DateTime DataDeEntrevista { get; set; }
 
         [EnumDataType(typeof(EstadoEntrevista))]
-        [Display(Name = "Estado da Candidatura")]
+        [Display(Name = "Estado da Entrevista")]
         public EstadoEntrevista Estado { get; set; }
+
+        [Display(Name = "Nome do Programa")]
+        public String NomePrograma { get; set; }
 
     }
 }
