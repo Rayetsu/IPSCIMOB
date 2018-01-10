@@ -131,6 +131,16 @@
                 </div>
             </div>
          
+            <div class="form-group">
+                <label asp-for="EstadoDocumentos" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="EstadoDocumentos" asp-items="Html.GetEnumSelectList<EstadoDocumentos>()">
+                        <option selected="selected" value="">Selecione o Estado dos Documentos</option>
+
+                    </select>
+                    <span asp-validation-for="EstadoDocumentos" class="text-danger" />
+                </div>
+            </div>
             
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-default" />

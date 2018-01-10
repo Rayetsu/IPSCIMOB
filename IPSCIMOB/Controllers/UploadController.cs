@@ -36,38 +36,38 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> UploadFile(IFormFile file)
-        {
+        //[HttpPost]
+        //public async Task<IActionResult> UploadFile(IFormFile file)
+        //{
 
 
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
+        //    if (file == null || file.Length == 0)
+        //        return Content("file not selected");
 
-            var path = Path.Combine(
-                         _hostingEnvironment.WebRootPath, "Documentos",
-                        file.GetFilename());
+        //    var path = Path.Combine(
+        //                 _hostingEnvironment.WebRootPath, "Documentos",
+        //                file.GetFilename());
 
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
+        //    using (var stream = new FileStream(path, FileMode.Create))
+        //    {
+        //        await file.CopyToAsync(stream);
+        //    }
 
-            var user = await _userManager.GetUserAsync(User);
+        //    var user = await _userManager.GetUserAsync(User);
 
-            var email = user.Email;
-            var numeroAluno = user.NumeroInterno;
-            var nomeDoFicheiro = file.GetFilename();
+        //    var email = user.Email;
+        //    var numeroAluno = user.NumeroInterno;
+        //    var nomeDoFicheiro = file.GetFilename();
 
-            new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
+        //    new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-            _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path });
+        //    _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path });
 
-            _context.SaveChanges();
+        //    _context.SaveChanges();
 
-            return RedirectToAction("Index");
+        //    return RedirectToAction("Index");
 
-        }
+        //}
 
         [HttpPost]
         public async Task<IActionResult> UploadFiles(List<IFormFile> files)
@@ -94,43 +94,45 @@ namespace IPSCIMOB.Controllers
 
                 new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-                var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path };
+                _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path });
+
+                _context.SaveChanges();
             }
 
 
-            
-            return RedirectToAction("Index");
+
+                return RedirectToAction("SubmeterDocs","Candidatura");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> UploadFileViaModel(FileInputModel model)
-        {
-            if (model == null ||
-                model.FileToUpload == null || model.FileToUpload.Length == 0)
-                return Content("file not selected");
+        //[HttpPost]
+        //public async Task<IActionResult> UploadFileViaModel(FileInputModel model)
+        //{
+        //    if (model == null ||
+        //        model.FileToUpload == null || model.FileToUpload.Length == 0)
+        //        return Content("file not selected");
 
-            var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
-                        model.FileToUpload.GetFilename());
+        //    var path = Path.Combine(
+        //                Directory.GetCurrentDirectory(), "wwwroot",
+        //                model.FileToUpload.GetFilename());
 
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await model.FileToUpload.CopyToAsync(stream);
-            }
+        //    using (var stream = new FileStream(path, FileMode.Create))
+        //    {
+        //        await model.FileToUpload.CopyToAsync(stream);
+        //    }
 
-            var user = await _userManager.GetUserAsync(User);
+        //    var user = await _userManager.GetUserAsync(User);
 
-            var email = user.Email;
-            var numeroAluno = user.NumeroInterno;
-            var nomeDoFicheiro = model.FileToUpload.GetFilename();
+        //    var email = user.Email;
+        //    var numeroAluno = user.NumeroInterno;
+        //    var nomeDoFicheiro = model.FileToUpload.GetFilename();
 
-            new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
+        //    new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-            var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho=path};
+        //    var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho=path};
 
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
         public IActionResult Files()
         {

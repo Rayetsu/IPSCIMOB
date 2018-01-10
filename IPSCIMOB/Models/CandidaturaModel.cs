@@ -8,6 +8,7 @@ using System.IO;
 /// 
 namespace IPSCIMOB.Models
 {
+
     public enum EstadoCandidatura
     {
         [Display(Name = "1ºPasso")]
@@ -96,6 +97,15 @@ namespace IPSCIMOB.Models
         Recusada     
     }
 
+    public enum EstadoDocumentos
+    {
+        [Display(Name = "EmEspera")]
+        EmEspera,
+        [Display(Name = "Aceites")]
+        Aceites,
+        [Display(Name = "Recusados")]
+        Recusados       
+    }
 
     public class CandidaturaModel
     {
@@ -112,11 +122,11 @@ namespace IPSCIMOB.Models
         public String Email { get; set; }
 
         //[Required]
-        //[Display(Name = "EntrevistaID")]
-        //public EntrevistaModel Entrevista { get; set; }
-        
+        [Display(Name = "Entrevista ID")]
+        public int EntrevistaID { get; set; }
+
         //public File Documentos { get; set; }
-        
+
         //[Required]
         [Display(Name = "Nome Candidato")]
         public string Nome { get; set; }
@@ -159,6 +169,10 @@ namespace IPSCIMOB.Models
         [EnumDataType(typeof(EstadoCandidatura))]
         [Display(Name = "Estado da Candidatura")]
         public EstadoCandidatura Estado { get; set; }
+
+        [EnumDataType(typeof(EstadoDocumentos))]
+        [Display(Name = "Estado da Documentos")]
+        public EstadoDocumentos EstadoDocumentos { get; set; }
 
 
 

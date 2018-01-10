@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class data : Migration
+    public partial class data21 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -86,8 +86,10 @@ namespace IPSCIMOB.Migrations
                     CandidaturaID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
+                    EntrevistaID = table.Column<int>(nullable: false),
                     Estado = table.Column<int>(nullable: false),
                     EstadoBolsa = table.Column<int>(nullable: false),
+                    EstadoDocumentos = table.Column<int>(nullable: false),
                     IsBolsa = table.Column<bool>(nullable: false),
                     IsConfirmado = table.Column<bool>(nullable: false),
                     IsEstagio = table.Column<bool>(nullable: false),

@@ -69,7 +69,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
@@ -116,7 +116,7 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var userEmail = candidaturaModel.Email;
 
@@ -129,6 +129,12 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
+                    if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Aceites)) {
+                        new Notificacao(userEmail, "CIMOB - Estado Documentos Submetidos", "Os documentos submetidos ao Programa " + candidaturaModel.Programa + " foram: " + candidaturaModel.EstadoDocumentos);
+                    }
+                    if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Recusados)){
+                        new Notificacao(userEmail, "CIMOB - Estado Documentos Submetidos", "Os documentos submetidos ao Programa " + candidaturaModel.Programa + " foram: " + candidaturaModel.EstadoDocumentos);
+                    }
                     _context.Update(candidaturaModel);
                     await _context.SaveChangesAsync();
                     if (candidaturaModel.Estado == EstadoCandidatura.Aceite || candidaturaModel.Estado == EstadoCandidatura.Recusado
@@ -449,10 +455,17 @@ namespace IPSCIMOB.Controllers
             ViewBag.NomePrograma = programaAtual.Titulo;
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
-            candidaturaModel.Estado = EstadoCandidatura.EmRealizacao4;
+            if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.EmEspera) 
+                    || candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Recusados))
+            {
+                candidaturaModel.Estado = EstadoCandidatura.EmRealizacao3;
+            }else
+            {
+                candidaturaModel.Estado = EstadoCandidatura.EmRealizacao4;
+            }           
             _context.Update(candidaturaModel);
             await _context.SaveChangesAsync();
-            return View(candidaturaModel);
+            return RedirectToAction("Create", "Entrevistas");
         }
 
         [Authorize(Roles = "Aluno, Funcionário")]

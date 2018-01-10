@@ -124,9 +124,13 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<int>("EntrevistaID");
+
                     b.Property<int>("Estado");
 
                     b.Property<int>("EstadoBolsa");
+
+                    b.Property<int>("EstadoDocumentos");
 
                     b.Property<bool>("IsBolsa");
 

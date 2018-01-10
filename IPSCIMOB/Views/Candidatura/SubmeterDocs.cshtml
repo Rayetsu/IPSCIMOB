@@ -9,11 +9,27 @@
     <h5>Passo 3 de 5</h5>
 </div>
 
+
+@if (Model.EstadoDocumentos.Equals(EstadoDocumentos.EmEspera) || Model.EstadoDocumentos.Equals(EstadoDocumentos.Recusados))
+{
 <div align="center">
-    <h4> Submeta aqui todos os seus Documentos</h4>
+    <p>Nome do ficheiro deverá ser: "NumeroAluno_NomeDoDocumento"</p>
+
+    <form asp-controller="Upload" asp-action="UploadFiles" method="post"
+          enctype="multipart/form-data">
+
+        <input type="file" name="files" multiple />
+        <button type="submit">Upload Files</button>
+    </form>
+
+    <p></p>
 
 </div>
+}
 
+
+@if (Model.EstadoDocumentos.Equals(EstadoDocumentos.Aceites)) {
 <div align="center">
     <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("MarcarEntrevistas", "Candidatura") + "'");" />
 </div>
+}
