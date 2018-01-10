@@ -27,7 +27,11 @@ namespace IPSCIMOB.Models
         [Display(Name = "Desistiu")]
         Desistiu,
         [Display(Name = "Em Mobilidade")]
-        EmMobilidade
+        EmMobilidade,
+        [Display(Name = "Finalizou")]
+        Finalizou
+        
+
     }
 
     public enum Paises
