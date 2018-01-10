@@ -1,0 +1,36 @@
+﻿@model IPSCIMOB.Models.EnviarMsg
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EnviarMsg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ToEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ToEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EMailBody)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EMailBody)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailSubject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailSubject)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
