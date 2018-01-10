@@ -95,6 +95,11 @@ namespace IPSCIMOB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado")] Entrevista entrevista)
         {
+
+            var user = await _userManager.GetUserAsync(User);
+            var email = user.Email;
+
+
             if (id != entrevista.EntrevistaId)
             {
                 return NotFound();
@@ -106,6 +111,11 @@ namespace IPSCIMOB.Controllers
                 {
                     _context.Update(entrevista);
                     await _context.SaveChangesAsync();
+                    if(entrevista.Estado == EstadoEntrevista.Aceite || entrevista.Estado==EstadoEntrevista.EmEspera || entrevista.Estado==EstadoEntrevista.Entrevistado 
+                        || entrevista.Estado==EstadoEntrevista.Recusado)
+                    {
+                        new Notificacao(email, "Cimob-Estado Entrevista", "A sua entrevista está: " + entrevista.Estado);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
