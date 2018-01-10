@@ -10,7 +10,7 @@ namespace IPSCIMOB.Models
     {
 
        [Key]
-       public int Id { get; set; }
+       public int EnviarId { get; set; }
 
         [DataType(DataType.EmailAddress), Display(Name = "To")]
         [Required]

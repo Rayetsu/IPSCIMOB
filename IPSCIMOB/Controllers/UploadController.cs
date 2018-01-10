@@ -41,7 +41,7 @@ namespace IPSCIMOB.Controllers
         {
 
 
-            if (file == null || file.Length == 0 )
+            if (file == null || file.Length == 0)
                 return Content("file not selected");
 
             var path = Path.Combine(
@@ -54,7 +54,7 @@ namespace IPSCIMOB.Controllers
             }
 
             var user = await _userManager.GetUserAsync(User);
-            
+
             var email = user.Email;
             var numeroAluno = user.NumeroInterno;
             var nomeDoFicheiro = file.GetFilename();
@@ -66,7 +66,7 @@ namespace IPSCIMOB.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
-            
+
         }
 
         [HttpPost]

@@ -22,7 +22,7 @@ namespace IPSCIMOB.Controllers
         // GET: EnviarMsgs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.EnviarMsg.ToListAsync());
+            return View(await _context.EnviarMsg_1.ToListAsync());
         }
 
         // GET: EnviarMsgs/Details/5
@@ -33,8 +33,8 @@ namespace IPSCIMOB.Controllers
                 return NotFound();
             }
 
-            var enviarMsg = await _context.EnviarMsg
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var enviarMsg = await _context.EnviarMsg_1
+                .SingleOrDefaultAsync(m => m.EnviarId == id);
             if (enviarMsg == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ToEmail,EMailBody,EmailSubject")] EnviarMsg enviarMsg)
+        public async Task<IActionResult> Create([Bind("EnviarId,ToEmail,EMailBody,EmailSubject")] EnviarMsg enviarMsg)
         {
             if (ModelState.IsValid)
             {
@@ -68,12 +68,7 @@ namespace IPSCIMOB.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-
-            
-
             return View(enviarMsg);
-
-           
         }
 
         // GET: EnviarMsgs/Edit/5
@@ -84,7 +79,7 @@ namespace IPSCIMOB.Controllers
                 return NotFound();
             }
 
-            var enviarMsg = await _context.EnviarMsg.SingleOrDefaultAsync(m => m.Id == id);
+            var enviarMsg = await _context.EnviarMsg_1.SingleOrDefaultAsync(m => m.EnviarId == id);
             if (enviarMsg == null)
             {
                 return NotFound();
@@ -97,9 +92,9 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ToEmail,EMailBody,EmailSubject")] EnviarMsg enviarMsg)
+        public async Task<IActionResult> Edit(int id, [Bind("EnviarId,ToEmail,EMailBody,EmailSubject")] EnviarMsg enviarMsg)
         {
-            if (id != enviarMsg.Id)
+            if (id != enviarMsg.EnviarId)
             {
                 return NotFound();
             }
@@ -113,7 +108,7 @@ namespace IPSCIMOB.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EnviarMsgExists(enviarMsg.Id))
+                    if (!EnviarMsgExists(enviarMsg.EnviarId))
                     {
                         return NotFound();
                     }
@@ -135,8 +130,8 @@ namespace IPSCIMOB.Controllers
                 return NotFound();
             }
 
-            var enviarMsg = await _context.EnviarMsg
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var enviarMsg = await _context.EnviarMsg_1
+                .SingleOrDefaultAsync(m => m.EnviarId == id);
             if (enviarMsg == null)
             {
                 return NotFound();
@@ -150,15 +145,15 @@ namespace IPSCIMOB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var enviarMsg = await _context.EnviarMsg.SingleOrDefaultAsync(m => m.Id == id);
-            _context.EnviarMsg.Remove(enviarMsg);
+            var enviarMsg = await _context.EnviarMsg_1.SingleOrDefaultAsync(m => m.EnviarId == id);
+            _context.EnviarMsg_1.Remove(enviarMsg);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EnviarMsgExists(int id)
         {
-            return _context.EnviarMsg.Any(e => e.Id == id);
+            return _context.EnviarMsg_1.Any(e => e.EnviarId == id);
         }
     }
 }

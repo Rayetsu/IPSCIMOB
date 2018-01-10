@@ -11,7 +11,7 @@ namespace IPSCIMOB.Models.Upload
     {
 
         [Key]
-        public int Id { get; set; }
+        public int InsertId { get; set; }
 
         [Display(Name = "Número Interno")]
         public int? NumeroAluno { get; set; }

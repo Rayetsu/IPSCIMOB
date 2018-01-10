@@ -37,5 +37,14 @@ namespace IPSCIMOB.Data
         public DbSet<CandidaturaModel> CandidaturaModel { get; set; }
 
         public DbSet<IPSCIMOB.Models.Entrevista> Entrevista { get; set; }
+
+        public DbSet<IPSCIMOB.Models.Upload.AlunoDocumentos> AlunoDocumento{ get; set; }
+
+
+        public DbSet<IPSCIMOB.Models.ForeignStudents> ForeignStudents { get; set; }
+
+        public DbSet<IPSCIMOB.Models.EnviarMsg> EnviarMsg_1 { get; set; }
+
+
     }
 }
