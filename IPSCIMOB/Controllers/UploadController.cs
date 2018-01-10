@@ -9,6 +9,8 @@ using Microsoft.Extensions.FileProviders;
 using IPSCIMOB.Models.Upload;
 using IPSCIMOB.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using IPSCIMOB.Data;
 
 namespace IPSCIMOB.Controllers
 {
@@ -16,12 +18,16 @@ namespace IPSCIMOB.Controllers
     {
         private readonly IFileProvider fileProvider;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private ApplicationDbContext _context;
 
 
-        public UploadController(IFileProvider fileProvider, UserManager<ApplicationUser> userManager)
+        public UploadController(IFileProvider fileProvider, UserManager<ApplicationUser> userManager, IHostingEnvironment hostingEnvironment, ApplicationDbContext context)
         {
             this.fileProvider = fileProvider;
             _userManager = userManager;
+            _hostingEnvironment = hostingEnvironment;
+            _context = context;
 
         }
 
@@ -39,7 +45,7 @@ namespace IPSCIMOB.Controllers
                 return Content("file not selected");
 
             var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
+                         _hostingEnvironment.WebRootPath, "Documentos",
                         file.GetFilename());
 
             using (var stream = new FileStream(path, FileMode.Create))
@@ -55,9 +61,9 @@ namespace IPSCIMOB.Controllers
 
             new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-           var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
+            _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path });
 
-
+            _context.SaveChanges();
 
             return RedirectToAction("Index");
             
@@ -72,7 +78,7 @@ namespace IPSCIMOB.Controllers
             foreach (var file in files)
             {
                 var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
+                         _hostingEnvironment.WebRootPath, "Documentos",
                         file.GetFilename());
 
                 using (var stream = new FileStream(path, FileMode.Create))
@@ -88,12 +94,12 @@ namespace IPSCIMOB.Controllers
 
                 new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-                var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
+                var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path };
             }
 
 
             
-            return RedirectToAction("Files");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -120,15 +126,16 @@ namespace IPSCIMOB.Controllers
 
             new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-            var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Email = email, Documento = nomeDoFicheiro };
+            var insert = new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho=path};
 
-            return RedirectToAction("Files");
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Files()
         {
             var model = new FilesViewModel();
-            foreach (var item in this.fileProvider.GetDirectoryContents(""))
+            foreach (var item in this.fileProvider.GetDirectoryContents("wwwroot/Documentos"))
             {
                 model.Files.Add(
                     new FileDetails { Name = item.Name, Path = item.PhysicalPath});
@@ -142,8 +149,7 @@ namespace IPSCIMOB.Controllers
                 return Content("filename not present");
 
             var path = Path.Combine(
-                           Directory.GetCurrentDirectory(),
-                           "wwwroot", filename);
+                         _hostingEnvironment.WebRootPath, "Documentos", filename);
 
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
