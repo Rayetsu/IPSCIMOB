@@ -28,10 +28,14 @@ namespace IPSCIMOB.Data
 
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
+        public DbSet<ForeignStudents> ForeignStudent { get; set; }
+
         public DbSet<IPSCIMOB.Models.Sugestao> Sugestao { get; set; }
 
         public DbSet<IPSCIMOB.Models.InformacaoGeral> InformacaoGeral { get; set; }
 
-        public DbSet<IPSCIMOB.Models.EnviarMsg> EnviarMsg { get; set; }
+        public DbSet<CandidaturaModel> CandidaturaModel { get; set; }
+
+        public DbSet<IPSCIMOB.Models.Entrevista> Entrevista { get; set; }
     }
 }

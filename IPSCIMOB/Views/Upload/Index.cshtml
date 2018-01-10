@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Fazer Upload de Documentos</h2>
+
+<p>Nome do ficheiro deverá ser: "NumeroAluno_NomeDoDocumento"</p>
+
+<form asp-controller="Upload" asp-action="UploadFile" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="file" />
+    <button type="submit">Upload File</button>
+</form>
+<p></p>
+
+<form asp-controller="Upload" asp-action="UploadFiles" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="files" multiple />
+    <button type="submit">Upload Files</button>
+</form>
+
+<p></p>
+
+@*<form asp-controller="Upload" asp-action="UploadFileViaModel" method="post"
+      enctype="multipart/form-data">
+
+    <input type="file" name="FileToUpload" />
+    <button type="submit">Upload File (model)</button>
+</form>*@
+
+
+
