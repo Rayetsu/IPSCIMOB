@@ -44,77 +44,77 @@ namespace XUnitTestProject1
             Assert.IsType<ViewResult>(result);
         }
 
-        public void TestVascoDaGama()
-        {
-            // Arrange
-            var sut = new HomeController();
+        //public void TestVascoDaGama()
+        //{
+        //    // Arrange
+        //    var sut = new HomeController();
 
-            // Act
-            IActionResult result = sut.VascoDaGama();
+        //    // Act
+        //    IActionResult result = sut.VascoDaGama();
 
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
+        //    // Assert
+        //    Assert.IsType<ViewResult>(result);
+        //}
 
-        public void TestPolitecnicoDeMacau()
-        {
-            // Arrange
-            var sut = new HomeController();
+        //public void TestPolitecnicoDeMacau()
+        //{
+        //    // Arrange
+        //    var sut = new HomeController();
 
-            // Act
-            IActionResult result = sut.PolitecnicoDeMacau();
+        //    // Act
+        //    IActionResult result = sut.PolitecnicoDeMacau();
 
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
+        //    // Assert
+        //    Assert.IsType<ViewResult>(result);
+        //}
 
-        public void TestErasmus()
-        {
-            // Arrange
-            var sut = new HomeController();
+        //public void TestErasmus()
+        //{
+        //    // Arrange
+        //    var sut = new HomeController();
 
-            // Act
-            IActionResult result = sut.Erasmus();
+        //    // Act
+        //    IActionResult result = sut.Erasmus();
 
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
+        //    // Assert
+        //    Assert.IsType<ViewResult>(result);
+        //}
 
-        public void TestErasmusFormacaoTrabalho()
-        {
-            // Arrange
-            var sut = new HomeController();
+        //public void TestErasmusFormacaoTrabalho()
+        //{
+        //    // Arrange
+        //    var sut = new HomeController();
 
-            // Act
-            IActionResult result = sut.ErasmusFormacaoTrabalho();
+        //    // Act
+        //    IActionResult result = sut.ErasmusFormacaoTrabalho();
 
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
+        //    // Assert
+        //    Assert.IsType<ViewResult>(result);
+        //}
 
-        public void TestSantanderMissoes()
-        {
-            // Arrange
-            var sut = new HomeController();
+        //public void TestSantanderMissoes()
+        //{
+        //    // Arrange
+        //    var sut = new HomeController();
 
-            // Act
-            IActionResult result = sut.SantanderMissoes();
+        //    // Act
+        //    IActionResult result = sut.SantanderMissoes();
 
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
+        //    // Assert
+        //    Assert.IsType<ViewResult>(result);
+        //}
 
-        public void TestSantanderUniversidades()
-        {
-            // Arrange
-            var sut = new HomeController();
+        //public void TestSantanderUniversidades()
+        //{
+        //    // Arrange
+        //    var sut = new HomeController();
 
-            // Act
-            IActionResult result = sut.SantanderUniversidades();
+        //    // Act
+        //    IActionResult result = sut.SantanderUniversidades();
 
-            // Assert
-            Assert.IsType<ViewResult>(result);
-        }
+        //    // Assert
+        //    Assert.IsType<ViewResult>(result);
+        //}
 
         public void Error()
         {

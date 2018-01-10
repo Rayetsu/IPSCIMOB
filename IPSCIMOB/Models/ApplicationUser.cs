@@ -18,6 +18,9 @@ namespace IPSCIMOB.Models
         [Display(Name = "Número Interno")]
         public int NumeroInterno { get; set; }
 
+        [Display(Name = "Candidatura Atual")]
+        public int CandidaturaAtual { get; set; }
+
         [Required]
         [Display(Name = "Número do BI")]
         public int NumeroDoBI { get; set; }

@@ -3,24 +3,25 @@
     ViewData["Title"] = "Selecione a Mobilidade ";
 }
 
-<h1 align="center">Escolha o Processo de Mobilidade Pretendido</h1>
+<h1 align="center">Pretende candidatar-se a um Programa de Mobilidade?</h1>
+<h2 align="center">Escolha Aqui:</h2>
 
 
 <div align="center">
         <select id="UrlList">
             <option value="">Seleciona a mobilidade</option>
-            <option value="@Url.Action("VascoDaGama", "Home")">Vasco da Gama</option>
-            <option value="@Url.Action("PolitecnicoDeMacau", "Home")">Politécnico de Macau</option>
-            <option value="@Url.Action("Erasmus", "Home")">Erasmus+</option>
-            <option value="@Url.Action("ErasmusFormacaoTrabalho", "Home")">Erasmus+ Formação/Trabalho</option>
-            <option value="@Url.Action("SantanderUniversidades", "Home")">Santander Universidades</option>
-            <option value="@Url.Action("SantanderMissoes", "Home")">Santander Missões de Ensino e Formação</option>
+            <option value="@Url.Action("VascoDaGama", "Candidatura")">Vasco da Gama</option>
+            <option value="@Url.Action("PolitecnicoDeMacau", "Candidatura")">Politécnico de Macau</option>
+            <option value="@Url.Action("Erasmus", "Candidatura")">Erasmus+</option>
+            <option value="@Url.Action("ErasmusFormacaoTrabalho", "Candidatura")">Erasmus+ Formação/Trabalho</option>
+            <option value="@Url.Action("SantanderUniversidades", "Candidatura")">Santander Universidades</option>
+            <option value="@Url.Action("SantanderMissoes", "Candidatura")">Santander Missões de Ensino e Formação</option>
         </select>
     <p>
 
     </p>
         <p>
-            <input type="submit" value="Escolher Mobilidade" onclick="doNavigate()"/>
+            <input type="submit" value="Seguinte" onclick="doNavigate()"/>
         </p>
 
         <script>

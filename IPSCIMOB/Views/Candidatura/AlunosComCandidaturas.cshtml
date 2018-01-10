@@ -1,0 +1,40 @@
+﻿@model IEnumerable<IPSCIMOB.Models.CandidaturaModel>
+@{
+    ViewData["Title"] = "AlunosComCandidaturas";
+}
+<h2>Histórico de Alunos Candidatos aos Programas de Mobilidade</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroInterno)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroInterno)
+                    </td>
+                    <td>
+                    <td>
+                        <a asp-action="HistoricoCandidaturas" asp-route-id="@item.CandidaturaID">Ver Candidaturas</a>
+                    </td>
+                </tr>
+                        
+                    
+                }
+        </tbody>
+    </table>
+<div align="center">
+    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>

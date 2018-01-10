@@ -286,7 +286,7 @@ namespace IPSCIMOB.Controllers
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
+                    
                     var callbackUrl = Url.Action("ConfirmEmail", "Account",
                         new { userId = user.Id, code = code }, protocol: Request.Scheme);
                     new Notificacao(model.Email,

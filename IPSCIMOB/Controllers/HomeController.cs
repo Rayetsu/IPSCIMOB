@@ -79,48 +79,6 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Aluno")]
-        public IActionResult VascoDaGama()
-        {
-
-            return View();
-        }
-
-        [Authorize(Roles = "Aluno")]
-        public IActionResult PolitecnicoDeMacau()
-        {
-
-            return View();
-        }
-
-        [Authorize(Roles = "Aluno")]
-        public IActionResult Erasmus()
-        {
-
-            return View();
-        }
-
-        [Authorize(Roles = "Funcionário")]
-        public IActionResult ErasmusFormacaoTrabalho()
-        {
-
-            return View();
-        }
-
-        [Authorize(Roles = "Aluno")]
-        public IActionResult SantanderUniversidades()
-        {
-
-            return View();
-        }
-
-        [Authorize(Roles ="Funcionário")]
-        public IActionResult SantanderMissoes()
-        {
-
-            return View();
-        }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
