@@ -355,9 +355,11 @@ namespace IPSCIMOB.Controllers
         }
 
         [Authorize(Roles = "Aluno, Funcionário")]
-        public IActionResult Entrevista()
+        public async Task<IActionResult> Entrevista()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            ViewBag.NumeroUser = user.NumeroInterno;
+            return View(await _context.Entrevista.ToListAsync());
         }
 
         [Authorize(Roles = "Aluno, Funcionário")]

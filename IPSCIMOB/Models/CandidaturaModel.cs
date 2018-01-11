@@ -105,15 +105,7 @@ namespace IPSCIMOB.Models
         Recusados       
     }
 
-    //public enum EstadoEntrevista
-    //{
-    //    [Display(Name = "EmEspera")]
-    //    EmEspera,
-    //    [Display(Name = "Aceites")]
-    //    Aceites,
-    //    [Display(Name = "Recusados")]
-    //    Recusados
-    //}
+  
 
     public class CandidaturaModel
     {
@@ -177,12 +169,10 @@ namespace IPSCIMOB.Models
         public EstadoCandidatura Estado { get; set; }
 
         [EnumDataType(typeof(EstadoDocumentos))]
-        [Display(Name = "Estado da Documentos")]
+        [Display(Name = "Estado dos Documentos")]
         public EstadoDocumentos EstadoDocumentos { get; set; }
 
-        //[EnumDataType(typeof(EstadoEntrevista))]
-        //[Display(Name = "Estado da Entrevista")]
-        //public EstadoEntrevista EstatadoEntevista { get; set; }
+        
 
     }
 }

@@ -53,6 +53,9 @@
 @if(Model != null){
     @if (Model.Estado.Equals(EstadoEntrevista.Aceite))
     {
+        <br />
+        <h3>A entrevista que marcou foi aceite, por favor clique em passo seguinte para finalizar</h3>
+        <br />
     <div align="center">
         <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("FinalCandidatura", "Candidatura") + "'");" />
     </div>

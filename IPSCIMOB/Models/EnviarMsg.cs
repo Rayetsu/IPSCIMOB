@@ -12,13 +12,13 @@ namespace IPSCIMOB.Models
        [Key]
        public int EnviarId { get; set; }
 
-        [DataType(DataType.EmailAddress), Display(Name = "To")]
+        [DataType(DataType.EmailAddress), Display(Name = "Para")]
         [Required]
         public string ToEmail { get; set; }
-        [Display(Name = "Body")]
+        [Display(Name = "Assunto")]
         [DataType(DataType.MultilineText)]
         public string EMailBody { get; set; }
-        [Display(Name = "Subject")]
+        [Display(Name = "Conteúdo")]
         public string EmailSubject { get; set; }
     }
 }

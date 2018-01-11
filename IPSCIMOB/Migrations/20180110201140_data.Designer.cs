@@ -12,7 +12,7 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180110151920_data")]
+    [Migration("20180110201140_data")]
     partial class data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -168,6 +168,8 @@ namespace IPSCIMOB.Migrations
                     b.Property<DateTime>("DataDeEntrevista");
 
                     b.Property<string>("Email");
+
+                    b.Property<bool>("EntrevistaAtual");
 
                     b.Property<int>("Estado");
 

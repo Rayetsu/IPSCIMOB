@@ -168,6 +168,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Email");
 
+                    b.Property<bool>("EntrevistaAtual");
+
                     b.Property<int>("Estado");
 
                     b.Property<string>("NomePrograma");

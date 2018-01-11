@@ -4,11 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<hr />
+<h2>Lista de Alunos Estrangeiros em Erasmus no IPS</h2>
+<hr />
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Adicionar novo Aluno</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -121,11 +124,15 @@
                 @Html.DisplayFor(modelItem => item.IsDadosVerificados)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div align="center">
+    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>

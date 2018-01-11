@@ -4,11 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Mensagens aos Utilizadores </h2>
+<hr />
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Enviar Nova Mensagem</a>
 </p>
+<hr />
 <table class="table">
     <thead>
         <tr>
@@ -37,11 +38,15 @@
                 @Html.DisplayFor(modelItem => item.EmailSubject)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EnviarId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EnviarId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EnviarId">Delete</a>
+                @*<a asp-action="Edit" asp-route-id="@item.EnviarId">Editar</a> |*@
+                <a asp-action="Details" asp-route-id="@item.EnviarId">Detalhes</a> 
+                @*<a asp-action="Delete" asp-route-id="@item.EnviarId">Eliminar</a>*@
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div align="center">
+    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>

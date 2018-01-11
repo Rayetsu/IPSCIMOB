@@ -54,20 +54,32 @@ namespace IPSCIMOB.Controllers
             ViewBag.Programa = programaAtual.Titulo;
 
             var user = await _userManager.GetUserAsync(User);
-
+            Entrevista entrevista = null;
             foreach (Entrevista e in _context.Entrevista)
             {
                 if (e.Estado.Equals(EstadoEntrevista.Entrevistado))
                 {
                     return RedirectToAction("FinalCandidatura", "Candidatura");
                 }
-                else if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo))
+                else if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo) && e.EntrevistaAtual == true)
                 {
-                    return View(e);
+                    if (e.Estado.Equals(EstadoEntrevista.Recusado))
+                    {
+                        e.EntrevistaAtual = false;
+                        entrevista = e;
+                    }
+                    else
+                    {
+                        return View(e);
+                    }
                 }
             }
-
-            return View();
+            if (entrevista != null)
+            {
+                _context.Update(entrevista);
+                await _context.SaveChangesAsync();
+            }
+            return View(entrevista);
         }
 
         // POST: Entrevistas/Create
@@ -75,7 +87,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
+        public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email, EntrevistaAtual,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
         {
             var user = await _userManager.GetUserAsync(User);
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
@@ -83,6 +95,7 @@ namespace IPSCIMOB.Controllers
             entrevista.NumeroAluno = user.NumeroInterno;
             entrevista.Estado = EstadoEntrevista.EmEspera;
             entrevista.NomePrograma = programaAtual.Titulo;
+            entrevista.EntrevistaAtual = true;
 
             if (ModelState.IsValid)
             {
@@ -128,6 +141,7 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
+                    entrevista.EntrevistaAtual = true;
                     _context.Update(entrevista);
                     await _context.SaveChangesAsync();
                     if (entrevista.Estado == EstadoEntrevista.Aceite) {

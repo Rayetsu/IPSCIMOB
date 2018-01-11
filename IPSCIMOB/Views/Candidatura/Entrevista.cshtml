@@ -1,13 +1,46 @@
-﻿@model CandidaturaModel
+﻿@model IEnumerable<IPSCIMOB.Models.Entrevista>
+
 @{
     ViewData["Title"] = "Entrevista";
     Layout = "_LayoutCandidatura";
 }
 
-<div class="Titulo" align ="center">
-    <h2>Entrevistas</h2>
+<h2>Entrevista</h2>
 
 
 
-</div>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDeEntrevista)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomePrograma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.NumeroAluno == ViewBag.NumeroUser)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeEntrevista)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomePrograma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

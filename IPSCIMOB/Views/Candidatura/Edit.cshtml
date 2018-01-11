@@ -3,10 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h2>Edit</h2>
-
-<h4>CandidaturaModel</h4>
+<hr />
+<h2>Editar Dados Candidatura </h2>
 <hr />
 
 <div class="row">
@@ -109,39 +107,40 @@
             </div>*@
 
             <div class="form-group">
-                <label asp-for="Estado" class="col-md-2 control-label"></label>
+                <label asp-for="Estado"></label>
                 <div class="col-md-10">
                     <select asp-for="Estado" asp-items="Html.GetEnumSelectList<EstadoCandidatura>()">
-                        <option selected="selected" value="">Please select</option>
+                        <option selected="selected" value="">Selecione Estado</option>
                     </select>
                     <span asp-validation-for="Estado" class="text-danger" />
                 </div>
             </div>
 
-            <p></p>
+            <br />         
 
             <div class="form-group">
-                <label asp-for="EstadoBolsa" class="col-md-2 control-label"></label>
+                <label asp-for="EstadoBolsa"></label>
                 <div class="col-md-10">
                     <select asp-for="EstadoBolsa" asp-items="Html.GetEnumSelectList<EstadoBolsa>()">
-                        <option selected="selected" value="">Please select</option>
-                      
+                        <option selected="selected" value="">Selecione Estado</option>                      
                     </select>
-                    <span asp-validation-for="EstadoBolsa" class="text-danger" />
                 </div>
             </div>
          
+            <br />
+            
             <div class="form-group">
-                <label asp-for="EstadoDocumentos" class="col-md-2 control-label"></label>
+                <label asp-for="EstadoDocumentos" ></label>                
                 <div class="col-md-10">
                     <select asp-for="EstadoDocumentos" asp-items="Html.GetEnumSelectList<EstadoDocumentos>()">
-                        <option selected="selected" value="">Selecione o Estado dos Documentos</option>
-
+                        <option selected="selected" value="">Selecione Estado </option>
                     </select>
-                    <span asp-validation-for="EstadoDocumentos" class="text-danger" />
                 </div>
             </div>
             
+            <br />
+            <br />
+
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
