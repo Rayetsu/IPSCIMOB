@@ -25,6 +25,10 @@ namespace IPSCIMOB.Models.Upload
         [Display(Name = "Caminho")]
         public string Caminho { get; set; }
 
+        [Required]
+        [Display(Name = "Programa")]
+        public string Programa { get; set; }
+
 
     }
 }

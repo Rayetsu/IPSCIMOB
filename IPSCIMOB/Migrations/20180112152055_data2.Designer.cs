@@ -12,8 +12,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180110201140_data")]
-    partial class data
+    [Migration("20180112152055_data2")]
+    partial class data2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -305,6 +305,9 @@ namespace IPSCIMOB.Migrations
                         .IsRequired();
 
                     b.Property<int?>("NumeroAluno");
+
+                    b.Property<string>("Programa")
+                        .IsRequired();
 
                     b.HasKey("InsertId");
 

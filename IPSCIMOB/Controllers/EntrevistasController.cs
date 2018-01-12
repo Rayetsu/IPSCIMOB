@@ -101,7 +101,7 @@ namespace IPSCIMOB.Controllers
             {
                 _context.Add(entrevista);
                 await _context.SaveChangesAsync();
-               
+
                 //return RedirectToAction("FinalCandidatura", "Candidatura");
             }
             return View(entrevista);
@@ -144,9 +144,11 @@ namespace IPSCIMOB.Controllers
                     entrevista.EntrevistaAtual = true;
                     _context.Update(entrevista);
                     await _context.SaveChangesAsync();
-                    if (entrevista.Estado == EstadoEntrevista.Aceite) {
+                    if (entrevista.Estado == EstadoEntrevista.Aceite)
+                    {
                         new Notificacao(userEmail, "Cimob- Entrevista", "A sua entrevista foi aceite. Consulte o site para mais INFO.");
-                    }else if (entrevista.Estado == EstadoEntrevista.Recusado)
+                    }
+                    else if (entrevista.Estado == EstadoEntrevista.Recusado)
                     {
                         new Notificacao(userEmail, "Cimob- Entrevista", "A sua entrevista foi recusada. Por favor marque uma entrevista nova.");
                     }

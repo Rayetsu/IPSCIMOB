@@ -88,22 +88,19 @@ namespace IPSCIMOB.Controllers
                 }
 
                 var user = await _userManager.GetUserAsync(User);
+                var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
 
                 var email = user.Email;
                 var numeroAluno = user.NumeroInterno;
                 var nomeDoFicheiro = file.GetFilename();
+                var nomePrograma = programaAtual.Titulo;
 
-
-
-                _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = nomeDoFicheiro });
+                _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = nomeDoFicheiro, Programa = nomePrograma});
 
                 _context.SaveChanges();
 
                 new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
             }
-
-
-
             return RedirectToAction("SubmeterDocs", "Candidatura");
         }
 

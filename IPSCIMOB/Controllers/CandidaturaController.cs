@@ -129,10 +129,12 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
-                    if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Aceites)) {
+                    if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Aceites))
+                    {
                         new Notificacao(userEmail, "CIMOB - Estado Documentos Submetidos", "Os documentos submetidos ao Programa " + candidaturaModel.Programa + " foram: " + candidaturaModel.EstadoDocumentos);
                     }
-                    if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Recusados)){
+                    if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Recusados))
+                    {
                         new Notificacao(userEmail, "CIMOB - Estado Documentos Submetidos", "Os documentos submetidos ao Programa " + candidaturaModel.Programa + " foram: " + candidaturaModel.EstadoDocumentos);
                     }
                     _context.Update(candidaturaModel);
@@ -412,7 +414,7 @@ namespace IPSCIMOB.Controllers
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
                 {
-                    return RedirectToAction("Create", "Entrevistas"); //,GetEntrevista());
+                    return RedirectToAction("Create", "Entrevistas");
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmEspera ||
                            candidaturaModel.Estado == EstadoCandidatura.Aceite ||
@@ -455,9 +457,9 @@ namespace IPSCIMOB.Controllers
         public async Task<Entrevista> GetEntrevista()
         {
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            
+
             var user = await _userManager.GetUserAsync(User);
-            
+
             foreach (Entrevista e in _context.Entrevista)
             {
                 if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo) && !e.Estado.Equals(EstadoEntrevista.Recusado))
@@ -475,16 +477,17 @@ namespace IPSCIMOB.Controllers
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Titulo;
             var user = await _userManager.GetUserAsync(User);
-            
+
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
-            if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.EmEspera) 
+            if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.EmEspera)
                     || candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Recusados))
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao3;
-            }else
+            }
+            else
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao4;
-            }           
+            }
             _context.Update(candidaturaModel);
             await _context.SaveChangesAsync();
             return RedirectToAction("Create", "Entrevistas", GetEntrevista());
@@ -498,7 +501,7 @@ namespace IPSCIMOB.Controllers
 
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
-            
+
             if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmEspera;
@@ -582,4 +585,4 @@ namespace IPSCIMOB.Controllers
             return View(candidaturasUser);
         }
     }
- }
+}

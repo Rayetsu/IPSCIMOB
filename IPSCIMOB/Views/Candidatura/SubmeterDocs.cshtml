@@ -12,13 +12,14 @@
 
 @if (Model.EstadoDocumentos.Equals(EstadoDocumentos.EmEspera) || Model.EstadoDocumentos.Equals(EstadoDocumentos.Recusados))
 {
+    <br />
 <div align="center">
     <p>Nome do ficheiro deverá ser: "NumeroAluno_NomeDoDocumento"</p>
-
+    <br />
     <form asp-controller="Upload" asp-action="UploadFiles" method="post"
           enctype="multipart/form-data">
-
         <input type="file" name="files" multiple />
+        <br />
         <button type="submit">Upload Files</button>
     </form>
 
@@ -30,7 +31,7 @@
 
 @if (Model.EstadoDocumentos.Equals(EstadoDocumentos.Aceites)) {
     <br />
-    <h3>Os seus Documentos foram aceites, por favor complete a sua candidatura clicando em Passo Seguinte</h3>
+    <h3 aling ="center">Os seus Documentos foram aceites, por favor complete a sua candidatura clicando em Passo Seguinte</h3>
     <br />
     <br />
 <div align="center">

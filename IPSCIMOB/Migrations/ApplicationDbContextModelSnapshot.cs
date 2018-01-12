@@ -305,6 +305,9 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<int?>("NumeroAluno");
 
+                    b.Property<string>("Programa")
+                        .IsRequired();
+
                     b.HasKey("InsertId");
 
                     b.ToTable("AlunoDocumento");
