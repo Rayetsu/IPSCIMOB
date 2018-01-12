@@ -11,6 +11,7 @@ using IPSCIMOB.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using IPSCIMOB.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace IPSCIMOB.Controllers
 {
@@ -92,16 +93,18 @@ namespace IPSCIMOB.Controllers
                 var numeroAluno = user.NumeroInterno;
                 var nomeDoFicheiro = file.GetFilename();
 
-                new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
 
-                _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = path });
+
+                _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = nomeDoFicheiro });
 
                 _context.SaveChanges();
+
+                new Notificacao(email, "Documentos à espera de aprovação", "Documentos enviados com sucesso e à espera de aprovação");
             }
 
 
 
-                return RedirectToAction("SubmeterDocs","Candidatura");
+            return RedirectToAction("SubmeterDocs", "Candidatura");
         }
 
         //[HttpPost]
@@ -134,15 +137,32 @@ namespace IPSCIMOB.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        public IActionResult Files()
+        public async Task<IActionResult> Files()
         {
-            var model = new FilesViewModel();
+            /*var model = new FilesViewModel();
             foreach (var item in this.fileProvider.GetDirectoryContents("wwwroot/Documentos"))
             {
                 model.Files.Add(
                     new FileDetails { Name = item.Name, Path = item.PhysicalPath});
+            }*/
+
+            List<CandidaturaModel> candidaturasExistentes = new List<CandidaturaModel>();
+            foreach (CandidaturaModel c in _context.CandidaturaModel)
+            {
+                candidaturasExistentes.Add(c);
             }
-            return View(model);
+
+            List<AlunoDocumentos> alunosComDocumentos = new List<AlunoDocumentos>();
+            foreach (AlunoDocumentos a in _context.AlunoDocumento)
+            {
+                alunosComDocumentos.Add(a);
+            }
+
+
+            ViewBag.candidaturas = candidaturasExistentes;
+            ViewBag.alunosDocumento = alunosComDocumentos;
+
+            return View();
         }
 
         public async Task<IActionResult> Download(string filename)

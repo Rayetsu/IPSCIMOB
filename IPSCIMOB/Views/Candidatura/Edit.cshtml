@@ -105,17 +105,15 @@
                 <select asp-for="Estado" class="form-control"></select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>*@
-
             <div class="form-group">
-                <label asp-for="Estado"></label>
-                <div class="col-md-10">
-                    <select asp-for="Estado" asp-items="Html.GetEnumSelectList<EstadoCandidatura>()">
-                        <option selected="selected" value="">Selecione Estado</option>
-                    </select>
-                    <span asp-validation-for="Estado" class="text-danger" />
+                 <label asp-for="EstadoDocumentos"></label>
+                 <div class="col-md-10">
+                    <select asp-for="EstadoDocumentos" asp-items="Html.GetEnumSelectList<EstadoDocumentos>()">
+                     <option selected="selected" value="">Selecione Estado </option>
+                </select>
                 </div>
             </div>
-
+            
             <br />         
 
             <div class="form-group">
@@ -130,13 +128,15 @@
             <br />
             
             <div class="form-group">
-                <label asp-for="EstadoDocumentos" ></label>                
+                <label asp-for="Estado"></label>
                 <div class="col-md-10">
-                    <select asp-for="EstadoDocumentos" asp-items="Html.GetEnumSelectList<EstadoDocumentos>()">
-                        <option selected="selected" value="">Selecione Estado </option>
+                    <select asp-for="Estado" asp-items="Html.GetEnumSelectList<EstadoCandidatura>()">
+                        <option selected="selected" value="">Selecione Estado</option>
                     </select>
+                    <span asp-validation-for="Estado" class="text-danger" />
                 </div>
             </div>
+
             
             <br />
             <br />

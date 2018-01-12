@@ -6,17 +6,47 @@
 
 
 
-<p>Lista de Documentos</p>
+<h2>Lista dos Alunos Com Documentos</h2>
+<hr />
 
-<ul>
-    @foreach (var item in Model.Files)
-    {
-        <li>
-            <a asp-action="Download"
-               asp-route-filename="@item.Name">
-                @item.Name
-            </a>
-        </li>
-    }
-</ul>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome do Utilizador
+            </th>
+            <th>
+                Nome do Ficheiro
+            </th>
+            <th>
+                Programa
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.alunosDocumento)
+        {
+            @foreach (var itemm in ViewBag.candidaturas)
+            {
+                if (item.NumeroAluno == itemm.NumeroInterno)
+                {
+                    <tr>
+                        <td>
+                            @itemm.Nome
+                        </td>
+                        <td>
+                            @item.Caminho
+                        </td>
+                        <td>
+                            @itemm.Programa
+                        </td>
+                        <td>
+                            <a asp-action="Download" asp-route-filename="@item.Caminho">Download</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
