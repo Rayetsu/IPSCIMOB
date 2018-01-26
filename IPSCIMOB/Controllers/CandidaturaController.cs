@@ -349,11 +349,23 @@ namespace IPSCIMOB.Controllers
 
 
         [Authorize(Roles = "Aluno, Funcionário")]
-        public async Task<IActionResult> Documentacao()
+        public async Task<IActionResult> Documentacao(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var informacaoGeral = await _context.InformacaoGeral
+                .SingleOrDefaultAsync(m => m.InformacaoGeralID == id);
+            if (informacaoGeral == null)
+            {
+                return NotFound();
+            }
             var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Titulo;
-            return View();
+
+            return View(informacaoGeral);
         }
 
         [Authorize(Roles = "Aluno, Funcionário")]
