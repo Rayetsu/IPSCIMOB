@@ -50,8 +50,8 @@ namespace IPSCIMOB.Controllers
         // GET: Entrevistas/Create
         public async Task<IActionResult> Create()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.Programa = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.Programa = programaAtual.Nome;
 
             var user = await _userManager.GetUserAsync(User);
             Entrevista entrevista = null;
@@ -61,7 +61,7 @@ namespace IPSCIMOB.Controllers
                 {
                     return RedirectToAction("FinalCandidatura", "Candidatura");
                 }
-                else if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo) && e.EntrevistaAtual == true)
+                else if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Nome) && e.EntrevistaAtual == true)
                 {
                     if (e.Estado.Equals(EstadoEntrevista.Recusado))
                     {
@@ -90,11 +90,11 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email, EntrevistaAtual,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
         {
             var user = await _userManager.GetUserAsync(User);
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             entrevista.Email = user.Email;
             entrevista.NumeroAluno = user.NumeroInterno;
             entrevista.Estado = EstadoEntrevista.EmEspera;
-            entrevista.NomePrograma = programaAtual.Titulo;
+            entrevista.NomePrograma = programaAtual.Nome;
             entrevista.EntrevistaAtual = true;
 
             if (ModelState.IsValid)
