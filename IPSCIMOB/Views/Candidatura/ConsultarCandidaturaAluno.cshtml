@@ -120,10 +120,30 @@
             <span asp-validation-for="Estado" class="text-danger"></span>
         </div>*@ 
 
-           
+         
 
+
+
+
+
+            @*<br />
             
+            <label>Escolha a Instituição </label>
+            <br />
+            <select id="listaInstituicoes">             
+                <option value ="selecione">Seleciona a Instituicao</option>
+                @foreach (var item in ViewBag.InstituicoesProgramaAtual)
+                {                   
+                    <option selected="selected" value="InstituicaoNome">@item.Nome</option>
+                }
+            </select>*@
+
+
+
+
+
             <br /><br />
+
 
             <div id ="submitCandidatura" class="form-group" align="center">       
                 <input type="submit" value="Submeter Candidatura" class="btn btn-default" />

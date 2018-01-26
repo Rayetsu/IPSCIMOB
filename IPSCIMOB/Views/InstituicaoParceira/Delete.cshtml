@@ -1,0 +1,44 @@
+﻿@model IPSCIMOB.Models.InstituicaoParceiraModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Eliminar Instituição </h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramaNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProgramaNome)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="InstituicaoParceiraID" />
+        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar Atrás</a>
+    </form>
+</div>

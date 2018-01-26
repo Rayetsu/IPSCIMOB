@@ -12,8 +12,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180112152055_data2")]
-    partial class data2
+    [Migration("20180126161338_dataaaa")]
+    partial class dataaaa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,6 +132,8 @@ namespace IPSCIMOB.Migrations
                     b.Property<int>("EstadoBolsa");
 
                     b.Property<int>("EstadoDocumentos");
+
+                    b.Property<string>("InstituicaoNome");
 
                     b.Property<bool>("IsBolsa");
 
@@ -277,6 +279,46 @@ namespace IPSCIMOB.Migrations
                     b.HasKey("InformacaoGeralID");
 
                     b.ToTable("InformacaoGeral");
+                });
+
+            modelBuilder.Entity("IPSCIMOB.Models.InstituicaoParceiraModel", b =>
+                {
+                    b.Property<int>("InstituicaoParceiraID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Cidade");
+
+                    b.Property<string>("Nome")
+                        .IsRequired();
+
+                    b.Property<string>("Pais")
+                        .IsRequired();
+
+                    b.Property<string>("ProgramaNome");
+
+                    b.HasKey("InstituicaoParceiraID");
+
+                    b.ToTable("InstituicaoParceiraModel");
+                });
+
+            modelBuilder.Entity("IPSCIMOB.Models.ProgramaModel", b =>
+                {
+                    b.Property<int>("ProgramaID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Descricao")
+                        .IsRequired();
+
+                    b.Property<string>("Nome")
+                        .IsRequired();
+
+                    b.Property<bool>("ProgramaAtual");
+
+                    b.Property<int>("UtilizadorProfissao");
+
+                    b.HasKey("ProgramaID");
+
+                    b.ToTable("ProgramaModel");
                 });
 
             modelBuilder.Entity("IPSCIMOB.Models.Sugestao", b =>

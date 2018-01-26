@@ -45,6 +45,10 @@ namespace IPSCIMOB.Data
 
         public DbSet<IPSCIMOB.Models.EnviarMsg> EnviarMsg_1 { get; set; }
 
+        public DbSet<IPSCIMOB.Models.ProgramaModel> ProgramaModel { get; set; }
+
+        public DbSet<IPSCIMOB.Models.InstituicaoParceiraModel> InstituicaoParceiraModel { get; set; }
+
 
     }
 }

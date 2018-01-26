@@ -1,0 +1,54 @@
+﻿@model IPSCIMOB.Models.ProgramaModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eliminar Programa de Mobilidade</title>
+</head>
+<body>
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramaAtual)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProgramaAtual)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UtilizadorProfissao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UtilizadorProfissao)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ProgramaID" />
+        <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <a asp-action="Index">Voltar Atrás</a>
+    </form>
+</div>
+</body>
+</html>

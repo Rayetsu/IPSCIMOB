@@ -1,0 +1,51 @@
+﻿@model IPSCIMOB.Models.ProgramaModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes Programa de Mobilidade - </title>
+</head>
+<body>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramaAtual)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProgramaAtual)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UtilizadorProfissao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UtilizadorProfissao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ProgramaID">Editar</a> |
+    <a asp-action="Index">Voltar Atrás</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@model IPSCIMOB.Models.InstituicaoParceiraModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhes Instituição Parceira - </h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramaNome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProgramaNome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.InstituicaoParceiraID">Editar</a> |
+    <a asp-action="Index">Voltar Atrás</a>
+</div>

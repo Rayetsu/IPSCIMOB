@@ -13,7 +13,6 @@ using IPSCIMOB.Models.ManageViewModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 
-
 namespace IPSCIMOB.Controllers
 {
     public class CandidaturaController : Controller
@@ -69,17 +68,18 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa, InstituicaoNome, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             if (ModelState.IsValid)
             {
                 candidaturaModel.Email = user.Email;
                 candidaturaModel.Nome = user.Nome;
                 candidaturaModel.NumeroInterno = user.NumeroInterno;
 
-                candidaturaModel.Programa = programaAtual.Titulo;
+                candidaturaModel.Programa = programaAtual.Nome;
+
 
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao2;
                 _context.Add(candidaturaModel);
@@ -116,7 +116,7 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,InstituicaoNome, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var userEmail = candidaturaModel.Email;
 
@@ -168,7 +168,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa,InstituicaoNome, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user.CandidaturaAtual != candidaturaModel.CandidaturaID)
@@ -241,118 +241,13 @@ namespace IPSCIMOB.Controllers
 
         }
 
-        [Authorize(Roles = "Aluno")]
-        public async Task<IActionResult> VascoDaGama()
-        {
-            var programaNovo = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Programa Vasco Da Gama");
-            var programaAntigo = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            if (programaAntigo != null & programaAntigo != programaNovo)
-            {
-                programaAntigo.ProgramaAtual = false;
-                _context.Update(programaAntigo);
-            }
-            programaNovo.ProgramaAtual = true;
-            _context.Update(programaNovo);
-            await _context.SaveChangesAsync();
-
-            ViewBag.NomePrograma = programaNovo.Titulo;
-
-            return View();
-        }
-
-        [Authorize(Roles = "Aluno")]
-        public async Task<IActionResult> PolitecnicoDeMacau()
-        {
-            var informacaoAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            var informacaoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Politécnico de Macau");
-            if (informacaoAtual != null & informacaoAtual != informacaoGeral)
-            {
-                informacaoAtual.ProgramaAtual = false;
-                _context.Update(informacaoAtual);
-            }
-            informacaoGeral.ProgramaAtual = true;
-            _context.Update(informacaoGeral);
-            await _context.SaveChangesAsync();
-
-            return View();
-        }
-
-        [Authorize(Roles = "Aluno")]
-        public async Task<IActionResult> Erasmus()
-        {
-            var informacaoAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            var informacaoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Erasmus+");
-            if (informacaoAtual != null & informacaoAtual != informacaoGeral)
-            {
-                informacaoAtual.ProgramaAtual = false;
-                _context.Update(informacaoAtual);
-            }
-            informacaoGeral.ProgramaAtual = true;
-            _context.Update(informacaoGeral);
-            await _context.SaveChangesAsync();
-
-            return View();
-        }
-
-        [Authorize(Roles = "Funcionário")]
-        public async Task<IActionResult> ErasmusFormacaoTrabalho()
-        {
-            var informacaoAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            var informacaoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Erasmus+");
-            if (informacaoAtual != null & informacaoAtual != informacaoGeral)
-            {
-                informacaoAtual.ProgramaAtual = false;
-                _context.Update(informacaoAtual);
-            }
-            informacaoGeral.ProgramaAtual = true;
-            _context.Update(informacaoGeral);
-            await _context.SaveChangesAsync();
-
-            return View();
-        }
-
-        [Authorize(Roles = "Aluno")]
-        public async Task<IActionResult> SantanderUniversidades()
-        {
-            var informacaoAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            var informacaoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Santander Universidades");
-            if (informacaoAtual != null & informacaoAtual != informacaoGeral)
-            {
-                informacaoAtual.ProgramaAtual = false;
-                _context.Update(informacaoAtual);
-            }
-            informacaoGeral.ProgramaAtual = true;
-            _context.Update(informacaoGeral);
-            await _context.SaveChangesAsync();
-
-            return View();
-        }
-
-        [Authorize(Roles = "Funcionário")]
-        public async Task<IActionResult> SantanderMissoes()
-        {
-            var informacaoAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            var informacaoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Santander Universidades Missões de Ensino e Formação oferece bolsas");
-            if (informacaoAtual != null & informacaoAtual != informacaoGeral)
-            {
-                informacaoAtual.ProgramaAtual = false;
-                _context.Update(informacaoAtual);
-            }
-            informacaoGeral.ProgramaAtual = true;
-            _context.Update(informacaoGeral);
-            await _context.SaveChangesAsync();
-
-            return View();
-        }
-
-
 
 
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> Documentacao()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
             return View();
         }
 
@@ -367,13 +262,23 @@ namespace IPSCIMOB.Controllers
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> ConsultarCandidatura()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
 
             var user = await _userManager.GetUserAsync(User);
             ViewBag.Nome = user.Nome;
             ViewBag.NumeroInterno = user.NumeroInterno;
 
+
+            List<InstituicaoParceiraModel> instituicoesProgramaAtual = new List<InstituicaoParceiraModel>();
+            foreach (InstituicaoParceiraModel i in _context.InstituicaoParceiraModel)
+            {
+                if (i.ProgramaNome.Equals(programaAtual.Nome))
+                {
+                    instituicoesProgramaAtual.Add(i);
+                }
+            }
+            ViewBag.InstituicoesProgramaAtual = instituicoesProgramaAtual;
 
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in _context.CandidaturaModel)
@@ -387,13 +292,13 @@ namespace IPSCIMOB.Controllers
             CandidaturaModel candidaturaModel = null;
             foreach (CandidaturaModel c in candidaturasUser)
             {
-                if (c.Programa.Equals(programaAtual.Titulo))
+                if (c.Programa.Equals(programaAtual.Nome))
                 {
                     candidaturaModel = c;
                 }
             }
 
-            if (candidaturaModel == null || candidaturaModel.Programa != programaAtual.Titulo)
+            if (candidaturaModel == null || candidaturaModel.Programa != programaAtual.Nome)
             {
                 if (this.User.IsInRole("Aluno"))
                 {
@@ -430,8 +335,8 @@ namespace IPSCIMOB.Controllers
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> RegulamentoMob()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
 
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
@@ -442,8 +347,8 @@ namespace IPSCIMOB.Controllers
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> SubmeterDocs()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
             candidaturaModel.Estado = EstadoCandidatura.EmRealizacao3;
@@ -453,16 +358,15 @@ namespace IPSCIMOB.Controllers
         }
 
 
-
         public async Task<Entrevista> GetEntrevista()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
 
             var user = await _userManager.GetUserAsync(User);
 
             foreach (Entrevista e in _context.Entrevista)
             {
-                if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Titulo) && !e.Estado.Equals(EstadoEntrevista.Recusado))
+                if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Nome) && !e.Estado.Equals(EstadoEntrevista.Recusado))
                 {
                     return e;
                 }
@@ -474,8 +378,8 @@ namespace IPSCIMOB.Controllers
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> MarcarEntrevistas()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
             var user = await _userManager.GetUserAsync(User);
 
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
@@ -496,8 +400,8 @@ namespace IPSCIMOB.Controllers
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> FinalCandidatura()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
 
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);
@@ -505,7 +409,7 @@ namespace IPSCIMOB.Controllers
             if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
             {
                 candidaturaModel.Estado = EstadoCandidatura.EmEspera;
-                new Notificacao(user.Email, "Candidatura Registada", "A sua candidatura no programa " + programaAtual.Titulo + " foi registada com sucesso!");
+                new Notificacao(user.Email, "Candidatura Registada", "A sua candidatura no programa " + programaAtual.Nome + " foi registada com sucesso!");
             }
             _context.Update(candidaturaModel);
             await _context.SaveChangesAsync();
@@ -521,21 +425,20 @@ namespace IPSCIMOB.Controllers
 
 
         [Authorize(Roles = "Aluno, Funcionário")]
-        public async Task<IActionResult> CandidaturaInicio()
-        {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+        public async Task<IActionResult> Inicio(int? id)
+        {           
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            //foreach (ProgramaModel p in _context.ProgramaModel)
+            //{
+            //    p.ProgramaAtual = false;            
+            //} 
+            //programaAtual.ProgramaAtual = true;
 
-            if (programaAtual.Titulo == "Santander Universidades")
-                return View("SantanderMissoes");
-            else if (programaAtual.Titulo == "Santander Universidades Missões de Ensino e Formação oferece bolsas")
-                return View("SantanderMissoes");
-            else if (programaAtual.Titulo == "Erasmus+")
-                return View("Erasmus");
-            else if (programaAtual.Titulo == "Programa Vasco Da Gama")
-                return View("VascoDaGama");
-            else if (programaAtual.Titulo == "Politécnico de Macau")
-                return View("PolitecnicoDeMacau");
-            return NotFound();
+            ViewBag.NomePrograma = programaAtual.Nome;
+            //_context.Update(programaAtual);
+            //await _context.SaveChangesAsync();
+
+            return View();
         }
 
 

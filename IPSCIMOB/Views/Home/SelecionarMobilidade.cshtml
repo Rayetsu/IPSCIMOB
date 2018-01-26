@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<IPSCIMOB.Models.ProgramaModel>
 @{
     ViewData["Title"] = "Selecione a Mobilidade ";
 }
@@ -7,33 +7,98 @@
 <h2 align="center">Escolha Aqui:</h2>
 
 
-<div align="center">
-        <select id="UrlList">
+@*<div align="center">
+        <select id="UrlList">    
             <option value="">Seleciona a mobilidade</option>
-            <option value="@Url.Action("VascoDaGama", "Candidatura")">Vasco da Gama</option>
-            <option value="@Url.Action("PolitecnicoDeMacau", "Candidatura")">Politécnico de Macau</option>
-            <option value="@Url.Action("Erasmus", "Candidatura")">Erasmus+</option>
-            <option value="@Url.Action("ErasmusFormacaoTrabalho", "Candidatura")">Erasmus+ Formação/Trabalho</option>
-            <option value="@Url.Action("SantanderUniversidades", "Candidatura")">Santander Universidades</option>
-            <option value="@Url.Action("SantanderMissoes", "Candidatura")">Santander Missões de Ensino e Formação</option>
+            @foreach (var item in Model)
+            {
+                <option value = "@Url.Action("Inicio", "Candidatura")"> @Html.DisplayFor(modelItem => item.Nome)</option>
+            }
+           
         </select>
     <p>
 
     </p>
         <p>
-            <input type="submit" value="Seguinte" onclick="doNavigate()"/>
+            <input type="submit" value="Seguinte" onclick="doNavigate()"/>            
         </p>
 
         <script>
-            function doNavigate() {
+            function doNavigate()
+            {
                 window.location.href = document.getElementById("UrlList").value;
-                
+                document.getElementById
             }
         </script>
+    </div>*@
 
 
-    </div>
+<h3>@ViewBag.UserProfissao</h3>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProgramaAtual)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+
+            @*if (item.UtilizadorProfissao.Equals(ViewBag.UserProfissao))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramaAtual)
+                    </td>
+                    <td>
+                        <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
+                    </td>
+                </tr>
+            }
+            if (item.UtilizadorProfissao.Equals("FuncionarioAluno"))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramaAtual)
+                    </td>
+                    <td>
+                        <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
+                    </td>
+                </tr>
+            }*@
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgramaAtual)
+                </td>
+                <td>
+                    <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
+                </td>
+            </tr>
+
+
+
+
+        }
+    </tbody>
+</table>
 
 
 

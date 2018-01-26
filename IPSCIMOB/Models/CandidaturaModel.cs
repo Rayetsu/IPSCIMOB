@@ -117,6 +117,12 @@ namespace IPSCIMOB.Models
         [Display(Name = "Programa")]
         public string Programa { get; set; }
 
+        [Display(Name = "Instituição")]
+        public string InstituicaoNome { get; set; }
+
+        //[Display(Name = "InstituiçãoID")]
+        //public InstituicaoParceiraModel InstituicaoID { get; set; }
+
         //[Required]
         [Display(Name = "Email")]
         public String Email { get; set; }

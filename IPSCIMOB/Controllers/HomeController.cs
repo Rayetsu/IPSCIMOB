@@ -7,29 +7,36 @@ using Microsoft.AspNetCore.Mvc;
 using IPSCIMOB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using IPSCIMOB.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace IPSCIMOB.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            /*if (!this.User.Identity.IsAuthenticated)
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            if (this.User.IsInRole("Aluno"))
             {
-                return View();
-                //Layout = "_Layout";
-            }*/
-            if (this.User.IsInRole("Aluno") || this.User.IsInRole("Funcionário"))
+                ViewBag.UserProfissao = "Aluno";
+                return View("~/Views/Home/SelecionarMobilidade.cshtml", await _context.ProgramaModel.ToListAsync());
+            }
+            else if (this.User.IsInRole("Funcionário"))
             {
-                return View("~/Views/Home/SelecionarMobilidade.cshtml");
-                //Layout = "_LayoutAluno";
+                ViewBag.UserProfissao = "Funcionário";
+                return View("~/Views/Home/SelecionarMobilidade.cshtml", await _context.ProgramaModel.ToListAsync());
             }
             else if (this.User.IsInRole("CIMOB"))
             {
-                return View("~/Views/Home/CIMOB.cshtml");
-                //Layout = "_LayoutCIMOB";
+                return View("~/Views/Home/CIMOB.cshtml", await _context.ProgramaModel.ToListAsync());
             }
-
             return View();
         }
 
@@ -78,6 +85,24 @@ namespace IPSCIMOB.Controllers
 
             return View();
         }
+
+        [Authorize(Roles = "Aluno, Funcionário")]
+        public async Task<IActionResult> Inicio(int? id)
+        {
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaID == id);
+
+            foreach (ProgramaModel p in _context.ProgramaModel)
+            {
+                p.ProgramaAtual = false;
+            }
+            programaAtual.ProgramaAtual = true;
+
+            ViewBag.NomePrograma = programaAtual.Nome;
+            _context.Update(programaAtual);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Inicio", "Candidatura");
+        }
+
 
         public IActionResult Error()
         {
