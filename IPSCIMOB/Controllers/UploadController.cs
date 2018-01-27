@@ -88,12 +88,12 @@ namespace IPSCIMOB.Controllers
                 }
 
                 var user = await _userManager.GetUserAsync(User);
-                var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+                var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
 
                 var email = user.Email;
                 var numeroAluno = user.NumeroInterno;
                 var nomeDoFicheiro = file.GetFilename();
-                var nomePrograma = programaAtual.Titulo;
+                var nomePrograma = programaAtual.Nome;
 
                 _context.AlunoDocumento.Add(new AlunoDocumentos { NumeroAluno = numeroAluno, Documento = nomeDoFicheiro, Caminho = nomeDoFicheiro, Programa = nomePrograma});
 

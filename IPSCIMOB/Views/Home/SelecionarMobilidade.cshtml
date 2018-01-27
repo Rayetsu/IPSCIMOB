@@ -41,9 +41,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProgramaAtual)
-            </th>
+          
             <th></th>
         </tr>
     </thead>
@@ -84,9 +82,6 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProgramaAtual)
                 </td>
                 <td>
                     <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
