@@ -173,6 +173,12 @@ namespace IPSCIMOB.Data
                 Descricao = "Adicione Informações..."
             });
 
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Documentação",
+                Descricao = "<div class=\"center-justified\"><p><h3>Instituto Politécnico de Setúbal (IPS)</h3></p></p><p><h4>Artigo 38º</h4></p></div><p>Documentação</p><p>Sem prejuízo das regras fixadas por cada programa referido no nº 1 do artigo 2º, considera-se obrigatório que cada processo de docente IPS em mobilidade seja constituído pela seguinte documentação:</p><p>a) Acordo Bilateral ou equivalente legal (celebrado antes da realização da mobilidade, e estabelecido entre o IPS e uma instituição parceira, de carácter nacional ou internacional);</p><p>b) Ficha de Candidatura, nos termos do artigo 31º;</p><p>c) Ficha de Docente;</p><p>d) Contrato de Docente;</p><p>e) Confirmação do período de leccionação/estada no estrangeiro, emitida pela instituição de acolhimento;</p><p>f) Recibo de pagamento da bolsa (quando aplicável);</p><p>g) Relatório Final Individual;</p><p>h) Adendas ao Contrato (quando aplicável);</p><p>i) Recibos relativos a Adendas ao Contrato (quando aplicável).</p>"
+            });
+
             _context.Sugestao.Add(new Sugestao
             {
                 EmailUtilizador = "aluno@email.com",
