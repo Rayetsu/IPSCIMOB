@@ -14,7 +14,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Programa)
             </th>
-          
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoNome)
+            </th>
             @*<th>
                     @Html.DisplayNameFor(model => model.EntrevistaID)
                 </th>*@
@@ -44,7 +46,7 @@
                 Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pais)
+                @Html.DisplayNameFor(model => model.InstituicaoPais)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
@@ -59,6 +61,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Programa)
                 </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.InstituicaoNome)
+                           </td>
                @*<td>
                         @Html.DisplayFor(modelItem => item.EntrevistaID)
                     </td>*@
@@ -87,7 +92,7 @@
                     @Html.DisplayFor(modelItem => item.IsConfirmado)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Pais)
+                    @Html.DisplayFor(modelItem => item.InstituicaoPais)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Estado)

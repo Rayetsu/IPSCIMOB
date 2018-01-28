@@ -36,19 +36,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Email" />
 
-    <div class="form-group">
-        <label asp-for="Nome" class="control-label"></label>
-        @*<input asp-for="Nome" class="form-control" />*@
-        <span asp-validation-for="Nome" class="text-danger"> @ViewBag.Nome </span>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                @*<input asp-for="Nome" class="form-control" />*@
+                <span asp-validation-for="Nome" class="text-danger"> @ViewBag.Nome </span>
         
-    </div>
+            </div>
+
             <div class="form-group">
                 <label asp-for="NumeroInterno" class="control-label"></label>
                 @*<input asp-for="NumeroInterno" class="form-control" />*@
-                <span asp-validation-for="NumeroInterno" class="text-danger">@ViewBag.NumeroInterno  </span>
+                <span asp-validation-for="NumeroInterno" class="text-danger">@ViewBag.NumeroInterno</span>
             </div>
 
-            
             <div class="form-group">
                 <label>Se pretende ter direito a bolsa clique em baixo</label>
                 <div class="checkbox" align = "center">
@@ -57,7 +57,6 @@
                     </label>
                 </div>
             </div>
-
 
             <div class="form-group">
                 <label>Escolha qual o tipo de propósito</label>
@@ -102,7 +101,7 @@
             </div>*@
 
 
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Pais" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
                     <select asp-for="Pais" asp-items="Html.GetEnumSelectList<Paises>()">
@@ -111,7 +110,7 @@
                     <span asp-validation-for="Pais" class="text-danger" />
                 </div>
                 <p></p>
-            </div>
+            </div>*@
 
 
             @*<div class="form-group">
@@ -121,26 +120,37 @@
         </div>*@ 
 
          
-
-
-
-
-
-            @*<br />
             
-            <label>Escolha a Instituição </label>
+            @*<label>Escolha a Instituição </label>
             <br />
             <select id="listaInstituicoes">             
                 <option value ="selecione">Seleciona a Instituicao</option>
                 @foreach (var item in ViewBag.InstituicoesProgramaAtual)
                 {                   
-                    <option selected="selected" value="InstituicaoNome">@item.Nome</option>
+                    <option selected="selected" value="">@item.Nome</option>
                 }
             </select>*@
 
+            @*<div class="form-group">
+                <label asp-for="InstituicaoNome" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <select asp-for="InstituicaoNome">
+                        <option selected="selected" value="">Escolha a Instituição</option>
+                        @foreach (var item in ViewBag.InstituicoesProgramaAtual)
+                        {
+                            <option selected="selected" value="">@item.Nome</option>
+                        }
+                    </select>
+                    <span asp-validation-for="InstituicaoNome" class="text-danger" />
+                </div>
+                <p></p>
+            </div>*@
 
 
-
+            <div class="form-group">
+                <label asp-for="InstituicaoNome" class="control-label"></label>
+                <select asp-for="InstituicaoNome" class="form-control" asp-items="ViewBag.Instituicoes"></select>
+            </div>
 
             <br /><br />
 
@@ -150,5 +160,9 @@
             </div>
 
         </form>
+
+
+       
+
     </div>
 </div>

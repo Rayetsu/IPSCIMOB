@@ -173,6 +173,9 @@ namespace IPSCIMOB.Data
                 Descricao = "Adicione Informações..."
             });
 
+
+        
+
             // Programas de Mobilidade
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -183,7 +186,6 @@ namespace IPSCIMOB.Data
                 UtilizadorProfissao = UtilizadorProfissao.Aluno
             });
 
-
             _context.ProgramaModel.Add(new ProgramaModel
             {
                 Nome = "Politécnico de Macau",
@@ -192,30 +194,47 @@ namespace IPSCIMOB.Data
                 UtilizadorProfissao = UtilizadorProfissao.Aluno
             });
 
-
             _context.ProgramaModel.Add(new ProgramaModel
             {
-                Nome = "Erasmus+",
-                Descricao = "<div class=\"center-justified\"><p>O Programa Erasmus destina-se a apoiar as actividades europeias das instituições de ensino superior(IES), promovendo a mobilidade e o intercâmbio de estudantes, professores e funcionários das Instituições de Ensino Superior.No que respeita à mobilidade de estudantes, visa oferecer a possibilidade de efectuar um período de estudos, com pleno reconhecimento académico, com a duração mínima de 5 meses e máxima de 1 ano lectivo, num estabelecimento de ensino superior de outro Estado elegível, dotado de Carta Universitária Erasmus. </p> </div>",
+                Nome = "Erasmus+ FUNCIONÁRIOS",
+                Descricao = "<div class=\"center-justified\"><p>No âmbito do Ensino Superior, a Ação-Chave 1 – Mobilidade Individual, do Programa ERASMUS+, oferece oportunidades a docentes e não docentes de instituições de ensino superior (IES), bem como a pessoal de organizações da sociedade civil, de participarem numa experiência noutro país europeu. </p> </div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.FuncionarioAluno
+                UtilizadorProfissao = UtilizadorProfissao.Funcionario
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
             {
-                Nome = "Santander Universidades",
-                Descricao = "<div class=\"center-justified\"><p>O Programa Santander universidades oferece bolsas para licenciatura e mestrado Ibero-América, bolsas de mobilidade luso-brasileiras e bolsas de estágio em Portugal.</p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\" > Bolsas Santander</a></p></div>",
+                Nome = "Erasmus+ ALUNOS",
+                Descricao = "<div class=\"center-justified\"><p>O Programa Erasmus destina-se a apoiar as actividades europeias das instituições de ensino superior(IES), promovendo a mobilidade e o intercâmbio de estudantes das Instituições de Ensino Superior.No que respeita à mobilidade de estudantes, visa oferecer a possibilidade de efectuar um período de estudos, com pleno reconhecimento académico, com a duração mínima de 5 meses e máxima de 1 ano lectivo, num estabelecimento de ensino superior de outro Estado elegível, dotado de Carta Universitária Erasmus. </p> </div>",
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Aluno
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
             {
-                Nome = "Santander Universidades Missões de Ensino e Formação",
-                Descricao = "<div class=\"center-justified\"><p>O Programa Santander universidades Missões de Ensino e Formação oferece bolsas Ibero-América e bolsas luso-brasileiras.</p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\"> Bolsas Santander</a></p></div>",
+                Nome = "Santander Universidades - BOLSAS IBERO-AMERICANAS",
+                Descricao = "<div class=\"center-justified\"><p>O intercâmbio de estudantes através do Programa de Bolsas Ibero- Americanas Santander Universidades consiste na realização de um período de estudos. O intercâmbio tem obrigatoriamente de estar abrangido por um Protocolo de Cooperação com uma instituição que integre a rede deste Programa. A matrícula/inscrição e o pagamento das propinas efetuados no IPS são válidos para os estudos na universidade brasileira de destino, não havendo necessidade de qualquer matrícula adicional.</p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\" > Bolsas Santander</a></p></div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.FuncionarioAluno
+                UtilizadorProfissao = UtilizadorProfissao.Aluno
             });
+
+            _context.ProgramaModel.Add(new ProgramaModel
+            {
+                Nome = "Santander Universidades - BOLSAS LUSO-BRASILEIRAS",
+                Descricao = "<div class=\"center-justified\"><p>O intercâmbio de estudantes através do Programa de Bolsas Luso- Brasileiras Santander Universidades consiste na realização de um período de estudos. O intercâmbio tem obrigatoriamente de estar abrangido por um Protocolo de Cooperação com uma instituição que integre a rede deste Programa. A matrícula/inscrição e o pagamento das propinas efetuados no IPS são válidos para os estudos na universidade brasileira de destino, não havendo necessidade de qualquer matrícula adicional. </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\" > Bolsas Santander</a></p></div>",
+                ProgramaAtual = false,
+                UtilizadorProfissao = UtilizadorProfissao.Aluno
+            });
+
+            _context.ProgramaModel.Add(new ProgramaModel
+            {
+                Nome = "Santander Universidades - BOLSAS IBERO-AMERICANAS SANTANDER INVESTIGAÇÃO",
+                Descricao = "<div class=\"center-justified\"><p>O Programa de Bolsas Ibero-americanas Santander Investigação tem como objetivo reforçar a mobilidade e o intercâmbio de professores, investigadores e estudantes de doutoramento entre universidades e centros de investigação ibero-americanos. O intercâmbio deverá ser realizado numa instituição parceira pertencente à rede do Programa, sendo obrigatória a existência de um Protocolo de Cooperação entre o IPS e a mesma. Esta tipologia de bolsa visa promover a atualização do nível de conhecimentos, a aprendizagem de novas técnicas e métodos, e o estabelecimento ou consolidação de vínculos académicos entre equipas de investigação e instituições ibero - americanas, permitindo inclusivamente reunir informação adicional e específica necessária para os estudos ou investigações que os destinatários estejam a realizar.Especificamente, as bolsas também pretendem ajudar a completar a formação e especialização científica e técnica do pessoal investigador em formação ou dos estudantes de doutoramento. O Programa de Bolsas Ibero - Americanas Santander Investigação é patrocinado pelo Banco Santander </ p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\"> Bolsas Santander</a></p></div>",
+                ProgramaAtual = false,
+                UtilizadorProfissao = UtilizadorProfissao.Funcionario
+            });
+
+
 
 
             // Instituições Parceiras 
@@ -225,7 +244,7 @@ namespace IPSCIMOB.Data
                 Nome = "Instituto Politécnico de Paris",
                 Pais = "França",
                 Cidade = "Paris",
-                ProgramaNome = "Erasmus+"
+                ProgramaNome = "Erasmus+ ALUNOS"
             });
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
@@ -233,7 +252,7 @@ namespace IPSCIMOB.Data
                 Nome = "Instituto Politécnico de Madrid",
                 Pais = "Espanha",
                 Cidade = "Madrid",
-                ProgramaNome = "Erasmus+"
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
             });
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
@@ -241,7 +260,7 @@ namespace IPSCIMOB.Data
                 Nome = "Instituto Politécnico de Berlim",
                 Pais = "Alemanha",
                 Cidade = "Berlim",
-                ProgramaNome = "Erasmus+"
+                ProgramaNome = "Erasmus+ ALUNOS"
             });
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
@@ -249,7 +268,7 @@ namespace IPSCIMOB.Data
                 Nome = "Instituto Politécnico de Brasilia",
                 Pais = "Brasil",
                 Cidade = "Brasilia",
-                ProgramaNome = "Santander Universidades"
+                ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS SANTANDER INVESTIGAÇÃO"
             });
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
@@ -257,7 +276,15 @@ namespace IPSCIMOB.Data
                 Nome = "Instituto Politécnico de Pafos",
                 Pais = "Chipre",
                 Cidade = "Pafos",
-                ProgramaNome = "Erasmus+"
+                ProgramaNome = "Erasmus+ ALUNOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Pafos",
+                Pais = "Chipre",
+                Cidade = "Pafos",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
             });
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
@@ -297,10 +324,18 @@ namespace IPSCIMOB.Data
                 Nome = "Universidade de São Paulo",
                 Pais = "Brasil",
                 Cidade = "São Paulo",
-                ProgramaNome = "Santander Universidades"
+                ProgramaNome = "Santander Universidades - BOLSAS LUSO-BRASILEIRAS"
             });
 
-            
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Universidade Nova Iorque",
+                Pais = "Estados Unidos",
+                Cidade = "New York",
+                ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
+            });
+
+
             // Sugestões 
 
             _context.Sugestao.Add(new Sugestao

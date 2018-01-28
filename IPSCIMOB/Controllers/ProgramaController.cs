@@ -25,6 +25,30 @@ namespace IPSCIMOB.Controllers
             return View(await _context.ProgramaModel.ToListAsync());
         }
 
+        public async Task<IActionResult> InformacaoProgramas()
+        {
+            return View(await _context.ProgramaModel.ToListAsync());
+        }
+
+        public async Task<IActionResult> DetalhesProgramaEscolhido(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var programaModel = await _context.ProgramaModel
+                .SingleOrDefaultAsync(m => m.ProgramaID == id);
+            if (programaModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(programaModel);
+        }
+
+
+
         // GET: Programa/Details/5
         public async Task<IActionResult> Details(int? id)
         {

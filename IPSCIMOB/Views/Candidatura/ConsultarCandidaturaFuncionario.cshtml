@@ -98,7 +98,7 @@
                     </div>
                 </div>*@
 
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Pais" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
                     <select asp-for="Pais" asp-items="Html.GetEnumSelectList<Paises>()">
@@ -107,7 +107,7 @@
                     <span asp-validation-for="Pais" class="text-danger" />
                 </div>
                 <p></p>
-            </div>
+            </div>*@
 
             @*<div class="form-group">
                     <label asp-for="Estado" class="control-label"></label>
@@ -118,6 +118,13 @@
             <br />
             <br />
           
+            <div class="form-group">
+                <label asp-for="InstituicaoNome" class="control-label"></label>
+                <select asp-for="InstituicaoNome" class="form-control" asp-items="ViewBag.Instituicoes"></select>
+            </div>
+
+            <br /><br />
+
             <div id="submitCandidatura" class="form-group" align="center">
                 <input type="submit" value="Submeter Candidatura" class="btn btn-default" />
             </div>

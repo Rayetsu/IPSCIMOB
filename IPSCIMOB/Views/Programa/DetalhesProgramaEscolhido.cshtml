@@ -1,0 +1,17 @@
+﻿@model IPSCIMOB.Models.ProgramaModel
+@{
+    ViewData["Title"] = "DetalhesProgramaEscolhido";
+}
+
+<div align="center">
+    <h1>@Model.Nome</h1>
+
+
+    @Html.Raw(@Model.Descricao)
+
+</div>
+
+
+<div align="center">
+    <input type="button" value="VOLTAR ATRÁS" onclick="@("window.location.href='" + @Url.Action("InformacaoProgramas", "Programa") + "'");" />
+</div>

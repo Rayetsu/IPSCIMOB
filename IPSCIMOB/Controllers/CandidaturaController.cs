@@ -68,7 +68,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CandidaturaID,Programa, InstituicaoNome, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Create([Bind("CandidaturaID, Programa, InstituicaoNome, InstituicaoPais, InstituicaoCidade, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
@@ -80,6 +80,10 @@ namespace IPSCIMOB.Controllers
 
                 candidaturaModel.Programa = programaAtual.Nome;
 
+                var instituicaoEscolhida = 
+                    await _context.InstituicaoParceiraModel.SingleOrDefaultAsync(m => m.Nome == candidaturaModel.InstituicaoNome);
+                 candidaturaModel.InstituicaoPais = instituicaoEscolhida.Pais;                
+                candidaturaModel.InstituicaoCidade = instituicaoEscolhida.Cidade;
 
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao2;
                 _context.Add(candidaturaModel);
@@ -116,7 +120,7 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,InstituicaoNome, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var userEmail = candidaturaModel.Email;
 
@@ -129,6 +133,11 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
+                    var instituicaoEscolhida =
+                    await _context.InstituicaoParceiraModel.SingleOrDefaultAsync(m => m.Nome == candidaturaModel.InstituicaoNome);
+                    candidaturaModel.InstituicaoPais = instituicaoEscolhida.Pais;
+                    candidaturaModel.InstituicaoCidade = instituicaoEscolhida.Cidade;
+
                     if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Aceites))
                     {
                         new Notificacao(userEmail, "CIMOB - Estado Documentos Submetidos", "Os documentos submetidos ao Programa " + candidaturaModel.Programa + " foram: " + candidaturaModel.EstadoDocumentos);
@@ -168,7 +177,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa,InstituicaoNome, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Pais,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user.CandidaturaAtual != candidaturaModel.CandidaturaID)
@@ -259,6 +268,8 @@ namespace IPSCIMOB.Controllers
             return View(await _context.Entrevista.ToListAsync());
         }
 
+
+
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> ConsultarCandidatura()
         {
@@ -269,16 +280,18 @@ namespace IPSCIMOB.Controllers
             ViewBag.Nome = user.Nome;
             ViewBag.NumeroInterno = user.NumeroInterno;
 
-
+            
             List<InstituicaoParceiraModel> instituicoesProgramaAtual = new List<InstituicaoParceiraModel>();
             foreach (InstituicaoParceiraModel i in _context.InstituicaoParceiraModel)
             {
                 if (i.ProgramaNome.Equals(programaAtual.Nome))
-                {
+                {                 
                     instituicoesProgramaAtual.Add(i);
                 }
             }
-            ViewBag.InstituicoesProgramaAtual = instituicoesProgramaAtual;
+            ViewBag.Instituicoes = new SelectList(instituicoesProgramaAtual, "Nome", "Nome");
+
+
 
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in _context.CandidaturaModel)

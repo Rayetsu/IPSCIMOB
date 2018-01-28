@@ -53,8 +53,11 @@
                     Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Pais)
+                    @Html.DisplayNameFor(model => model.InstituicaoPais)
                 </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstituicaoCidade)
+            </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Estado)
                 </th>
@@ -107,7 +110,10 @@
                 @Html.DisplayFor(modelItem => item.IsConfirmado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pais)
+                @Html.DisplayFor(modelItem => item.InstituicaoPais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoCidade)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
