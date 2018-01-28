@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IPSCIMOB.Models.ProgramaModel>
+@{
+    ViewData["Title"] = "InformacaoProgramas";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Lista de Programas de Mobilidade </title>
+</head>
+<body>
+
+    <br />
+    <h1 align ="center">Lista de Programas De Mobilidade </h1>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>               
+                <th>
+                    @Html.DisplayNameFor(model => model.UtilizadorProfissao)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UtilizadorProfissao)
+                    </td>
+                    <td>
+                        <a asp-action="DetalhesProgramaEscolhido" asp-route-id="@item.ProgramaID">Detalhes</a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+
+
