@@ -132,6 +132,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<int>("EstadoDocumentos");
 
+                    b.Property<string>("InstituicaoCidade");
+
                     b.Property<string>("InstituicaoNome");
 
                     b.Property<string>("InstituicaoPais");
@@ -153,8 +155,6 @@ namespace IPSCIMOB.Migrations
                     b.Property<string>("Nome");
 
                     b.Property<int>("NumeroInterno");
-
-                    b.Property<int>("Pais");
 
                     b.Property<string>("Programa");
 

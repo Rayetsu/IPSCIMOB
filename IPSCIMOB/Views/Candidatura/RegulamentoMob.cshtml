@@ -6,9 +6,6 @@
 
 }
 
-
-
-
 <div align="center">
     <h2>Candidatura Programa de Mobilidade: @ViewBag.NomePrograma</h2>
     <h5>Passo 2 de 5</h5>
@@ -61,7 +58,16 @@
             <input type="hidden" asp-for="IsFormacao" />
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Pais" />
+            <input type="hidden" asp-for="InstituicaoCidade" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InstituicaoPais" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InstituicaoNome" />
+
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Pais" />*@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Estado" />

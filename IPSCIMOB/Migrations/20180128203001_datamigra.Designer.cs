@@ -12,8 +12,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180128182025_data")]
-    partial class data
+    [Migration("20180128203001_datamigra")]
+    partial class datamigra
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,6 +133,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<int>("EstadoDocumentos");
 
+                    b.Property<string>("InstituicaoCidade");
+
                     b.Property<string>("InstituicaoNome");
 
                     b.Property<string>("InstituicaoPais");
@@ -154,8 +156,6 @@ namespace IPSCIMOB.Migrations
                     b.Property<string>("Nome");
 
                     b.Property<int>("NumeroInterno");
-
-                    b.Property<int>("Pais");
 
                     b.Property<string>("Programa");
 
