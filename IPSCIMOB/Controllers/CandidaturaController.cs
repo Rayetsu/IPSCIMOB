@@ -271,7 +271,7 @@ namespace IPSCIMOB.Controllers
             ViewBag.Nome = user.Nome;
             ViewBag.NumeroInterno = user.NumeroInterno;
 
-
+            
             List<InstituicaoParceiraModel> instituicoesProgramaAtual = new List<InstituicaoParceiraModel>();
             foreach (InstituicaoParceiraModel i in _context.InstituicaoParceiraModel)
             {
@@ -279,9 +279,8 @@ namespace IPSCIMOB.Controllers
                 {                 
                     instituicoesProgramaAtual.Add(i);
                 }
-            } 
-
-            ViewBag.InstituicoesProgramaAtual = instituicoesProgramaAtual;
+            }
+            ViewBag.Instituicoes = new SelectList(instituicoesProgramaAtual, "Nome", "Nome");
 
 
 
