@@ -379,8 +379,8 @@ namespace IPSCIMOB.Controllers
         [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> ConsultarCandidatura()
         {
-            var programaAtual = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
-            ViewBag.NomePrograma = programaAtual.Titulo;
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.NomePrograma = programaAtual.Nome;
 
             var user = await _userManager.GetUserAsync(User);
             ViewBag.Nome = user.Nome;

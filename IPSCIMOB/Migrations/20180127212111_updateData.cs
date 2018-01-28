@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class data2 : Migration
+    public partial class updateData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -91,6 +91,7 @@ namespace IPSCIMOB.Migrations
                     Estado = table.Column<int>(nullable: false),
                     EstadoBolsa = table.Column<int>(nullable: false),
                     EstadoDocumentos = table.Column<int>(nullable: false),
+                    InstituicaoNome = table.Column<string>(nullable: true),
                     IsBolsa = table.Column<bool>(nullable: false),
                     IsConfirmado = table.Column<bool>(nullable: false),
                     IsEstagio = table.Column<bool>(nullable: false),
@@ -183,6 +184,38 @@ namespace IPSCIMOB.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_InformacaoGeral", x => x.InformacaoGeralID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InstituicaoParceiraModel",
+                columns: table => new
+                {
+                    InstituicaoParceiraID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Cidade = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: false),
+                    Pais = table.Column<string>(nullable: false),
+                    ProgramaNome = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InstituicaoParceiraModel", x => x.InstituicaoParceiraID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProgramaModel",
+                columns: table => new
+                {
+                    ProgramaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Descricao = table.Column<string>(nullable: false),
+                    Nome = table.Column<string>(nullable: false),
+                    ProgramaAtual = table.Column<bool>(nullable: false),
+                    UtilizadorProfissao = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProgramaModel", x => x.ProgramaID);
                 });
 
             migrationBuilder.CreateTable(
@@ -379,6 +412,12 @@ namespace IPSCIMOB.Migrations
 
             migrationBuilder.DropTable(
                 name: "InformacaoGeral");
+
+            migrationBuilder.DropTable(
+                name: "InstituicaoParceiraModel");
+
+            migrationBuilder.DropTable(
+                name: "ProgramaModel");
 
             migrationBuilder.DropTable(
                 name: "Sugestao");
