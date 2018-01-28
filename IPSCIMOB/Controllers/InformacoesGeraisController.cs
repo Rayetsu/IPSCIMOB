@@ -35,14 +35,14 @@ namespace IPSCIMOB.Controllers
                 return NotFound();
             }
 
-            var informacaoGeral = await _context.InformacaoGeral
-                .SingleOrDefaultAsync(m => m.InformacaoGeralID == id);
-            if (informacaoGeral == null)
+            var programaModel = await _context.ProgramaModel
+                .SingleOrDefaultAsync(m => m.ProgramaID == id);
+            if (programaModel == null)
             {
                 return NotFound();
             }
 
-            return View(informacaoGeral);
+            return View(programaModel);
         }
 
         //// GET: InformacoesGerais/Create

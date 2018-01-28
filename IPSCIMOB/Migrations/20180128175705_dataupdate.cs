@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace IPSCIMOB.Migrations
 {
-    public partial class dataaaaaa : Migration
+    public partial class dataupdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -92,6 +92,7 @@ namespace IPSCIMOB.Migrations
                     EstadoBolsa = table.Column<int>(nullable: false),
                     EstadoDocumentos = table.Column<int>(nullable: false),
                     InstituicaoNome = table.Column<string>(nullable: true),
+                    InstituicaoPais = table.Column<string>(nullable: true),
                     IsBolsa = table.Column<bool>(nullable: false),
                     IsConfirmado = table.Column<bool>(nullable: false),
                     IsEstagio = table.Column<bool>(nullable: false),

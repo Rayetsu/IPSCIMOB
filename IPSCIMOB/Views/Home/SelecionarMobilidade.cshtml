@@ -33,8 +33,6 @@
     </div>*@
 
 
-<h3>@ViewBag.UserProfissao</h3>
-
 <table class="table">
     <thead>
         <tr>
@@ -48,49 +46,29 @@
     <tbody>
         @foreach (var item in Model)
         {
-            
-
-            @*if (item.UtilizadorProfissao.Equals(ViewBag.UserProfissao))
+           
+            if (@item.UtilizadorProfissao.ToString().Equals(ViewBag.UserProfissao))
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProgramaAtual)
                     </td>
                     <td>
                         <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
                     </td>
                 </tr>
             }
-            if (item.UtilizadorProfissao.Equals("FuncionarioAluno"))
+            if (@item.UtilizadorProfissao.ToString().Equals("FuncionarioAluno"))
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ProgramaAtual)
-                    </td>
-                    <td>
                         <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
                     </td>
                 </tr>
-            }*@
-
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    <a asp-action="Inicio" asp-route-id="@item.ProgramaID">Seguinte</a>
-                </td>
-            </tr>
-
-
-
-
+            }
         }
     </tbody>
 </table>

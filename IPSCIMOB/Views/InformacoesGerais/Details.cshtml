@@ -1,4 +1,4 @@
-﻿@model IPSCIMOB.Models.InformacaoGeral
+﻿@model IPSCIMOB.Models.ProgramaModel
 
 @{
     ViewData["Title"] = "Programas";
@@ -8,7 +8,7 @@
 
 <div align="center"
 >
-    <h1>@Model.Titulo</h1>
+    <h1>@Model.Nome</h1>
 
 
     @Html.Raw(@Model.Descricao)
@@ -36,7 +36,7 @@
 @if (this.User.IsInRole("CIMOB"))
 {
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.InformacaoGeralID">Editar</a> |
+        <a asp-action="Edit" asp-route-id="@Model.ProgramaID">Editar</a> |
         <a asp-action="Index">Voltar à lista</a>
     </div>
 }

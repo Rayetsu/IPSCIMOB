@@ -12,8 +12,8 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180127195935_dataaaaaa")]
-    partial class dataaaaaa
+    [Migration("20180128175705_dataupdate")]
+    partial class dataupdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,6 +134,8 @@ namespace IPSCIMOB.Migrations
                     b.Property<int>("EstadoDocumentos");
 
                     b.Property<string>("InstituicaoNome");
+
+                    b.Property<string>("InstituicaoPais");
 
                     b.Property<bool>("IsBolsa");
 

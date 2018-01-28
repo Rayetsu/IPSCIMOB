@@ -134,6 +134,8 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("InstituicaoNome");
 
+                    b.Property<string>("InstituicaoPais");
+
                     b.Property<bool>("IsBolsa");
 
                     b.Property<bool>("IsConfirmado");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 
@@ -110,6 +111,7 @@ namespace IPSCIMOB.Models
     public class CandidaturaModel
     {
 
+
         [Key]
         public int CandidaturaID { get; set; }
 
@@ -117,8 +119,11 @@ namespace IPSCIMOB.Models
         [Display(Name = "Programa")]
         public string Programa { get; set; }
 
-        [Display(Name = "Instituição")]
+        [Display(Name = "Instituição")]  
         public string InstituicaoNome { get; set; }
+
+        [Display(Name = "Instituição País")]
+        public string InstituicaoPais { get; set; }
 
         //[Display(Name = "InstituiçãoID")]
         //public InstituicaoParceiraModel InstituicaoID { get; set; }
