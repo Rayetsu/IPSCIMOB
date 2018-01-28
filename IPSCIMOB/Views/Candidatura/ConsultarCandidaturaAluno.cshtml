@@ -150,11 +150,9 @@
             </div>*@
 
 
-            <div id="EscolhaInstituicao">
-                <select asp-for="InstituicaoNome" asp-items="@(new SelectList (ViewBag.InstituicoesProgramaAtual))">
-                    <option>Escolha Instituição</option>
-                </select>
-                <span asp-validation-for="InstituicaoNome" class="text-danger" />
+            <div class="form-group">
+                <label asp-for="InstituicaoNome" class="control-label"></label>
+                <select asp-for="InstituicaoNome" class="form-control" asp-items="ViewBag.Instituicoes"></select>
             </div>
 
             <br /><br />
