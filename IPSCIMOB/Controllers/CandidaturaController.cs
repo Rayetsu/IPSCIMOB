@@ -257,6 +257,9 @@ namespace IPSCIMOB.Controllers
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Nome;
+
+            var infoGeral = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Documentação");
+            ViewBag.InfoGeral = infoGeral;
             return View();
         }
 
@@ -350,6 +353,8 @@ namespace IPSCIMOB.Controllers
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.NomePrograma = programaAtual.Nome;
+            
+            ViewBag.InfoGeraisModel = await _context.InformacaoGeral.SingleOrDefaultAsync(m => m.Titulo == "Regulamento");
 
             var user = await _userManager.GetUserAsync(User);
             var candidaturaModel = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == user.CandidaturaAtual);

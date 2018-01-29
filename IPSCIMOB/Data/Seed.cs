@@ -173,8 +173,19 @@ namespace IPSCIMOB.Data
                 Descricao = "Adicione Informações..."
             });
 
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Documentação",
+                Descricao = "<div class=\"center-justified\"><p><h3>Instituto Politécnico de Setúbal (IPS)</h3></p></p><p><h4 align=\"center\">Artigo 38º</h4></p></div><p>Documentação</p><p>Sem prejuízo das regras fixadas por cada programa referido no nº 1 do artigo 2º, considera-se obrigatório que cada processo de docente IPS em mobilidade seja constituído pela seguinte documentação:</p><p>a) Acordo Bilateral ou equivalente legal (celebrado antes da realização da mobilidade, e estabelecido entre o IPS e uma instituição parceira, de carácter nacional ou internacional);</p><p>b) Ficha de Candidatura, nos termos do artigo 31º;</p><p>c) Ficha de Docente;</p><p>d) Contrato de Docente;</p><p>e) Confirmação do período de leccionação/estada no estrangeiro, emitida pela instituição de acolhimento;</p><p>f) Recibo de pagamento da bolsa (quando aplicável);</p><p>g) Relatório Final Individual;</p><p>h) Adendas ao Contrato (quando aplicável);</p><p>i) Recibos relativos a Adendas ao Contrato (quando aplicável).</p><h3>Mais Informações: </h3></p> <p><a href = \"https://www.ips.pt/ips_si/file_get.legislacao_cont?p_id=F1154480549/Regulamento_Mobilidade.pdf\" target=\"_blank\">REGULAMENTO DE MOBILIDADE INTERNACIONAL DA COMUNIDADE IPS</a></p>",
+            });
 
-        
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Regulamento",
+                Descricao = "  <p>INSTITUTO POLITÉCNICO DE SETÚBAL(IPS)</p>No âmbito da criação do CIMOB - IPS, e da aposta no desenvolvimento da internacionalização da actividade do IPS e suas unidades orgânicas, torna-se essencial estabelecer um conjunto de regras e critérios cuja aplicação defina, em articulação com as normas comunitárias e extra comunitárias em vigor, uma mobilidade internacional de qualidade, com rigor e transparência e que contribua para o desenvolvimento da comunidade académica do IPS enquanto instituição de ensino superior em Portugal, na Europa e no Mundo. Ouvidas as Escolas, o CIMOB-IPS propõe à Comissão Permanente do Conselho Geral o seguinte Regulamento de Mobilidade da Comunidade IPS: <p> <p><h3> </h3></p><p><a href = \"https://www.ips.pt/ips_si/file_get.legislacao_cont?p_id=F1154480549/Regulamento_Mobilidade.pdf\" target=\"_blank\">REGULAMENTO DE MOBILIDADE INTERNACIONAL DA COMUNIDADE IPS</a></p></p> "
+            });
+
+
 
             // Programas de Mobilidade
 
