@@ -84,28 +84,18 @@ namespace IPSCIMOB.Models
         [Display(Name = "Instituição Cidade")]
         public string InstituicaoCidade { get; set; }
 
-
-
-
-        // modificar este
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data Inicio Candidatura")]
         public DateTime DataInicioCandidatura { get; set; }
-        // modificar este
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Data Fim Candidatura")]
         public DateTime DataFimCandidatura { get; set; }
 
-        // modificar este
         [Display(Name = "Semestre")]
         public Semestre Semestre { get; set; }
-
-
-
-
-
 
         //[Display(Name = "InstituiçãoID")]
         //public InstituicaoParceiraModel InstituicaoID { get; set; }

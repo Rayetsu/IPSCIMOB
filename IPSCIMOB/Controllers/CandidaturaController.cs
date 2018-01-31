@@ -494,7 +494,9 @@ namespace IPSCIMOB.Controllers
 
         [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> HistoricoCandidaturas(int? id)
-        {            
+        {
+            var user = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.NumeroInterno == id);
+            ViewBag.UserName = user.Nome;
             ViewBag.NumeroInterno = id;
 
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<IPSCIMOB.Models.CandidaturaModel>
 
 @{
-    ViewData["Title"] = "HistoricoCandidaturas";
+    ViewData["Title"] = "Historico Candidaturas";
 }
 
-<h2>Histórico das Candidaturas do Utilizador: </h2>
+<h2>Histórico das Candidaturas do Utilizador: @ViewBag.UserName</h2>
 <h4>Número Interno: @ViewBag.NumeroInterno</h4>
 <br />
 
@@ -142,5 +142,5 @@
    
 </table>
 <div align="center">
-    <input type="button" value="VOLTAR ATRÁS" onclick="@("window.location.href='" + @Url.Action("AlunosComCandidaturas", "Candidatura") + "'");" />
+    <input type="button" value="VOLTAR ATRÁS" onclick="@("window.location.href='" + @Url.Action("UtilizadoresComCandidaturas", "Candidatura") + "'");" />
 </div>
