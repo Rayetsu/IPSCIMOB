@@ -30,8 +30,6 @@ namespace IPSCIMOB.Data
             SeedUsers(_userManager);
         }
 
-
-
         public static void Initialize(ApplicationDbContext _context)
         {
             _context.Database.EnsureCreated();
@@ -194,7 +192,9 @@ namespace IPSCIMOB.Data
                 Nome = "Vasco Da Gama",
                 Descricao = "<div class=\"center-justified\"> <p>O programa Vasco da Gama é um programa de mobilidade de estudantes entre escolas do ensino politécnico.</p> <p>O intercâmbio de estudantes ao abrigo do programa implica um acordo prévio entre a instituição de origem e a instituição de acolhimento, assinado pelos respectivos responsáveis.</p> <p>A mobilidade de estudantes abrange também os estágios, trabalhos de fim de curso ou projectos finais, desde que as referidas actividades integrem o plano curricular do curso na escola de origem.</p> </div> <div class=\"center-justified\"> <h3>Período de candidatura:</h3> <ul> <li>Até 30 de abril para o 1º semestre</li> <li>Até 30 de novembro para o 2º semestre</li> </ul> </div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Aluno
+                UtilizadorProfissao = UtilizadorProfissao.Aluno,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -202,7 +202,9 @@ namespace IPSCIMOB.Data
                 Nome = "Politécnico de Macau",
                 Descricao = "<div class=\"center-justified\"> <p>O Programa Politécnico de Macau destina-se a estudantes que cumpram os requisitos previstos no <a href=\"https://www.si.ips.pt/ips_si/web_gessi_docs.download_file?p_name=F-102843010/Regulamento%20Mobilidade%20Internacional%20do%20IPS_Out_2014.pdf\" target=\"_blank\"> Regulamento da Mobilidade Internacional do IPS(PDF | 217KB)</a></p><p>Adicionalmente, os estudantes deverão possuir conhecimentos de Inglês ao nível de Utilizador Proficiente, uma vez que as aulas são lecionadas em Inglês e os Professores não falam Português.</p><p> <h3>Despesas:</h3></p><p><h4>Estudantes</h4></p><ul><li>Seguro de saúde válido no país de destino</li><li>Deslocações intercontinentais (viagem)</li></ul><p><h4>IPMacau</h4></p><ul><li>Alojamento</li><li>Alimentação</li><li>Pocket Money</li><li>Seguro de acidentes no âmbito das actividades escolares</li><li>Deslocações internas (caso se justifique)</li></ul><p><h3>Consulta a informação disponível sobre oferta:</h3></p><a href = \"http://www.ipm.edu.mo/student_corner/en/download_course_description.php\" target=\"_blank\" > Instituto Politécnico de Macau</a></div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Aluno
+                UtilizadorProfissao = UtilizadorProfissao.Aluno,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -210,7 +212,9 @@ namespace IPSCIMOB.Data
                 Nome = "Erasmus+ FUNCIONÁRIOS",
                 Descricao = "<div class=\"center-justified\"><p>No âmbito do Ensino Superior, a Ação-Chave 1 – Mobilidade Individual, do Programa ERASMUS+, oferece oportunidades a docentes e não docentes de instituições de ensino superior (IES), bem como a pessoal de organizações da sociedade civil, de participarem numa experiência noutro país europeu. </p> </div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Funcionario
+                UtilizadorProfissao = UtilizadorProfissao.Funcionario,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -218,7 +222,9 @@ namespace IPSCIMOB.Data
                 Nome = "Erasmus+ ALUNOS",
                 Descricao = "<div class=\"center-justified\"><p>O Programa Erasmus destina-se a apoiar as actividades europeias das instituições de ensino superior(IES), promovendo a mobilidade e o intercâmbio de estudantes das Instituições de Ensino Superior.No que respeita à mobilidade de estudantes, visa oferecer a possibilidade de efectuar um período de estudos, com pleno reconhecimento académico, com a duração mínima de 5 meses e máxima de 1 ano lectivo, num estabelecimento de ensino superior de outro Estado elegível, dotado de Carta Universitária Erasmus. </p> </div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Aluno
+                UtilizadorProfissao = UtilizadorProfissao.Aluno,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -226,7 +232,9 @@ namespace IPSCIMOB.Data
                 Nome = "Santander Universidades - BOLSAS IBERO-AMERICANAS",
                 Descricao = "<div class=\"center-justified\"><p>O intercâmbio de estudantes através do Programa de Bolsas Ibero- Americanas Santander Universidades consiste na realização de um período de estudos. O intercâmbio tem obrigatoriamente de estar abrangido por um Protocolo de Cooperação com uma instituição que integre a rede deste Programa. A matrícula/inscrição e o pagamento das propinas efetuados no IPS são válidos para os estudos na universidade brasileira de destino, não havendo necessidade de qualquer matrícula adicional.</p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\" > Bolsas Santander</a></p></div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Aluno
+                UtilizadorProfissao = UtilizadorProfissao.Aluno,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -234,7 +242,9 @@ namespace IPSCIMOB.Data
                 Nome = "Santander Universidades - BOLSAS LUSO-BRASILEIRAS",
                 Descricao = "<div class=\"center-justified\"><p>O intercâmbio de estudantes através do Programa de Bolsas Luso- Brasileiras Santander Universidades consiste na realização de um período de estudos. O intercâmbio tem obrigatoriamente de estar abrangido por um Protocolo de Cooperação com uma instituição que integre a rede deste Programa. A matrícula/inscrição e o pagamento das propinas efetuados no IPS são válidos para os estudos na universidade brasileira de destino, não havendo necessidade de qualquer matrícula adicional. </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\" > Bolsas Santander</a></p></div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Aluno
+                UtilizadorProfissao = UtilizadorProfissao.Aluno,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -242,7 +252,9 @@ namespace IPSCIMOB.Data
                 Nome = "Santander Universidades - BOLSAS IBERO-AMERICANAS SANTANDER INVESTIGAÇÃO",
                 Descricao = "<div class=\"center-justified\"><p>O Programa de Bolsas Ibero-americanas Santander Investigação tem como objetivo reforçar a mobilidade e o intercâmbio de professores, investigadores e estudantes de doutoramento entre universidades e centros de investigação ibero-americanos. O intercâmbio deverá ser realizado numa instituição parceira pertencente à rede do Programa, sendo obrigatória a existência de um Protocolo de Cooperação entre o IPS e a mesma. Esta tipologia de bolsa visa promover a atualização do nível de conhecimentos, a aprendizagem de novas técnicas e métodos, e o estabelecimento ou consolidação de vínculos académicos entre equipas de investigação e instituições ibero - americanas, permitindo inclusivamente reunir informação adicional e específica necessária para os estudos ou investigações que os destinatários estejam a realizar.Especificamente, as bolsas também pretendem ajudar a completar a formação e especialização científica e técnica do pessoal investigador em formação ou dos estudantes de doutoramento. O Programa de Bolsas Ibero - Americanas Santander Investigação é patrocinado pelo Banco Santander </ p><p><h3>Mais Informações: </h3></p><p><a href = \"http://www.bolsas-santander.com/\" target=\"_blank\"> Bolsas Santander</a></p></div>",
                 ProgramaAtual = false,
-                UtilizadorProfissao = UtilizadorProfissao.Funcionario
+                UtilizadorProfissao = UtilizadorProfissao.Funcionario,
+                PrazoCandidaturaPrimeiroSemestre = new DateTime(2018, 09, 15),
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
             });
 
 
@@ -368,7 +380,7 @@ namespace IPSCIMOB.Data
                     UserName = "cimob@email.com",
                     Email = "cimob@email.com",
                     Nome = "CIMOB",
-                    NumeroInterno = 142547145,
+                    NumeroInterno = 142547140,
                     NumeroDoBI = 325547456,
                     Morada = "rua",
                     NumeroDaPorta = 3,
@@ -399,7 +411,7 @@ namespace IPSCIMOB.Data
                         Email = "aluno@email.com",
                         Nome = "ALUNO",
                         NumeroInterno = 142547145,
-                        NumeroDoBI = 325547456,
+                        NumeroDoBI = 325547451,
                         Morada = "rua",
                         NumeroDaPorta = 3,
                         Andar = "2ºDto.",

@@ -114,6 +114,17 @@
                     <select asp-for="Estado" class="form-control"></select>
                     <span asp-validation-for="Estado" class="text-danger"></span>
                 </div>*@
+            <br />
+            <br />
+
+            <div class="form-group">
+                <label asp-for="Semestre"></label>
+                <div class="col-md-10">
+                    <select asp-for="Semestre" asp-items="Html.GetEnumSelectList<Semestre>()">
+                        <option selected="selected" value="">Selecione o Semestre </option>
+                    </select>
+                </div>
+            </div>
 
             <br />
             <br />

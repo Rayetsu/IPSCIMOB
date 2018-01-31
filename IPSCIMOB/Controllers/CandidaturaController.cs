@@ -68,22 +68,35 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CandidaturaID, Programa, InstituicaoNome, InstituicaoPais, InstituicaoCidade, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Create([Bind("CandidaturaID, Programa, InstituicaoNome, InstituicaoPais, InstituicaoCidade, DataInicioCandidatura, DataFimCandidatura, Semestre, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+
+            int result1 = DateTime.Compare(DateTime.Now, programaAtual.PrazoCandidaturaPrimeiroSemestre);
+            int result2 = DateTime.Compare(DateTime.Now, programaAtual.PrazoCandidaturaSegundoSemestre);
             if (ModelState.IsValid)
             {
+                if (candidaturaModel.Semestre.Equals(Semestre.PrimeiroSemestre) && result1 > 0
+                    || candidaturaModel.Semestre.Equals(Semestre.SegundoSemestre) && result2 > 0)
+                {
+                    return RedirectToAction(nameof(ConsultarCandidatura));
+                }
                 candidaturaModel.Email = user.Email;
                 candidaturaModel.Nome = user.Nome;
                 candidaturaModel.NumeroInterno = user.NumeroInterno;
 
                 candidaturaModel.Programa = programaAtual.Nome;
+                candidaturaModel.DataInicioCandidatura = DateTime.Now;
 
-                var instituicaoEscolhida = 
-                    await _context.InstituicaoParceiraModel.SingleOrDefaultAsync(m => m.Nome == candidaturaModel.InstituicaoNome);
-                 candidaturaModel.InstituicaoPais = instituicaoEscolhida.Pais;                
-                candidaturaModel.InstituicaoCidade = instituicaoEscolhida.Cidade;
+                foreach (InstituicaoParceiraModel i in _context.InstituicaoParceiraModel)
+                {
+                    if (i.Nome == candidaturaModel.InstituicaoNome && programaAtual.Nome == i.ProgramaNome)
+                    {
+                        candidaturaModel.InstituicaoPais = i.Pais;
+                        candidaturaModel.InstituicaoCidade = i.Cidade;
+                    }
+                }
 
                 candidaturaModel.Estado = EstadoCandidatura.EmRealizacao2;
                 _context.Add(candidaturaModel);
@@ -93,7 +106,7 @@ namespace IPSCIMOB.Controllers
 
                 return RedirectToAction(nameof(RegulamentoMob));
             }
-            return View(candidaturaModel);
+            return RedirectToAction(nameof(ConsultarCandidatura));
 
         }
 
@@ -120,9 +133,11 @@ namespace IPSCIMOB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade,DataInicioCandidatura, DataFimCandidatura, Semestre, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa, EstadoBolsa, IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
+            var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             var userEmail = candidaturaModel.Email;
+            var user = await _userManager.GetUserAsync(User);
 
             if (id != candidaturaModel.CandidaturaID)
             {
@@ -133,10 +148,14 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
-                    var instituicaoEscolhida =
-                    await _context.InstituicaoParceiraModel.SingleOrDefaultAsync(m => m.Nome == candidaturaModel.InstituicaoNome);
-                    candidaturaModel.InstituicaoPais = instituicaoEscolhida.Pais;
-                    candidaturaModel.InstituicaoCidade = instituicaoEscolhida.Cidade;
+                    foreach (InstituicaoParceiraModel i in _context.InstituicaoParceiraModel)
+                    {
+                        if (i.Nome == candidaturaModel.InstituicaoNome && programaAtual.Nome == i.ProgramaNome)
+                        {
+                            candidaturaModel.InstituicaoPais = i.Pais;
+                            candidaturaModel.InstituicaoCidade = i.Cidade;
+                        }
+                    }
 
                     if (candidaturaModel.EstadoDocumentos.Equals(EstadoDocumentos.Aceites))
                     {
@@ -146,8 +165,21 @@ namespace IPSCIMOB.Controllers
                     {
                         new Notificacao(userEmail, "CIMOB - Estado Documentos Submetidos", "Os documentos submetidos ao Programa " + candidaturaModel.Programa + " foram: " + candidaturaModel.EstadoDocumentos);
                     }
+                    if (candidaturaModel.Estado == EstadoCandidatura.Aceite)
+                    {
+                        candidaturaModel.DataFimCandidatura = DateTime.Now;
+                    }
+                    if(candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
+                    {                      
+                        user.IsEmMobilidade = true;
+                    }
+                    if (candidaturaModel.Estado == EstadoCandidatura.Finalizou)
+                    {
+                        user.IsEmMobilidade = false;
+                    }
                     _context.Update(candidaturaModel);
                     await _context.SaveChangesAsync();
+                   
                     if (candidaturaModel.Estado == EstadoCandidatura.Aceite || candidaturaModel.Estado == EstadoCandidatura.Recusado
                         || candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
                     {
@@ -177,7 +209,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado")] CandidaturaModel candidaturaModel)
+        public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade,DataInicioCandidatura, DataFimCandidatura, Semestre, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user.CandidaturaAtual != candidaturaModel.CandidaturaID)
@@ -327,11 +359,11 @@ namespace IPSCIMOB.Controllers
             {
                 if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao2)
                 {
-                    return View("RegulamentoMob", candidaturaModel);
+                    return RedirectToAction(nameof(RegulamentoMob));
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao3)
                 {
-                    return View("SubmeterDocs", candidaturaModel);
+                    return RedirectToAction(nameof(SubmeterDocs));
                 }
                 else if (candidaturaModel.Estado == EstadoCandidatura.EmRealizacao4)
                 {
@@ -342,7 +374,7 @@ namespace IPSCIMOB.Controllers
                                candidaturaModel.Estado == EstadoCandidatura.Recusado ||
                                     candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
                 {
-                    return View("FinalCandidatura", candidaturaModel);
+                    return RedirectToAction(nameof(FinalCandidatura));
                 }
             }
             return NotFound();
@@ -436,7 +468,7 @@ namespace IPSCIMOB.Controllers
         }
 
         [Authorize(Roles = "CIMOB")]
-        public async Task<IActionResult> AlunosEmMob()
+        public async Task<IActionResult> UtilizadoresEmMob()
         {
             return View(await _context.CandidaturaModel.ToListAsync());
         }
@@ -462,15 +494,13 @@ namespace IPSCIMOB.Controllers
 
         [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> HistoricoCandidaturas(int? id)
-        {
-            var candidatura = await _context.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == id);
-            ViewBag.NomeUtilizador = candidatura.Nome;
-            ViewBag.NumeroInterno = candidatura.NumeroInterno;
+        {            
+            ViewBag.NumeroInterno = id;
 
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in _context.CandidaturaModel)
             {
-                if (c.NumeroInterno.Equals(candidatura.NumeroInterno))
+                if (c.NumeroInterno==id)
                 {
                     candidaturasUser.Add(c);
                 }
@@ -480,7 +510,7 @@ namespace IPSCIMOB.Controllers
 
 
 
-        public Boolean verificarAluno(int numero, List<CandidaturaModel> candidaturasUser)
+        public Boolean verificarUtilizador(int numero, List<CandidaturaModel> candidaturasUser)
         {
             foreach (CandidaturaModel c in candidaturasUser)
             {
@@ -493,12 +523,12 @@ namespace IPSCIMOB.Controllers
         }
 
         [Authorize(Roles = "CIMOB")]
-        public IActionResult AlunosComCandidaturas()
+        public IActionResult UtilizadoresComCandidaturas()
         {
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in _context.CandidaturaModel)
             {
-                if (!verificarAluno(c.NumeroInterno, candidaturasUser))
+                if (!verificarUtilizador(c.NumeroInterno, candidaturasUser))
                 {
                     candidaturasUser.Add(c);
                 }

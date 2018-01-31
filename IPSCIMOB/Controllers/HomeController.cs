@@ -25,12 +25,12 @@ namespace IPSCIMOB.Controllers
         {
             if (this.User.IsInRole("Aluno"))
             {
-                ViewBag.UserProfissao = "Aluno";
+                ViewBag.UserProfissao = UtilizadorProfissao.Aluno;
                 return View("~/Views/Home/SelecionarMobilidade.cshtml", await _context.ProgramaModel.ToListAsync());
             }
             else if (this.User.IsInRole("Funcionário"))
             {
-                ViewBag.UserProfissao = "Funcionário";
+                ViewBag.UserProfissao = UtilizadorProfissao.Funcionario;
                 return View("~/Views/Home/SelecionarMobilidade.cshtml", await _context.ProgramaModel.ToListAsync());
             }
             else if (this.User.IsInRole("CIMOB"))

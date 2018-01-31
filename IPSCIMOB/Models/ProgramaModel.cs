@@ -16,6 +16,8 @@ namespace IPSCIMOB.Models
         FuncionarioAluno
     }
 
+   
+
     public class ProgramaModel
     {
 
@@ -35,5 +37,23 @@ namespace IPSCIMOB.Models
 
         [Display(Name = "Profissão Indicada")]
         public UtilizadorProfissao UtilizadorProfissao { get; set; }
+
+
+
+
+        // modificar este
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Prazo Candidatura 1º Semestre")]
+        public DateTime PrazoCandidaturaPrimeiroSemestre { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Prazo Candidatura 2º Semestre")]
+        public DateTime PrazoCandidaturaSegundoSemestre { get; set; }
+
+
     }
 }

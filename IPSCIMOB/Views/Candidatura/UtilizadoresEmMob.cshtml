@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IPSCIMOB.Models.CandidaturaModel>
+
+@{
+    ViewData["Title"] = "AlunosEmMob";
+}
+
+<h2>Lista de Utilizadores que se encontram em Mobilidade</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+               <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroInterno)
+                </th>  
+                <th>
+                    @Html.DisplayNameFor(model => model.InstituicaoPais)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstituicaoCidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        
+        if (item.Estado == EstadoCandidatura.EmMobilidade)
+        {
+            <tr>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroInterno)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoPais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoCidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.CandidaturaID">Edit</a> |*@
+                <a asp-action="Details" asp-route-id="@item.CandidaturaID">Detalhes</a> 
+                @*<a asp-action="Delete" asp-route-id="@item.CandidaturaID">Delete</a>*@
+            </td>
+        </tr>
+
+
+
+
+    }
+}
+    </tbody>
+</table>
+
+
+<div align="center">
+    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>

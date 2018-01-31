@@ -31,6 +31,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.UtilizadorProfissao)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrazoCandidaturaPrimeiroSemestre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrazoCandidaturaSegundoSemestre)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -45,6 +51,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UtilizadorProfissao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrazoCandidaturaPrimeiroSemestre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrazoCandidaturaSegundoSemestre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProgramaID">Editar</a> |

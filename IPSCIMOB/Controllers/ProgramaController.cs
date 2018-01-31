@@ -78,10 +78,16 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProgramaID,Nome,Descricao,ProgramaAtual, UtilizadorProfissao")] ProgramaModel programaModel)
+        public async Task<IActionResult> Create([Bind("ProgramaID,Nome,Descricao,ProgramaAtual, UtilizadorProfissao, PrazoCandidaturaPrimeiroSemestre, PrazoCandidaturaSegundoSemestre")] ProgramaModel programaModel)
         {
             if (ModelState.IsValid)
             {
+                int result1 = DateTime.Compare(DateTime.Now, programaModel.PrazoCandidaturaPrimeiroSemestre);
+                int result2 = DateTime.Compare(DateTime.Now, programaModel.PrazoCandidaturaSegundoSemestre);
+                if (result1 > 0 || result2 > 0)
+                {
+                    return View(programaModel);
+                }
                 _context.Add(programaModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -110,7 +116,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProgramaID,Nome,Descricao,ProgramaAtual, UtilizadorProfissao")] ProgramaModel programaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("ProgramaID,Nome,Descricao,ProgramaAtual, UtilizadorProfissao,PrazoCandidaturaPrimeiroSemestre, PrazoCandidaturaSegundoSemestre")] ProgramaModel programaModel)
         {
             if (id != programaModel.ProgramaID)
             {
@@ -121,6 +127,12 @@ namespace IPSCIMOB.Controllers
             {
                 try
                 {
+                    int result1 = DateTime.Compare(DateTime.Now, programaModel.PrazoCandidaturaPrimeiroSemestre);
+                    int result2 = DateTime.Compare(DateTime.Now, programaModel.PrazoCandidaturaSegundoSemestre);
+                    if (result1 > 0 || result2 > 0)
+                    {
+                        return View(programaModel);
+                    }
                     _context.Update(programaModel);
                     await _context.SaveChangesAsync();
                 }

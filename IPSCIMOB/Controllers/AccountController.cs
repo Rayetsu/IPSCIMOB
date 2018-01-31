@@ -263,6 +263,12 @@ namespace IPSCIMOB.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                DateTime dataLimite = DateTime.Now.AddYears(-17);
+                int resultadoData = DateTime.Compare(dataLimite, model.DataDeNascimento);
+                if (resultadoData < 0)
+                {
+                    return View(model);
+                }
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,

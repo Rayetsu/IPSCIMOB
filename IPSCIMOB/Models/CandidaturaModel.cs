@@ -34,57 +34,7 @@ namespace IPSCIMOB.Models
         Finalizou
     }
 
-    //public enum Paises
-    //{
-    //    [Display(Name = "Alemanhã")]
-    //    Alemanha,
-    //    [Display(Name = "Áustria")]
-    //    Austria,
-    //    [Display(Name = "Bélgica")]
-    //    Belgica,
-    //    [Display(Name = "Chipre")]
-    //    Chipre,
-    //    [Display(Name = "Dinamarca")]
-    //    Dinamarca,
-    //    [Display(Name = "Eslováquia")]
-    //    Eslovaquia,
-    //    [Display(Name = "Eslovénia")]
-    //    Eslovenia,
-    //    [Display(Name = "Espanha")]
-    //    Espanha,
-    //    [Display(Name = "Finlândia")]
-    //    Finlandia,
-    //    [Display(Name = "França")]
-    //    Franca,
-    //    [Display(Name = "Grécia")]
-    //    Grecia,
-    //    [Display(Name = "Hungria")]
-    //    Hungria,
-    //    [Display(Name = "Irlanda")]
-    //    Irlanda,
-    //    [Display(Name = "Itália")]
-    //    Italia,
-    //    [Display(Name = "Letónia")]
-    //    Letonia,
-    //    [Display(Name = "Lituania")]
-    //    Lituania,
-    //    [Display(Name = "Noruega")]
-    //    Noruega,
-    //    [Display(Name = "Países Baixos")]
-    //    PaisesBaixos,
-    //    [Display(Name = "Polónia")]
-    //    Polonia,
-    //    [Display(Name = "Reino Unido")]
-    //    ReinoUnido,
-    //    [Display(Name = "República Checa")]
-    //    RepublicaCheca,
-    //    [Display(Name = "Roménia")]
-    //    Romenia,
-    //    [Display(Name = "Suécia")]
-    //    Suecia,
-    //    [Display(Name = "Turquia")]
-    //    Turquia
-    //}
+    
 
     public enum EstadoBolsa
     {
@@ -106,11 +56,17 @@ namespace IPSCIMOB.Models
         Recusados       
     }
 
-  
+    public enum Semestre
+    {
+        [Display(Name = "1ºSemestre")]
+        PrimeiroSemestre,
+        [Display(Name = "2ºSemestre")]
+        SegundoSemestre
+    }
+
 
     public class CandidaturaModel
     {
-
 
         [Key]
         public int CandidaturaID { get; set; }
@@ -127,6 +83,29 @@ namespace IPSCIMOB.Models
 
         [Display(Name = "Instituição Cidade")]
         public string InstituicaoCidade { get; set; }
+
+
+
+
+        // modificar este
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data Inicio Candidatura")]
+        public DateTime DataInicioCandidatura { get; set; }
+        // modificar este
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data Fim Candidatura")]
+        public DateTime DataFimCandidatura { get; set; }
+
+        // modificar este
+        [Display(Name = "Semestre")]
+        public Semestre Semestre { get; set; }
+
+
+
+
+
 
         //[Display(Name = "InstituiçãoID")]
         //public InstituicaoParceiraModel InstituicaoID { get; set; }
@@ -184,9 +163,7 @@ namespace IPSCIMOB.Models
 
         [EnumDataType(typeof(EstadoDocumentos))]
         [Display(Name = "Estado dos Documentos")]
-        public EstadoDocumentos EstadoDocumentos { get; set; }
-
-        
+        public EstadoDocumentos EstadoDocumentos { get; set; }        
 
     }
 }

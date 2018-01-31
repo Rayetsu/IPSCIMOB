@@ -4,103 +4,142 @@
     ViewData["Title"] = "HistoricoCandidaturas";
 }
 
-<h2>Histórico das Candidaturas do Utilizador: @ViewBag.NomeUtilizador</h2>
+<h2>Histórico das Candidaturas do Utilizador: </h2>
 <h4>Número Interno: @ViewBag.NumeroInterno</h4>
 <br />
 
 <table class="table">
     <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroInterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Programa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoDocumentos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBolsa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoBolsa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEstudo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsEstagio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsInvestigacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsLecionar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFormacao)
+        </th>
+        <th>
+            Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semestre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicioCandidatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataFimCandidatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoPais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoCidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Programa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoNome)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.EntrevistaID)
-                </th>*@
-
-            <th>
-                @Html.DisplayNameFor(model => model.IsBolsa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoBolsa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsEstudo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsEstagio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsInvestigacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsLecionar)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsFormacao)
-            </th>
-            <th>
-                Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InstituicaoPais)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroInterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Programa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoDocumentos)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.EntrevistaID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBolsa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoBolsa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEstudo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEstagio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsInvestigacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsLecionar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFormacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsConfirmado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semestre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioCandidatura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFimCandidatura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoPais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstituicaoCidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-                       <tr>                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Programa)
-                </td>
-                           <td>
-                               @Html.DisplayFor(modelItem => item.InstituicaoNome)
-                           </td>
-               @*<td>
-                        @Html.DisplayFor(modelItem => item.EntrevistaID)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsBolsa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EstadoBolsa)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsEstudo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsEstagio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsInvestigacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsLecionar)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsFormacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsConfirmado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InstituicaoPais)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-            </tr>
-            
-        }
+    }
+           
     </tbody>
+   
 </table>
 <div align="center">
     <input type="button" value="VOLTAR ATRÁS" onclick="@("window.location.href='" + @Url.Action("AlunosComCandidaturas", "Candidatura") + "'");" />

@@ -52,6 +52,15 @@
                 <th>
                     Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
                 </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Semestre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicioCandidatura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFimCandidatura)
+            </th>
                 <th>
                     @Html.DisplayNameFor(model => model.InstituicaoPais)
                 </th>
@@ -108,6 +117,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsConfirmado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semestre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicioCandidatura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFimCandidatura)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InstituicaoPais)
