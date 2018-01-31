@@ -1,0 +1,36 @@
+﻿@model IPSCIMOB.Models.Ajuda
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div align="center">
+    <h1>@Model.Nome</h1>
+
+
+    @Html.Raw(@Model.Descricao)
+
+</div>
+
+@*<div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
+        </dl>
+    </div>*@
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
+    <a asp-action="Index">Back to List</a>
+</div>

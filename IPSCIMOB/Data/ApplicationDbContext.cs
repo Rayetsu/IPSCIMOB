@@ -49,6 +49,8 @@ namespace IPSCIMOB.Data
 
         public DbSet<IPSCIMOB.Models.InstituicaoParceiraModel> InstituicaoParceiraModel { get; set; }
 
+        public DbSet<IPSCIMOB.Models.Ajuda> Ajuda { get; set; }
+
 
     }
 }

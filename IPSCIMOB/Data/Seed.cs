@@ -183,6 +183,50 @@ namespace IPSCIMOB.Data
                 Descricao = "  <p>INSTITUTO POLITÉCNICO DE SETÚBAL(IPS)</p>No âmbito da criação do CIMOB - IPS, e da aposta no desenvolvimento da internacionalização da actividade do IPS e suas unidades orgânicas, torna-se essencial estabelecer um conjunto de regras e critérios cuja aplicação defina, em articulação com as normas comunitárias e extra comunitárias em vigor, uma mobilidade internacional de qualidade, com rigor e transparência e que contribua para o desenvolvimento da comunidade académica do IPS enquanto instituição de ensino superior em Portugal, na Europa e no Mundo. Ouvidas as Escolas, o CIMOB-IPS propõe à Comissão Permanente do Conselho Geral o seguinte Regulamento de Mobilidade da Comunidade IPS: <p> <p><h3> </h3></p><p><a href = \"https://www.ips.pt/ips_si/file_get.legislacao_cont?p_id=F1154480549/Regulamento_Mobilidade.pdf\" target=\"_blank\">REGULAMENTO DE MOBILIDADE INTERNACIONAL DA COMUNIDADE IPS</a></p></p> "
             });
 
+            // Ajudas
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Registo",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Login",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Esqueceu-se da PW?",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Alterar Dados",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Alterar Pw",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Processo de Candidatura",
+                Descricao = "Adicione Informações..."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Entrevista",
+                Descricao = "Adicione Informações..."
+            });
+
 
 
             // Programas de Mobilidade
