@@ -69,5 +69,8 @@ namespace IPSCIMOB.Models
 
         [Display(Name = "Dados Verificados")]
         public bool IsDadosVerificados { get; set; }
+
+        [Display(Name = "Em Mobilidade")]
+        public bool IsMobilidade { get; set; }
     }
 }
