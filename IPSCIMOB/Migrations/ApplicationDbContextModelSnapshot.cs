@@ -28,11 +28,11 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(1000);
+                        .HasMaxLength(2000);
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 

@@ -188,19 +188,19 @@ namespace IPSCIMOB.Data
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Registo",
-                Descricao = "Adicione Informações..."
+                Descricao = "Preencha os campos com as suas informações corretas. Em seguida clique em registar. <p>Depois deverá confirmar o seu registo, no email que foi enviado para o seu email.</p>"
             });
 
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Login",
-                Descricao = "Adicione Informações..."
+                Descricao = "Realize o login colocando o seu email e password.<p>Se não sabe a password clique no link de ajuda de recuperação de Passwod.</p>"
             });
 
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Esqueceu-se da PW?",
-                Descricao = "Adicione Informações..."
+                Descricao = "Coloque o email que utilizou no registo e verifique o email para redefinir a password."
             });
 
             _context.Ajuda.Add(new Ajuda
@@ -215,18 +215,43 @@ namespace IPSCIMOB.Data
                 Descricao = "Adicione Informações..."
             });
 
+          
+
             _context.Ajuda.Add(new Ajuda
             {
-                Nome = "Processo de Candidatura",
+                Nome = "Processo de Candidatura: Inicio",
                 Descricao = "Adicione Informações..."
             });
 
             _context.Ajuda.Add(new Ajuda
             {
-                Nome = "Entrevista",
-                Descricao = "Adicione Informações..."
+                Nome = "Processo de Candidatura: Passo 1 ",
+                Descricao = "Proceda ao preenchimento dos dados referentes à candidatura.<p>Se pretende ser candidato à bolsa, o semestre que predende e a Instituição.</p> <p>Em seguida carregue em Submeter Candidatura</p>"
             });
 
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Processo de Candidatura: Passo 2 Regulamento",
+                Descricao = "Leia o regulamento e marque que leu o regulamento para proseguir para o próximo passo."
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Processo de Candidatura: Passo 3 Upload de Ficheiros",
+                Descricao = "Realize o upload dos ficheiros necessarios para a candidatura. <p>Faça um upload de cada vez.</p><p>Deverá esperar que os documentos sejam aceites.</p><p>Irá rebecer um email com o resultado dos documentos, se foram aceitos passará para o passo de Marcar Entrevista</p> <p>Se foram recusados terá de realiar os uploads dos ficheiros corretos e esperar novamente pelo resultado</p><p>Deve consultar os documentos necessários no separador Documentação do menu Menu Candidatura</p> "
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Processo de Candidatura: Passo 4 Marcar Entrevista",
+                Descricao = "Escolha uma data e hora para a sua entrevista. Deverá esperar que a entrevista seja aceite para proseguir para o próximo passo.<p>Irá receber um email com o resultado da entrevista, aceite ou rejeitada</p><p>Se for aceite deverá comparecer na sala CIMOB da EST de Setúbal na data e hora marcada.</p> <p>Se for rejeitada deverá de marcar outra data e/ou hora para a entrevista e esperara pelo resultado.</p> <p>Pode consultar a data e hora, Nome do Programa que se candidatou e o estado das entrevias, no separador Entrevista que se encontra no menu da Candidatura </p>"
+            });
+
+            _context.Ajuda.Add(new Ajuda
+            {
+                Nome = "Processo de Candidatura: Passo 5 Dados Finais da Candidatura",
+                Descricao = "Nesta página encontra-se os dados referentes à sua candidatura. <p>Se o estado da candidatura estiver em realização é porque ainda está em avaliação</p>"
+            });
 
 
             // Programas de Mobilidade
