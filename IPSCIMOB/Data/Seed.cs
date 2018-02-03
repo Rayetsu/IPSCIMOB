@@ -206,13 +206,13 @@ namespace IPSCIMOB.Data
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Alterar Dados",
-                Descricao = "Adicione Informações..."
+                Descricao = "Altere os dados"
             });
 
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Alterar Pw",
-                Descricao = "Adicione Informações..."
+                Descricao = "Coloque a sua pw atual.Em seguida coloque uma nova pw e repita-a para finalizar"
             });
 
           
@@ -252,6 +252,85 @@ namespace IPSCIMOB.Data
                 Nome = "Processo de Candidatura: Passo 5 Dados Finais da Candidatura",
                 Descricao = "Nesta página encontra-se os dados referentes à sua candidatura. <p>Se o estado da candidatura estiver em realização é porque ainda está em avaliação</p>"
             });
+
+            // Alunos Estrangeiros
+
+            _context.ForeignStudents.Add(new ForeignStudents
+            {
+                Nome = "Mike Tyson",
+                Nacionalidade = "USA",
+                Email = "mikke@gmail.com",
+                DataDeNascimento = new DateTime(1995, 10, 15),
+                EscolaIPSECurso = "EST, EI",
+                Morada = "rua 21",
+                NumeroDaPorta = 3,
+                Andar = "2",
+                Cidade = "New York",
+                Distrito = "distric1",
+                CodigoPostal = "45755-7856",
+                Universidade = "NY Universaty",
+                IsBolseiro = false,
+                IsFuncionario = false,
+                IsDadosVerificados = true
+            });
+
+            _context.ForeignStudents.Add(new ForeignStudents
+            {
+                Nome = "Ona Greeven",
+                Nacionalidade = "Belgium",
+                Email = "onaona@gmail.com",
+                DataDeNascimento = new DateTime(1995, 04, 18),
+                EscolaIPSECurso = "ESCE, CF",
+                Morada = "rua 2",
+                NumeroDaPorta = 8,
+                Andar = "0",
+                Cidade = "Bruxeles",
+                Distrito = "Bruxeles",
+                CodigoPostal = "428734-0756",
+                Universidade = "Bruxeles Universaty",
+                IsBolseiro = true,
+                IsFuncionario = false,
+                IsDadosVerificados = true
+            });
+
+            _context.ForeignStudents.Add(new ForeignStudents
+            {
+                Nome = "John Wick",
+                Nacionalidade = "USA",
+                Email = "mrwick@gmail.com",
+                DataDeNascimento = new DateTime(1980, 10, 15),
+                EscolaIPSECurso = "EST, EM",
+                Morada = "rua 5",
+                NumeroDaPorta = 2,
+                Andar = "0",
+                Cidade = "New York",
+                Distrito = "distric4",
+                CodigoPostal = "45755-7856",
+                Universidade = "NY Universaty",
+                IsBolseiro = false,
+                IsFuncionario = true,
+                IsDadosVerificados = true
+            });
+
+            _context.ForeignStudents.Add(new ForeignStudents
+            {
+                Nome = "Layla James",
+                Nacionalidade = "Spain",
+                Email = "layla@gmail.com",
+                DataDeNascimento = new DateTime(1996, 01, 28),
+                EscolaIPSECurso = "ESES, CS",
+                Morada = "rua 8",
+                NumeroDaPorta = 6,
+                Andar = "7",
+                Cidade = "Madrid",
+                Distrito = "Madrid",
+                CodigoPostal = "67755-3256",
+                Universidade = "Madrid Universaty",
+                IsBolseiro = true,
+                IsFuncionario = false,
+                IsDadosVerificados = true
+            });
+
 
 
             // Programas de Mobilidade
