@@ -12,7 +12,7 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180131234859_data")]
+    [Migration("20180202152802_data")]
     partial class data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,11 +29,11 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(1000);
+                        .HasMaxLength(2000);
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 

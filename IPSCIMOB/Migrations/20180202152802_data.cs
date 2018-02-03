@@ -15,8 +15,8 @@ namespace IPSCIMOB.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Descricao = table.Column<string>(maxLength: 1000, nullable: false),
-                    Nome = table.Column<string>(maxLength: 50, nullable: false)
+                    Descricao = table.Column<string>(maxLength: 2000, nullable: false),
+                    Nome = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {

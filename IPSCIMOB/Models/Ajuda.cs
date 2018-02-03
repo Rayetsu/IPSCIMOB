@@ -13,11 +13,11 @@ namespace IPSCIMOB.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string Nome { get; set; }
 
         [Required]
-        [StringLength(1000)]
+        [StringLength(2000)]
         public string Descricao { get; set; }
     }
 }
