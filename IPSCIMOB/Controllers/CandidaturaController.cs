@@ -478,6 +478,19 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> Inicio(int? id)
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ViewBag.docentes = 0;
+            ViewBag.alunos = 0;
+            foreach (ApplicationUser c in _context.ApplicationUser)
+            {
+                if (c.IsFuncionario == true)
+                {
+                    ViewBag.docentes++;
+                }
+                else
+                {
+                    ViewBag.alunos++;
+                }
+            }
             //foreach (ProgramaModel p in _context.ProgramaModel)
             //{
             //    p.ProgramaAtual = false;            
