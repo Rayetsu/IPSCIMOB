@@ -215,7 +215,7 @@ namespace IPSCIMOB.Data
                 Descricao = "Coloque a sua pw atual.Em seguida coloque uma nova pw e repita-a para finalizar"
             });
 
-          
+
 
             _context.Ajuda.Add(new Ajuda
             {
@@ -420,10 +420,50 @@ namespace IPSCIMOB.Data
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
             {
-                Nome = "Instituto Politécnico de Madrid",
+                Nome = "Instituto Politécnico de Barcelona",
                 Pais = "Espanha",
-                Cidade = "Madrid",
-                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+                Cidade = "Barcelona",
+                ProgramaNome = "Erasmus+ ALUNOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Valência",
+                Pais = "Espanha",
+                Cidade = "Valência",
+                ProgramaNome = "Erasmus+ ALUNOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Bilbau",
+                Pais = "Espanha",
+                Cidade = "Bilbau",
+                ProgramaNome = "Erasmus+ ALUNOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Marselha",
+                Pais = "França",
+                Cidade = "Marselha",
+                ProgramaNome = "Erasmus+ ALUNOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Lyon",
+                Pais = "França",
+                Cidade = "Lyon",
+                ProgramaNome = "Erasmus+ ALUNOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Genebra",
+                Pais = "França",
+                Cidade = "Genebra",
+                ProgramaNome = "Erasmus+ ALUNOS"
             });
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
@@ -436,9 +476,65 @@ namespace IPSCIMOB.Data
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
             {
+                Nome = "Instituto Politécnico de Madrid",
+                Pais = "Espanha",
+                Cidade = "Madrid",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Barcelona",
+                Pais = "Espanha",
+                Cidade = "Barcelona",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Genebra",
+                Pais = "França",
+                Cidade = "Genebra",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Lyon",
+                Pais = "França",
+                Cidade = "Lyon",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Londres",
+                Pais = "Reino Unido",
+                Cidade = "Londres",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Manchester",
+                Pais = "Reino Unido",
+                Cidade = "Manchester",
+                ProgramaNome = "Erasmus+ FUNCIONÁRIOS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
                 Nome = "Instituto Politécnico de Brasilia",
                 Pais = "Brasil",
                 Cidade = "Brasilia",
+                ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS SANTANDER INVESTIGAÇÃO"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Instituto Politécnico de Fortaleza",
+                Pais = "Brasil",
+                Cidade = "Fortaleza",
                 ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS SANTANDER INVESTIGAÇÃO"
             });
 
@@ -460,7 +556,7 @@ namespace IPSCIMOB.Data
 
             _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
             {
-                Nome = "Instituto Politécnico de Macau",
+                Nome = "Politécnico de Macau",
                 Pais = "China",
                 Cidade = "Macau",
                 ProgramaNome = "Politécnico de Macau"
@@ -506,13 +602,48 @@ namespace IPSCIMOB.Data
                 ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
             });
 
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Universidade de Orlando",
+                Pais = "Estados Unidos",
+                Cidade = "Orlando",
+                ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Universidade de Atlanta",
+                Pais = "Estados Unidos",
+                Cidade = "Atlanta",
+                ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
+            });
+
+            _context.InstituicaoParceiraModel.Add(new InstituicaoParceiraModel
+            {
+                Nome = "Universidade de Chicago",
+                Pais = "Estados Unidos",
+                Cidade = "Chicago",
+                ProgramaNome = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
+            });
 
             // Sugestões 
 
             _context.Sugestao.Add(new Sugestao
             {
                 EmailUtilizador = "aluno@email.com",
-                TextoSugestao = "Eu sugiro que...."
+                TextoSugestao = "Eu sugiro que façam uma parceria com o Instituto Politécnico de Braga."
+            });
+
+            _context.Sugestao.Add(new Sugestao
+            {
+                EmailUtilizador = "someone1995@Hotmail.com",
+                TextoSugestao = "O site é bastante intuitivo, porém gostava de poder enviar mensagens a outros alunos."
+            });
+
+            _context.Sugestao.Add(new Sugestao
+            {
+                EmailUtilizador = "paulofournier@email.com",
+                TextoSugestao = "Gostava de poder fazer erasmus de formação numa Instituição/Universidade no Peru."
             });
 
             _context.SaveChanges();
@@ -521,6 +652,7 @@ namespace IPSCIMOB.Data
 
         public static void SeedUsers(UserManager<ApplicationUser> userManager)
         {
+            //Adicionar Administrador CIMOB
             if (userManager.FindByNameAsync("cimob@email.com").Result == null)
             {
                 ApplicationUser user1 = new ApplicationUser
@@ -529,7 +661,7 @@ namespace IPSCIMOB.Data
                     Email = "cimob@email.com",
                     Nome = "CIMOB",
                     NumeroInterno = 142517140,
-                    NumeroDoBI =    325434721,
+                    NumeroDoBI = 325434721,
                     Morada = "rua Ali e Aqui",
                     NumeroDaPorta = 6,
                     Andar = "1ºDto.",
@@ -543,79 +675,223 @@ namespace IPSCIMOB.Data
                     IsDadosVerificados = true
                 };
 
-                IdentityResult result = userManager.CreateAsync(user1, "Ips123!").Result;
+                IdentityResult result1 = userManager.CreateAsync(user1, "Ips123!").Result;
 
-                if (result.Succeeded)
+                if (result1.Succeeded)
                 {
                     userManager.AddToRoleAsync(user1, "CIMOB").Wait();
                 }
+            }
 
 
-                if (userManager.FindByNameAsync("aluno@email.com").Result == null)
+            if (userManager.FindByNameAsync("aluno@email.com").Result == null)
+            {
+                ApplicationUser user2 = new ApplicationUser
                 {
-                    ApplicationUser user2 = new ApplicationUser
-                    {
-                        UserName = "aluno@email.com",
-                        Email = "aluno@email.com",
-                        Nome = "ALUNO",
-                        NumeroInterno = 142327134,
-                        NumeroDoBI = 915542421,
-                        Morada = "rua",
-                        NumeroDaPorta = 3,
-                        Andar = "2ºDto.",
-                        CodigoPostal = "2844-014",
-                        Cidade = "Seixal",
-                        Distrito = "Setúbal",
-                        Nacionalidade = "Portugal",
-                        Telefone = 123453489,
-                        DataDeNascimento = new DateTime(2000, 12, 9),
-                        EmailConfirmed = true,
-                        IsDadosVerificados = true,
-                        PartilhaMobilidade = true
-                    };
+                    UserName = "aluno@email.com",
+                    Email = "aluno@email.com",
+                    Nome = "ALUNO",
+                    NumeroInterno = 142327134,
+                    NumeroDoBI = 915542421,
+                    Morada = "rua",
+                    NumeroDaPorta = 3,
+                    Andar = "2ºDto.",
+                    CodigoPostal = "2844-014",
+                    Cidade = "Seixal",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 123453489,
+                    DataDeNascimento = new DateTime(2000, 12, 9),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true
+                };
 
-                    IdentityResult result2 = userManager.CreateAsync(user2, "Ips123!").Result;
+                IdentityResult result2 = userManager.CreateAsync(user2, "Ips123!").Result;
 
-                    if (result.Succeeded)
-                    {
-                        userManager.AddToRoleAsync(user2, "Aluno").Wait();
-                    }
-
-
+                if (result2.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user2, "Aluno").Wait();
                 }
+            }
 
-                if (userManager.FindByNameAsync("funcionario@email.com").Result == null)
+            // Adiciona Aluno Tiago
+            if (userManager.FindByNameAsync("someone1995@hotmail.com").Result == null)
+            {
+                ApplicationUser user3 = new ApplicationUser
                 {
-                    ApplicationUser user3 = new ApplicationUser
-                    {
-                        UserName = "funcionario@email.com",
-                        Email = "funcionario@email.com",
-                        Nome = "FUNCIONARIO",
-                        NumeroInterno = 142542155,
-                        NumeroDoBI =    325547443,
-                        Morada = "rua",
-                        NumeroDaPorta = 1,
-                        Andar = "3ºDto.",
-                        CodigoPostal = "2800-064",
-                        Cidade = "Corroios",
-                        Distrito = "Setúbal",
-                        Nacionalidade = "Portugal",
-                        Telefone = 963456129,
-                        DataDeNascimento = new DateTime(1980, 3, 12),
-                        EmailConfirmed = true,
-                        IsDadosVerificados = true,
-                        PartilhaMobilidade = true,
-                        IsFuncionario = true
-                        
-                    };
+                    UserName = "Tiago",
+                    Email = "someone1995@hotmail.com",
+                    Nome = "Tiago Veiga Branco",
+                    NumeroInterno = 140221050,
+                    NumeroDoBI = 13319629,
+                    Morada = "rua Pateira de Fermentelos",
+                    NumeroDaPorta = 29,
+                    Andar = "0",
+                    CodigoPostal = "2855-622",
+                    Cidade = "Corroios",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 912075782,
+                    DataDeNascimento = new DateTime(1995, 08, 09),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true
+                };
 
-                    IdentityResult result3 = userManager.CreateAsync(user3, "Ips123!").Result;
+                IdentityResult result3 = userManager.CreateAsync(user3, "Ips123!").Result;
 
-                    if (result.Succeeded)
-                    {
-                        userManager.AddToRoleAsync(user3, "Funcionário").Wait();
-                    }
+                if (result3.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user3, "Aluno").Wait();
+                }
+            }
 
+
+            // Adiciona aluno Francisco 
+            if (userManager.FindByNameAsync("").Result == null)
+            {
+                ApplicationUser user4 = new ApplicationUser
+                {
+
+                };
+
+                IdentityResult result4 = userManager.CreateAsync(user4, "Ips123!").Result;
+
+                if (result4.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user4, "Aluno").Wait();
+                }
+            }
+
+            // Adiciona aluno Gabriel 
+            if (userManager.FindByNameAsync("").Result == null)
+            {
+                ApplicationUser user5 = new ApplicationUser
+                {
+
+                };
+
+                IdentityResult result5 = userManager.CreateAsync(user5, "Ips123!").Result;
+
+                if (result5.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user5, "Aluno").Wait();
+                }
+            }
+
+            // Adiciona Aluno Diogo 
+            if (userManager.FindByNameAsync("").Result == null)
+            {
+                ApplicationUser user6 = new ApplicationUser
+                {
+
+                };
+
+                IdentityResult result6 = userManager.CreateAsync(user6, "Ips123!").Result;
+
+                if (result6.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user6, "Aluno").Wait();
+                }
+            }
+            // Adiciona um funcionário
+            if (userManager.FindByNameAsync("funcionario@email.com").Result == null)
+            {
+                ApplicationUser user7 = new ApplicationUser
+                {
+                    UserName = "funcionario@email.com",
+                    Email = "funcionario@email.com",
+                    Nome = "FUNCIONARIO",
+                    NumeroInterno = 142542155,
+                    NumeroDoBI = 325547443,
+                    Morada = "rua",
+                    NumeroDaPorta = 1,
+                    Andar = "3ºDto.",
+                    CodigoPostal = "2800-064",
+                    Cidade = "Corroios",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 963456129,
+                    DataDeNascimento = new DateTime(1980, 3, 12),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = true
+
+                };
+
+                IdentityResult result7 = userManager.CreateAsync(user7, "Ips123!").Result;
+
+                if (result7.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user7, "Funcionário").Wait();
+                }
+            }
+
+            // Adiciona um Docente Nuno 
+            if (userManager.FindByNameAsync("nunopina@email.com").Result == null)
+            {
+                ApplicationUser user7 = new ApplicationUser
+                {
+                    UserName = "Nuno",
+                    Email = "nunopina@email.com",
+                    Nome = "Nuno Pina Gonçalves",
+                    NumeroInterno = 001221020,
+                    NumeroDoBI = 322127443,
+                    Morada = "rua das Gencianas ",
+                    NumeroDaPorta = 45,
+                    Andar = "1ºDto.",
+                    CodigoPostal = "2865-034",
+                    Cidade = "Lisboa",
+                    Distrito = "Lisboa",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 963474829,
+                    DataDeNascimento = new DateTime(1970, 2, 21),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = true
+                };
+
+                IdentityResult result7 = userManager.CreateAsync(user7, "Ips123!").Result;
+
+                if (result7.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user7, "Funcionário").Wait();
+                }
+            }
+
+            // Adiciona um Docente Paulo 
+            if (userManager.FindByNameAsync("paulofournier@email.com").Result == null)
+            {
+                ApplicationUser user8 = new ApplicationUser
+                {
+                    UserName = "Paulo",
+                    Email = "paulofournier@email.com",
+                    Nome = "Paulo Fournier",
+                    NumeroInterno = 001221045,
+                    NumeroDoBI = 319483443,
+                    Morada = "rua Reserva Natural do Sado ",
+                    NumeroDaPorta = 5,
+                    Andar = "0",
+                    CodigoPostal = "2854-032",
+                    Cidade = "Azeitão",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 963304299,
+                    DataDeNascimento = new DateTime(1987, 09, 30),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = true
+                };
+
+                IdentityResult result8 = userManager.CreateAsync(user8, "Ips123!").Result;
+
+                if (result8.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user8, "Funcionário").Wait();
                 }
             }
         }
