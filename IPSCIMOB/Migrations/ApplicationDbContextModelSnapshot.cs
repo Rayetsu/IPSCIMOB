@@ -75,9 +75,9 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<bool>("IsDadosVerificados");
 
-                    b.Property<bool>("IsEmMobilidade");
-
                     b.Property<bool>("IsFuncionario");
+
+                    b.Property<bool>("IsMobilidade");
 
                     b.Property<bool>("LockoutEnabled");
 

@@ -12,7 +12,7 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180202152802_data")]
+    [Migration("20180203154712_data")]
     partial class data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,9 +76,9 @@ namespace IPSCIMOB.Migrations
 
                     b.Property<bool>("IsDadosVerificados");
 
-                    b.Property<bool>("IsEmMobilidade");
-
                     b.Property<bool>("IsFuncionario");
+
+                    b.Property<bool>("IsMobilidade");
 
                     b.Property<bool>("LockoutEnabled");
 

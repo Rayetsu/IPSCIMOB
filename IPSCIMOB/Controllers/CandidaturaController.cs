@@ -171,11 +171,11 @@ namespace IPSCIMOB.Controllers
                     }
                     if(candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
                     {                      
-                        user.IsEmMobilidade = true;
+                        user.IsMobilidade = true;
                     }
                     if (candidaturaModel.Estado == EstadoCandidatura.Finalizou)
                     {
-                        user.IsEmMobilidade = false;
+                        user.IsMobilidade = false;
                     }
                     _context.Update(candidaturaModel);
                     await _context.SaveChangesAsync();
@@ -480,15 +480,15 @@ namespace IPSCIMOB.Controllers
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
             ViewBag.docentes = 0;
             ViewBag.alunos = 0;
-            foreach (ApplicationUser c in _context.ApplicationUser)
+            foreach (var c in _context.UserRoles)
             {
-                if (c.IsFuncionario == true)
-                {
-                    ViewBag.docentes++;
-                }
-                else
+                if (c.RoleId == "328b6d2d-e445-4412-9612-be327d08f56d")
                 {
                     ViewBag.alunos++;
+                }
+                else if (c.RoleId == "4b356f98-2f9c-4f95-8235-4692ac736d2b")
+                {
+                    ViewBag.docentes++;
                 }
             }
             //foreach (ProgramaModel p in _context.ProgramaModel)
