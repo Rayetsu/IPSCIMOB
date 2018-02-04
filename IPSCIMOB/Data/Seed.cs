@@ -547,13 +547,13 @@ namespace IPSCIMOB.Data
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Alterar Dados",
-                Descricao = "Altere os dados"
+                Descricao = "Altere os dados."
             });
 
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Alterar Pw",
-                Descricao = "Coloque a sua pw atual.Em seguida coloque uma nova pw e repita-a para finalizar"
+                Descricao = "Coloque a sua pw atual.Em seguida coloque uma nova pw e repita-a para finalizar.<p>A password deverá ter pelo menos um caracter especial, exemplo pw : Ola123!</p>"
             });
 
 
