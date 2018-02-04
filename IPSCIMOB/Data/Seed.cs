@@ -148,7 +148,7 @@ namespace IPSCIMOB.Data
                     CodigoPostal = "2800-064",
                     Cidade = "Almada",
                     Distrito = "Setúbal",
-                    Nacionalidade = "Portugal",
+                    Nacionalidade = "Portuguesa",
                     Telefone = 921524874,
                     DataDeNascimento = new DateTime(1995, 07, 25),
                     EmailConfirmed = true,
@@ -157,7 +157,7 @@ namespace IPSCIMOB.Data
                     IsMobilidade = true,
                     IsFuncionario = false
                 };
-
+           
                 IdentityResult result4 = userManager.CreateAsync(user4, "Ips123!").Result;
 
                 if (result4.Succeeded)
@@ -182,7 +182,7 @@ namespace IPSCIMOB.Data
                     CodigoPostal = "2800-084",
                     Cidade = "Almada",
                     Distrito = "Setúbal",
-                    Nacionalidade = "Portugal",
+                    Nacionalidade = "Portuguesa",
                     Telefone = 921222321,
                     DataDeNascimento = new DateTime(1994, 10, 25),
                     EmailConfirmed = true,
@@ -216,7 +216,7 @@ namespace IPSCIMOB.Data
                     CodigoPostal = "2800-084",
                     Cidade = "Almada",
                     Distrito = "Setúbal",
-                    Nacionalidade = "Portugal",
+                    Nacionalidade = "Portuguesa",
                     Telefone = 921222322,
                     DataDeNascimento = new DateTime(1995, 01, 25),
                     EmailConfirmed = true,
@@ -233,6 +233,40 @@ namespace IPSCIMOB.Data
                     userManager.AddToRoleAsync(user6, "Aluno").Wait();
                 }
             }
+
+            // Adiciona Aluno Diogo 
+            if (userManager.FindByNameAsync("24305@alunos.ispa.pt").Result == null)
+            {
+                ApplicationUser user6 = new ApplicationUser
+                {
+                    UserName = "24305@alunos.ispa.pt",
+                    Email = "24305@alunos.ispa.pt",
+                    Nome = "Mariana",
+                    NumeroInterno = 24305,
+                    NumeroDoBI = 215673921,
+                    Morada = "Avenida Das Tulipas",
+                    NumeroDaPorta = 21,
+                    Andar = "4ºDto.",
+                    CodigoPostal = "2845-560",
+                    Cidade = "Lisboa",
+                    Distrito = "Lisboa",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 921223422,
+                    DataDeNascimento = new DateTime(1996, 04, 12),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    IsMobilidade = true,
+                    IsFuncionario = false
+                };
+
+                IdentityResult result6 = userManager.CreateAsync(user6, "Ips123!").Result;
+
+                if (result6.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user6, "Aluno").Wait();
+                }
+            }
+
             // Adiciona um funcionário
             if (userManager.FindByNameAsync("funcionario@email.com").Result == null)
             {
