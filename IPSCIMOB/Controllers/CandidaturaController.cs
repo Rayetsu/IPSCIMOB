@@ -73,6 +73,14 @@ namespace IPSCIMOB.Controllers
             var user = await _userManager.GetUserAsync(User);
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
 
+            foreach (CandidaturaModel c in _context.CandidaturaModel)
+            {
+                if (c.NumeroInterno.Equals(user.NumeroInterno) && c.Estado.Equals(EstadoCandidatura.EmMobilidade))
+                {
+                    return RedirectToAction(nameof(ConsultarCandidatura));
+                }
+            }
+           
             int result1 = DateTime.Compare(DateTime.Now, programaAtual.PrazoCandidaturaPrimeiroSemestre);
             int result2 = DateTime.Compare(DateTime.Now, programaAtual.PrazoCandidaturaSegundoSemestre);
             if (ModelState.IsValid)
@@ -107,7 +115,6 @@ namespace IPSCIMOB.Controllers
                 return RedirectToAction(nameof(RegulamentoMob));
             }
             return RedirectToAction(nameof(ConsultarCandidatura));
-
         }
 
         // GET: Candidatura/Edit/5
@@ -331,7 +338,7 @@ namespace IPSCIMOB.Controllers
             List<CandidaturaModel> candidaturasUser = new List<CandidaturaModel>();
             foreach (CandidaturaModel c in _context.CandidaturaModel)
             {
-                if (c.Nome.Equals(user.Nome))
+                if (c.NumeroInterno.Equals(user.NumeroInterno))
                 {
                     candidaturasUser.Add(c);
                 }
