@@ -962,13 +962,13 @@ namespace IPSCIMOB.Data
                 EntrevistaAtual = false,
                 DataDeEntrevista = new DateTime (2017, 08, 16, 10, 30, 0),
                 Estado = EstadoEntrevista.Aceite,
-                NomePrograma = "Santander Universidades - BOLSAS IBERO - AMERICANAS"
+                NomePrograma = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
             });
             //Candidatura 1 do Aluno Tiago
             _context.CandidaturaModel.Add(new CandidaturaModel
             {
                 //CandidaturaID = 1,
-                Programa = "Santander Universidades - BOLSAS IBERO - AMERICANAS",
+                Programa = "Santander Universidades - BOLSAS IBERO-AMERICANAS",
                 InstituicaoNome = "Universidade de Atlanta",
                 InstituicaoPais = "Estados Unidos",
                 InstituicaoCidade = "Atlanta",
