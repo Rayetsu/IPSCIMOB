@@ -16,6 +16,7 @@
     .inicioPrograma {
         display: inline-block;
         width: 500px;
+        padding-left: 40px;
     }
 </style>
 
@@ -24,6 +25,10 @@
 </div>
 
 <div class="inicioPrograma">
+    <canvas id="Chart" Width="120" Height="70"></canvas>
+</div>
+
+<div>
     <h4>Utilizadores em Mobilidade no @ViewBag.NomePrograma</h4>
     <table class="table">
         <thead>
@@ -45,7 +50,7 @@
             {
                 @foreach (var item1 in Model)
                 {
-                    if (item1.Estado.Equals(EstadoCandidatura.EmMobilidade) && item.NumeroInterno == item1.NumeroInterno)
+                    if (item1.Estado.Equals(EstadoCandidatura.EmMobilidade) && item.NumeroInterno == item1.NumeroInterno && item1.Programa.Equals(ViewBag.NomePrograma))
                     {
                         <tr>
                             <td>
@@ -66,9 +71,7 @@
 </div>
 
 
-<div class="inicioPrograma">
-    <canvas id="Chart" Width="120" Height="70"></canvas>
-</div>
+
 
 <script>
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -102,7 +105,7 @@
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true,
                 }
             }]
         }
@@ -110,7 +113,7 @@
     });
 
 
-    @*var ctx1 = document.getElementById("Chart").getContext('2d');
+    var ctx1 = document.getElementById("Chart").getContext('2d');
     var Chart = new Chart(ctx1, {
         type: 'bar',
         data: {
@@ -146,5 +149,5 @@
                 }]
             }
         }
-    });*@
+    });
 </script>
