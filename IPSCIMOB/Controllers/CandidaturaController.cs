@@ -485,19 +485,45 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> Inicio(int? id)
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            var roleAlunoID = (await _context.Roles.SingleOrDefaultAsync(m => m.Name.Equals("Aluno"))).Id;
+            var roleDocenteID = (await _context.Roles.SingleOrDefaultAsync(m => m.Name.Equals("Funcionário"))).Id;
+            ApplicationUser utilizador = null;
+            List<ApplicationUser> utilizadoresMobilidade = new List<ApplicationUser>();
             ViewBag.docentes = 0;
             ViewBag.alunos = 0;
             foreach (var c in _context.UserRoles)
             {
-                if (c.RoleId == "328b6d2d-e445-4412-9612-be327d08f56d")
+                foreach (CandidaturaModel a in _context.CandidaturaModel)
                 {
-                    ViewBag.alunos++;
-                }
-                else if (c.RoleId == "4b356f98-2f9c-4f95-8235-4692ac736d2b")
-                {
-                    ViewBag.docentes++;
+                    if (c.RoleId.Equals(roleAlunoID))
+                    {
+                        utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
+                        if (utilizador.IsMobilidade == true && a.Programa.Equals(programaAtual.Nome))
+                        {
+                            if (utilizador.PartilhaMobilidade == true)
+                            {
+                                utilizadoresMobilidade.Add(utilizador);
+                            }
+                            ViewBag.alunos++;
+                        }
+                    }
+                    else if (c.RoleId.Equals(roleDocenteID) && a.Programa.Equals(programaAtual.Nome))
+                    {
+                        utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
+                        if (utilizador.IsMobilidade == true)
+                        {
+                            if (utilizador.PartilhaMobilidade == true)
+                            {
+                                utilizadoresMobilidade.Add(utilizador);
+                            }
+                            ViewBag.docentes++;
+                        }
+                    }
                 }
             }
+            ViewBag.listaUserMobilidade = utilizadoresMobilidade;
+            
+
             //foreach (ProgramaModel p in _context.ProgramaModel)
             //{
             //    p.ProgramaAtual = false;            
@@ -508,7 +534,7 @@ namespace IPSCIMOB.Controllers
             //_context.Update(programaAtual);
             //await _context.SaveChangesAsync();
 
-            return View();
+            return View(await _context.CandidaturaModel.ToListAsync());
         }
 
 

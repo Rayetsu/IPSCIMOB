@@ -1,4 +1,4 @@
-﻿@model IPSCIMOB.Models.CandidaturaModel
+﻿@model IEnumerable<IPSCIMOB.Models.CandidaturaModel>
 @{
     ViewData["Title"] = "Inicio";
     Layout = "_LayoutCandidatura";
@@ -13,18 +13,65 @@
 
 
 <style>
-    .grafico {
+    .inicioPrograma {
         display: inline-block;
         width: 500px;
+        padding-left: 40px;
     }
 </style>
 
-<div class="grafico">
+<div class="inicioPrograma">
     <canvas id="myChart" Width="120" Height="70"></canvas>
 </div>
-<div class="grafico">
+
+<div class="inicioPrograma">
     <canvas id="Chart" Width="120" Height="70"></canvas>
 </div>
+
+<div>
+    <h4>Utilizadores em Mobilidade no @ViewBag.NomePrograma</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    País
+                </th>
+                <th>
+                    Instituição
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.listaUserMobilidade)
+            {
+                @foreach (var item1 in Model)
+                {
+                    if (item1.Estado.Equals(EstadoCandidatura.EmMobilidade) && item.NumeroInterno == item1.NumeroInterno && item1.Programa.Equals(ViewBag.NomePrograma))
+                    {
+                        <tr>
+                            <td>
+                                @item1.Nome
+                            </td>
+                            <td>
+                                @item1.InstituicaoPais
+                            </td>
+                            <td>
+                                @item1.InstituicaoNome
+                            </td>
+                        </tr>
+                    }
+                 }
+             }
+        </tbody>
+    </table>
+</div>
+
+
+
 
 <script>
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -58,7 +105,7 @@
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true,
                 }
             }]
         }
