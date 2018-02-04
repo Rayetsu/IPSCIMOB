@@ -478,19 +478,40 @@ namespace IPSCIMOB.Controllers
         public async Task<IActionResult> Inicio(int? id)
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
+            ApplicationUser utilizador = null;
+            List<ApplicationUser> utilizadoresMobilidade = new List<ApplicationUser>();
             ViewBag.docentes = 0;
             ViewBag.alunos = 0;
             foreach (var c in _context.UserRoles)
             {
                 if (c.RoleId == "328b6d2d-e445-4412-9612-be327d08f56d")
                 {
-                    ViewBag.alunos++;
+                    utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
+                    if(utilizador.IsMobilidade == true)
+                    {
+                        if (utilizador.PartilhaMobilidade == true)
+                        {
+                            utilizadoresMobilidade.Add(utilizador);
+                        }
+                        ViewBag.alunos++;
+                    }
                 }
                 else if (c.RoleId == "4b356f98-2f9c-4f95-8235-4692ac736d2b")
                 {
-                    ViewBag.docentes++;
+                    utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
+                    if (utilizador.IsMobilidade == true)
+                    {
+                        if(utilizador.PartilhaMobilidade == true)
+                        {
+                            utilizadoresMobilidade.Add(utilizador);
+                        }
+                        ViewBag.docentes++;
+                    }
                 }
             }
+            ViewBag.listaUserMobilidade = utilizadoresMobilidade;
+            
+
             //foreach (ProgramaModel p in _context.ProgramaModel)
             //{
             //    p.ProgramaAtual = false;            
@@ -501,7 +522,7 @@ namespace IPSCIMOB.Controllers
             //_context.Update(programaAtual);
             //await _context.SaveChangesAsync();
 
-            return View();
+            return View(await _context.CandidaturaModel.ToListAsync());
         }
 
 
