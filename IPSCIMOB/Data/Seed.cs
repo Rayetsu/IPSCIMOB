@@ -30,6 +30,313 @@ namespace IPSCIMOB.Data
             SeedUsers(_userManager);
         }
 
+        public static void SeedUsers(UserManager<ApplicationUser> userManager)
+        {
+            //Adicionar Administrador CIMOB
+            if (userManager.FindByNameAsync("cimob@email.com").Result == null)
+            {
+                ApplicationUser user1 = new ApplicationUser
+                {
+                    UserName = "cimob@email.com",
+                    Email = "cimob@email.com",
+                    Nome = "CIMOB",
+                    NumeroInterno = 142517140,
+                    NumeroDoBI = 325434721,
+                    Morada = "rua Ali e Aqui",
+                    NumeroDaPorta = 6,
+                    Andar = "1ºDto.",
+                    CodigoPostal = "2867-064",
+                    Cidade = "Almada",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 921451289,
+                    DataDeNascimento = new DateTime(1976, 10, 15),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,                                
+                };
+
+                IdentityResult result1 = userManager.CreateAsync(user1, "Ips123!").Result;
+
+                if (result1.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user1, "CIMOB").Wait();
+                }
+            }
+
+
+            if (userManager.FindByNameAsync("aluno@email.com").Result == null)
+            {
+                ApplicationUser user2 = new ApplicationUser
+                {
+                    UserName = "aluno@email.com",
+                    Email = "aluno@email.com",
+                    Nome = "ALUNO",
+                    NumeroInterno = 142327134,
+                    NumeroDoBI = 915542421,
+                    Morada = "rua",
+                    NumeroDaPorta = 3,
+                    Andar = "2ºDto.",
+                    CodigoPostal = "2844-014",
+                    Cidade = "Seixal",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 123453489,
+                    DataDeNascimento = new DateTime(2000, 12, 9),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = false
+                };
+
+                IdentityResult result2 = userManager.CreateAsync(user2, "Ips123!").Result;
+
+                if (result2.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user2, "Aluno").Wait();
+                }
+            }
+
+            // Adiciona Aluno Tiago
+            if (userManager.FindByNameAsync("someone1995@hotmail.com").Result == null)
+            {
+                ApplicationUser user3 = new ApplicationUser
+                {
+                    UserName = "someone1995@hotmail.com",
+                    Email = "someone1995@hotmail.com",
+                    Nome = "Tiago Veiga Branco",
+                    NumeroInterno = 140221050,
+                    NumeroDoBI = 13319629,
+                    Morada = "rua Pateira de Fermentelos",
+                    NumeroDaPorta = 29,
+                    Andar = "0",
+                    CodigoPostal = "2855-622",
+                    Cidade = "Corroios",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 912075782,
+                    DataDeNascimento = new DateTime(1995, 08, 09),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    CandidaturaAtual = 1,
+                    IsMobilidade = true,
+                    IsFuncionario = false
+                };
+
+                IdentityResult result3 = userManager.CreateAsync(user3, "Ips123!").Result;
+
+                if (result3.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user3, "Aluno").Wait();
+                }
+            }
+
+
+            // Adiciona aluno Francisco 
+            if (userManager.FindByNameAsync("francisco.alves@estudantes.ips.pt").Result == null)
+            {
+                ApplicationUser user4 = new ApplicationUser
+                {
+                    UserName = "francisco.alves@estudantes.ips.pt",
+                    Email = "francisco.alves@estudantes.ips.pt",
+                    Nome = "Francisco",
+                    NumeroInterno = 140221019,
+                    NumeroDoBI = 14080383,
+                    Morada = "rua ramiro ferrão",
+                    NumeroDaPorta = 6,
+                    Andar = "2ºDto.",
+                    CodigoPostal = "2800-064",
+                    Cidade = "Almada",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 921524874,
+                    DataDeNascimento = new DateTime(1995, 07, 25),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    CandidaturaAtual = 3,
+                    IsMobilidade = true,
+                    IsFuncionario = false
+                };
+
+                IdentityResult result4 = userManager.CreateAsync(user4, "Ips123!").Result;
+
+                if (result4.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user4, "Aluno").Wait();
+                }
+            }
+
+            // Adiciona aluno Gabriel 
+            if (userManager.FindByNameAsync("140221075@estudantes.ips.pt").Result == null)
+            {
+                ApplicationUser user5 = new ApplicationUser
+                {
+                    UserName = "140221075@estudantes.ips.pt",
+                    Email = "140221075@estudantes.ips.pt",
+                    Nome = "Gabriel",
+                    NumeroInterno = 140221075,
+                    NumeroDoBI = 12345678,
+                    Morada = "Avenida Nuno Correia",
+                    NumeroDaPorta = 2,
+                    Andar = "2ºDto.",
+                    CodigoPostal = "2800-084",
+                    Cidade = "Almada",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 921222321,
+                    DataDeNascimento = new DateTime(1994, 10, 25),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    CandidaturaAtual = 4,
+                    IsMobilidade = true,
+                    IsFuncionario = false
+                };
+
+                IdentityResult result5 = userManager.CreateAsync(user5, "Ips123!").Result;
+
+                if (result5.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user5, "Aluno").Wait();
+                }
+            }
+
+            // Adiciona Aluno Diogo 
+            if (userManager.FindByNameAsync("140221051@estudantes.ips.pt").Result == null)
+            {
+                ApplicationUser user6 = new ApplicationUser
+                {
+                    UserName = "140221051@estudantes.ips.pt",
+                    Email = "140221051@estudantes.ips.pt",
+                    Nome = "Diogo",
+                    NumeroInterno = 140221051,
+                    NumeroDoBI = 1234556678,
+                    Morada = "Avenida da vida",
+                    NumeroDaPorta = 2,
+                    Andar = "2ºDto.",
+                    CodigoPostal = "2800-084",
+                    Cidade = "Almada",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 921222322,
+                    DataDeNascimento = new DateTime(1995, 01, 25),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    CandidaturaAtual = 5,
+                    IsMobilidade = true,
+                    IsFuncionario = false
+                };
+
+                IdentityResult result6 = userManager.CreateAsync(user6, "Ips123!").Result;
+
+                if (result6.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user6, "Aluno").Wait();
+                }
+            }
+            // Adiciona um funcionário
+            if (userManager.FindByNameAsync("funcionario@email.com").Result == null)
+            {
+                ApplicationUser user7 = new ApplicationUser
+                {
+                    UserName = "funcionario@email.com",
+                    Email = "funcionario@email.com",
+                    Nome = "FUNCIONARIO",
+                    NumeroInterno = 142542155,
+                    NumeroDoBI = 325547443,
+                    Morada = "rua",
+                    NumeroDaPorta = 1,
+                    Andar = "3ºDto.",
+                    CodigoPostal = "2800-064",
+                    Cidade = "Corroios",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portugal",
+                    Telefone = 963456129,
+                    DataDeNascimento = new DateTime(1980, 3, 12),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = true
+
+                };
+
+                IdentityResult result7 = userManager.CreateAsync(user7, "Ips123!").Result;
+
+                if (result7.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user7, "Funcionário").Wait();
+                }
+            }
+
+            // Adiciona um Docente Nuno 
+            if (userManager.FindByNameAsync("nunopina@email.com").Result == null)
+            {
+                ApplicationUser user7 = new ApplicationUser
+                {
+                    UserName = "nunopina@email.com",
+                    Email = "nunopina@email.com",
+                    Nome = "Nuno Pina Gonçalves",
+                    NumeroInterno = 001221020,
+                    NumeroDoBI = 322127443,
+                    Morada = "rua das Gencianas ",
+                    NumeroDaPorta = 45,
+                    Andar = "1ºDto.",
+                    CodigoPostal = "2865-034",
+                    Cidade = "Lisboa",
+                    Distrito = "Lisboa",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 963474829,
+                    DataDeNascimento = new DateTime(1970, 2, 21),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = true,
+                    IsMobilidade = false                     
+                };
+
+                IdentityResult result7 = userManager.CreateAsync(user7, "Ips123!").Result;
+
+                if (result7.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user7, "Funcionário").Wait();
+                }
+            }
+
+            // Adiciona um Docente Paulo 
+            if (userManager.FindByNameAsync("paulofournier@email.com").Result == null)
+            {
+                ApplicationUser user8 = new ApplicationUser
+                {
+                    UserName = "paulofournier@email.com",
+                    Email = "paulofournier@email.com",
+                    Nome = "Paulo Fournier",
+                    NumeroInterno = 001221045,
+                    NumeroDoBI = 319483443,
+                    Morada = "rua Reserva Natural do Sado ",
+                    NumeroDaPorta = 5,
+                    Andar = "0",
+                    CodigoPostal = "2854-032",
+                    Cidade = "Azeitão",
+                    Distrito = "Setúbal",
+                    Nacionalidade = "Portuguesa",
+                    Telefone = 963304299,
+                    DataDeNascimento = new DateTime(1987, 09, 30),
+                    EmailConfirmed = true,
+                    IsDadosVerificados = true,
+                    PartilhaMobilidade = true,
+                    IsFuncionario = true,
+                    CandidaturaAtual = 2,
+                    IsMobilidade = true                    
+                };
+
+                IdentityResult result8 = userManager.CreateAsync(user8, "Ips123!").Result;
+
+                if (result8.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user8, "Funcionário").Wait();
+                }
+            }
+        }
+
         public static void Initialize(ApplicationDbContext _context)
         {
             _context.Database.EnsureCreated();
@@ -646,254 +953,192 @@ namespace IPSCIMOB.Data
                 TextoSugestao = "Gostava de poder fazer erasmus de formação numa Instituição/Universidade no Peru."
             });
 
+            //Entrevista da Candidatura 1 do Aluno Tiago
+            _context.Entrevista.Add(new Entrevista
+            {
+                //EntrevistaId = 1,
+                NumeroAluno = 140221050,
+                Email = "someone1995@hotmail.com",
+                EntrevistaAtual = false,
+                DataDeEntrevista = new DateTime (2017, 08, 16, 10, 30, 0),
+                Estado = EstadoEntrevista.Aceite,
+                NomePrograma = "Santander Universidades - BOLSAS IBERO - AMERICANAS"
+            });
+            //Candidatura 1 do Aluno Tiago
+            _context.CandidaturaModel.Add(new CandidaturaModel
+            {
+                //CandidaturaID = 1,
+                Programa = "Santander Universidades - BOLSAS IBERO - AMERICANAS",
+                InstituicaoNome = "Universidade de Atlanta",
+                InstituicaoPais = "Estados Unidos",
+                InstituicaoCidade = "Atlanta",
+                DataInicioCandidatura = new DateTime(2017, 08, 10, 10, 47, 0),
+                DataFimCandidatura = new DateTime(2017, 08, 30, 10, 55, 0),
+                Semestre = Semestre.PrimeiroSemestre,
+                Email = "someone1995@hotmail.com",
+                EntrevistaID = 1,
+                Nome = "Tiago Veiga Branco",
+                NumeroInterno = 140221050,
+                IsBolsa = true,
+                IsEstudo = false,
+                IsEstagio = false,
+                IsInvestigacao = false,
+                IsLecionar = false,
+                IsFormacao = false,
+                IsConfirmado = true,
+                Estado = EstadoCandidatura.EmMobilidade,
+                EstadoDocumentos = EstadoDocumentos.Aceites
+            });
+
+            // Entrevista da Candidatura 2 do Funcionário Paulo
+            _context.Entrevista.Add(new Entrevista
+            {
+                //EntrevistaId = 2,
+                NumeroAluno = 001221045,
+                Email = "paulofournier@email.com",
+                EntrevistaAtual = false,
+                DataDeEntrevista = new DateTime(2017, 07, 23, 10, 30, 0),
+                Estado = EstadoEntrevista.Aceite,
+                NomePrograma = "Erasmus+ FUNCIONÁRIOS"
+            });
+            // Candidatura 2 do Funcionário Paulo
+            _context.CandidaturaModel.Add(new CandidaturaModel
+            {
+                //CandidaturaID = 2,
+                Programa = "Erasmus+ FUNCIONÁRIOS",
+                InstituicaoNome = "Instituto Politécnico de Londres",
+                InstituicaoPais = "Reino Unido",
+                InstituicaoCidade = "Londres",
+                DataInicioCandidatura = new DateTime(2017, 06, 18, 12,21,0),
+                DataFimCandidatura = new DateTime(2017, 08, 19, 17,25, 0),
+                Semestre = Semestre.PrimeiroSemestre,
+                Email = "paulofournier@email.com",
+                EntrevistaID = 2,
+                Nome = "Paulo Fournier",
+                NumeroInterno = 001221045,
+                IsBolsa = false,
+                IsEstudo = false,
+                IsEstagio = false,
+                IsInvestigacao = false,
+                IsLecionar = false,
+                IsFormacao = true,
+                IsConfirmado = true,
+                Estado = EstadoCandidatura.EmMobilidade,
+                EstadoDocumentos = EstadoDocumentos.Aceites
+            });
+
+            // Entrevista Candidatura 3 do Aluno Francisco
+            _context.Entrevista.Add(new Entrevista
+            {
+                //EntrevistaId = 3,
+                NumeroAluno = 140221019,
+                Email = "francisco.alves@estudantes.ips.pt",
+                EntrevistaAtual = false,
+                DataDeEntrevista = new DateTime(2017, 07, 23, 10, 30, 0),
+                Estado = EstadoEntrevista.Aceite,
+                NomePrograma = "Erasmus+ ALUNOS"
+            });
+            // Candidatura 3 do Aluno Francisco
+            _context.CandidaturaModel.Add(new CandidaturaModel
+            {
+                //CandidaturaID = 3,
+                Programa = "Erasmus+ ALUNOS",
+                InstituicaoNome = "Instituto Politécnico de Lyon",
+                InstituicaoPais = "França",
+                InstituicaoCidade = "Lyon",
+                DataInicioCandidatura = new DateTime(2017, 06, 05, 11, 23, 0),
+                DataFimCandidatura = new DateTime(2017, 08, 01, 12,34,0),
+                Semestre = Semestre.PrimeiroSemestre,
+                Email = "francisco.alves@estudantes.ips.pt",
+                EntrevistaID = 3,
+                Nome = "Francisco",
+                NumeroInterno = 140221019,
+                IsBolsa = true,
+                IsEstudo = true,
+                IsEstagio = false,
+                IsInvestigacao = false,
+                IsLecionar = false,
+                IsFormacao = false,
+                IsConfirmado = true,
+                Estado = EstadoCandidatura.EmMobilidade,
+                EstadoDocumentos = EstadoDocumentos.Aceites
+            });
+            
+            // Entrevista Candidatura 4 do Aluno Gabriel 
+            _context.Entrevista.Add(new Entrevista
+            {
+                //EntrevistaId = 4,
+                NumeroAluno = 140221075,
+                Email = "140221075@estudantes.ips.pt",
+                EntrevistaAtual = false,
+                DataDeEntrevista = new DateTime(2017, 07, 21, 10, 30, 0),
+                Estado = EstadoEntrevista.Aceite,
+                NomePrograma = "Erasmus+ ALUNOS"
+            });
+            // Candidatura 4 do Aluno Gabriel
+            _context.CandidaturaModel.Add(new CandidaturaModel
+            {
+                //CandidaturaID = 4,
+                Programa = "Erasmus+ ALUNOS",
+                InstituicaoNome = "Instituto Politécnico de Bilbau",
+                InstituicaoPais = "Espanha",
+                InstituicaoCidade = "Bilbau",
+                DataInicioCandidatura = new DateTime(2017, 06, 12, 13,45,0),
+                DataFimCandidatura = new DateTime(2017, 08, 23, 16, 35, 0),
+                Semestre = Semestre.PrimeiroSemestre,
+                Email = "140221075@estudantes.ips.pt",
+                EntrevistaID = 4,
+                Nome = "Gabriel",
+                NumeroInterno = 140221075,
+                IsBolsa = false,
+                IsEstudo = true,
+                IsEstagio = false,
+                IsInvestigacao = false,
+                IsLecionar = false,
+                IsFormacao = false,
+                IsConfirmado = true,
+                Estado = EstadoCandidatura.EmMobilidade,
+                EstadoDocumentos = EstadoDocumentos.Aceites
+            });
+
+            // Entrevistas da Candidatura 5 do Aluno Diogo
+            _context.Entrevista.Add(new Entrevista
+            {
+                //EntrevistaId = 5,
+                NumeroAluno = 140221051,
+                Email = "140221051@estudantes.ips.pt",
+                EntrevistaAtual = false,
+                DataDeEntrevista = new DateTime(2017, 07, 11, 10, 30, 0),
+                Estado = EstadoEntrevista.Aceite,
+                NomePrograma = "Santander Universidades - BOLSAS LUSO-BRASILEIRAS"
+            });
+            // Candidatura 5 do Aluno Diogo
+            _context.CandidaturaModel.Add(new CandidaturaModel
+            {
+                //CandidaturaID = 5,
+                Programa = "Santander Universidades - BOLSAS LUSO-BRASILEIRAS",
+                InstituicaoNome = "Universidade de São Paulo",
+                InstituicaoPais = "Brasil",
+                InstituicaoCidade = "São Paulo",
+                DataInicioCandidatura = new DateTime(2017, 06, 25, 15,34,0),
+                DataFimCandidatura = new DateTime(2017, 08, 02, 13,45,0),
+                Semestre = Semestre.PrimeiroSemestre,
+                Email = "140221051@estudantes.ips.pt",
+                EntrevistaID = 5,
+                Nome = "Diogo",
+                NumeroInterno = 140221051,
+                IsBolsa = true,
+                IsEstudo = true,
+                IsEstagio = false,
+                IsInvestigacao = false,
+                IsLecionar = false,
+                IsFormacao = false,
+                IsConfirmado = true,
+                Estado = EstadoCandidatura.EmMobilidade,
+                EstadoDocumentos = EstadoDocumentos.Aceites
+            });
+            
             _context.SaveChanges();
-
-        }
-
-        public static void SeedUsers(UserManager<ApplicationUser> userManager)
-        {
-            //Adicionar Administrador CIMOB
-            if (userManager.FindByNameAsync("cimob@email.com").Result == null)
-            {
-                ApplicationUser user1 = new ApplicationUser
-                {
-                    UserName = "cimob@email.com",
-                    Email = "cimob@email.com",
-                    Nome = "CIMOB",
-                    NumeroInterno = 142517140,
-                    NumeroDoBI = 325434721,
-                    Morada = "rua Ali e Aqui",
-                    NumeroDaPorta = 6,
-                    Andar = "1ºDto.",
-                    CodigoPostal = "2867-064",
-                    Cidade = "Almada",
-                    Distrito = "Setúbal",
-                    Nacionalidade = "Portugal",
-                    Telefone = 921451289,
-                    DataDeNascimento = new DateTime(1976, 10, 15),
-                    EmailConfirmed = true,
-                    IsDadosVerificados = true
-                };
-
-                IdentityResult result1 = userManager.CreateAsync(user1, "Ips123!").Result;
-
-                if (result1.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user1, "CIMOB").Wait();
-                }
-            }
-
-
-            if (userManager.FindByNameAsync("aluno@email.com").Result == null)
-            {
-                ApplicationUser user2 = new ApplicationUser
-                {
-                    UserName = "aluno@email.com",
-                    Email = "aluno@email.com",
-                    Nome = "ALUNO",
-                    NumeroInterno = 142327134,
-                    NumeroDoBI = 915542421,
-                    Morada = "rua",
-                    NumeroDaPorta = 3,
-                    Andar = "2ºDto.",
-                    CodigoPostal = "2844-014",
-                    Cidade = "Seixal",
-                    Distrito = "Setúbal",
-                    Nacionalidade = "Portugal",
-                    Telefone = 123453489,
-                    DataDeNascimento = new DateTime(2000, 12, 9),
-                    EmailConfirmed = true,
-                    IsDadosVerificados = true,
-                    PartilhaMobilidade = true
-                };
-
-                IdentityResult result2 = userManager.CreateAsync(user2, "Ips123!").Result;
-
-                if (result2.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user2, "Aluno").Wait();
-                }
-            }
-
-            // Adiciona Aluno Tiago
-            if (userManager.FindByNameAsync("someone1995@hotmail.com").Result == null)
-            {
-                ApplicationUser user3 = new ApplicationUser
-                {
-                    UserName = "Tiago",
-                    Email = "someone1995@hotmail.com",
-                    Nome = "Tiago Veiga Branco",
-                    NumeroInterno = 140221050,
-                    NumeroDoBI = 13319629,
-                    Morada = "rua Pateira de Fermentelos",
-                    NumeroDaPorta = 29,
-                    Andar = "0",
-                    CodigoPostal = "2855-622",
-                    Cidade = "Corroios",
-                    Distrito = "Setúbal",
-                    Nacionalidade = "Portuguesa",
-                    Telefone = 912075782,
-                    DataDeNascimento = new DateTime(1995, 08, 09),
-                    EmailConfirmed = true,
-                    IsDadosVerificados = true,
-                    PartilhaMobilidade = true
-                };
-
-                IdentityResult result3 = userManager.CreateAsync(user3, "Ips123!").Result;
-
-                if (result3.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user3, "Aluno").Wait();
-                }
-            }
-
-
-            // Adiciona aluno Francisco 
-            if (userManager.FindByNameAsync("").Result == null)
-            {
-                ApplicationUser user4 = new ApplicationUser
-                {
-
-                };
-
-                IdentityResult result4 = userManager.CreateAsync(user4, "Ips123!").Result;
-
-                if (result4.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user4, "Aluno").Wait();
-                }
-            }
-
-            // Adiciona aluno Gabriel 
-            if (userManager.FindByNameAsync("").Result == null)
-            {
-                ApplicationUser user5 = new ApplicationUser
-                {
-
-                };
-
-                IdentityResult result5 = userManager.CreateAsync(user5, "Ips123!").Result;
-
-                if (result5.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user5, "Aluno").Wait();
-                }
-            }
-
-            // Adiciona Aluno Diogo 
-            if (userManager.FindByNameAsync("").Result == null)
-            {
-                ApplicationUser user6 = new ApplicationUser
-                {
-
-                };
-
-                IdentityResult result6 = userManager.CreateAsync(user6, "Ips123!").Result;
-
-                if (result6.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user6, "Aluno").Wait();
-                }
-            }
-            // Adiciona um funcionário
-            if (userManager.FindByNameAsync("funcionario@email.com").Result == null)
-            {
-                ApplicationUser user7 = new ApplicationUser
-                {
-                    UserName = "funcionario@email.com",
-                    Email = "funcionario@email.com",
-                    Nome = "FUNCIONARIO",
-                    NumeroInterno = 142542155,
-                    NumeroDoBI = 325547443,
-                    Morada = "rua",
-                    NumeroDaPorta = 1,
-                    Andar = "3ºDto.",
-                    CodigoPostal = "2800-064",
-                    Cidade = "Corroios",
-                    Distrito = "Setúbal",
-                    Nacionalidade = "Portugal",
-                    Telefone = 963456129,
-                    DataDeNascimento = new DateTime(1980, 3, 12),
-                    EmailConfirmed = true,
-                    IsDadosVerificados = true,
-                    PartilhaMobilidade = true,
-                    IsFuncionario = true
-
-                };
-
-                IdentityResult result7 = userManager.CreateAsync(user7, "Ips123!").Result;
-
-                if (result7.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user7, "Funcionário").Wait();
-                }
-            }
-
-            // Adiciona um Docente Nuno 
-            if (userManager.FindByNameAsync("nunopina@email.com").Result == null)
-            {
-                ApplicationUser user7 = new ApplicationUser
-                {
-                    UserName = "Nuno",
-                    Email = "nunopina@email.com",
-                    Nome = "Nuno Pina Gonçalves",
-                    NumeroInterno = 001221020,
-                    NumeroDoBI = 322127443,
-                    Morada = "rua das Gencianas ",
-                    NumeroDaPorta = 45,
-                    Andar = "1ºDto.",
-                    CodigoPostal = "2865-034",
-                    Cidade = "Lisboa",
-                    Distrito = "Lisboa",
-                    Nacionalidade = "Portuguesa",
-                    Telefone = 963474829,
-                    DataDeNascimento = new DateTime(1970, 2, 21),
-                    EmailConfirmed = true,
-                    IsDadosVerificados = true,
-                    PartilhaMobilidade = true,
-                    IsFuncionario = true
-                };
-
-                IdentityResult result7 = userManager.CreateAsync(user7, "Ips123!").Result;
-
-                if (result7.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user7, "Funcionário").Wait();
-                }
-            }
-
-            // Adiciona um Docente Paulo 
-            if (userManager.FindByNameAsync("paulofournier@email.com").Result == null)
-            {
-                ApplicationUser user8 = new ApplicationUser
-                {
-                    UserName = "Paulo",
-                    Email = "paulofournier@email.com",
-                    Nome = "Paulo Fournier",
-                    NumeroInterno = 001221045,
-                    NumeroDoBI = 319483443,
-                    Morada = "rua Reserva Natural do Sado ",
-                    NumeroDaPorta = 5,
-                    Andar = "0",
-                    CodigoPostal = "2854-032",
-                    Cidade = "Azeitão",
-                    Distrito = "Setúbal",
-                    Nacionalidade = "Portuguesa",
-                    Telefone = 963304299,
-                    DataDeNascimento = new DateTime(1987, 09, 30),
-                    EmailConfirmed = true,
-                    IsDadosVerificados = true,
-                    PartilhaMobilidade = true,
-                    IsFuncionario = true
-                };
-
-                IdentityResult result8 = userManager.CreateAsync(user8, "Ips123!").Result;
-
-                if (result8.Succeeded)
-                {
-                    userManager.AddToRoleAsync(user8, "Funcionário").Wait();
-                }
-            }
-        }
+        }        
     }
 }
