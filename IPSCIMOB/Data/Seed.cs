@@ -514,6 +514,18 @@ namespace IPSCIMOB.Data
 
             _context.InformacaoGeral.Add(new InformacaoGeral
             {
+                Titulo = "Receção dos Estudantes Internacionais",
+                Descricao = "<div class=\"center-justified\"><p></p><p>Anualmente o IPS dá as boas vindas a todos os estudantes internacionais, numa iniciativa que pretende integrá-los na vida do Instituto através de atividades lúdicas e pedagógicas, que visam facilitar a adaptação e criar desde logo um ambiente propício à proliferação de uma atmosfera verdadeiramente internacional e multicultural, transversal a todo o IPS e à sua comunidade.</p><p></p>"
+            });
+
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
+                Titulo = "Outras Iniciativas",
+                Descricao = "<div class=\"center-justified\"><p></p><p>O Consórcio 'Erasmus Al Sud - Connecting Regions, Creating Worlds', que integra a Universidade de Lisboa, o Instituto Politécnico de Setúbal, a Universidade de Évora, o Instituto Politécnico de Beja e a Universidade do Algarve visa dinamizar a realização de estágios Erasmus para estudantes Outgoing e Incoming.</p><p></p>"
+            });
+
+            _context.InformacaoGeral.Add(new InformacaoGeral
+            {
                 Titulo = "Documentação",
                 Descricao = "<div class=\"center-justified\"><p><h3>Instituto Politécnico de Setúbal (IPS)</h3></p></p><p><h4 align=\"center\">Artigo 38º</h4></p></div><p>Documentação</p><p>Sem prejuízo das regras fixadas por cada programa referido no nº 1 do artigo 2º, considera-se obrigatório que cada processo de docente IPS em mobilidade seja constituído pela seguinte documentação:</p><p>a) Acordo Bilateral ou equivalente legal (celebrado antes da realização da mobilidade, e estabelecido entre o IPS e uma instituição parceira, de carácter nacional ou internacional);</p><p>b) Ficha de Candidatura, nos termos do artigo 31º;</p><p>c) Ficha de Docente;</p><p>d) Contrato de Docente;</p><p>e) Confirmação do período de leccionação/estada no estrangeiro, emitida pela instituição de acolhimento;</p><p>f) Recibo de pagamento da bolsa (quando aplicável);</p><p>g) Relatório Final Individual;</p><p>h) Adendas ao Contrato (quando aplicável);</p><p>i) Recibos relativos a Adendas ao Contrato (quando aplicável).</p><h3>Mais Informações: </h3></p> <p><a href = \"https://www.ips.pt/ips_si/file_get.legislacao_cont?p_id=F1154480549/Regulamento_Mobilidade.pdf\" target=\"_blank\">REGULAMENTO DE MOBILIDADE INTERNACIONAL DA COMUNIDADE IPS</a></p>",
             });
