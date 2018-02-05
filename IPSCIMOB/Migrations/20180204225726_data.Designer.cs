@@ -12,7 +12,7 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180204222324_data")]
+    [Migration("20180204225726_data")]
     partial class data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

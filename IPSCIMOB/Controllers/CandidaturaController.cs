@@ -495,29 +495,24 @@ namespace IPSCIMOB.Controllers
             {
                 foreach (CandidaturaModel a in _context.CandidaturaModel)
                 {
-                    if (c.RoleId.Equals(roleAlunoID))
+                    utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
+                    if (c.RoleId.Equals(roleAlunoID) && utilizador.IsMobilidade == true && a.Nome.Equals(utilizador.Nome) &&
+                        a.Programa.Equals(programaAtual.Nome))
                     {
-                        utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
-                        if (utilizador.IsMobilidade == true && a.Programa.Equals(programaAtual.Nome))
-                        {
                             if (utilizador.PartilhaMobilidade == true)
                             {
                                 utilizadoresMobilidade.Add(utilizador);
                             }
                             ViewBag.alunos++;
-                        }
                     }
-                    else if (c.RoleId.Equals(roleDocenteID) && a.Programa.Equals(programaAtual.Nome))
+                    else if (c.RoleId.Equals(roleDocenteID) && utilizador.IsMobilidade == true && a.Nome.Equals(utilizador.Nome) &&
+                        a.Programa.Equals(programaAtual.Nome))
                     {
-                        utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
-                        if (utilizador.IsMobilidade == true)
-                        {
                             if (utilizador.PartilhaMobilidade == true)
                             {
                                 utilizadoresMobilidade.Add(utilizador);
                             }
                             ViewBag.docentes++;
-                        }
                     }
                 }
             }
