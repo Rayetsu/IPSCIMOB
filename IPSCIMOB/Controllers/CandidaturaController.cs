@@ -489,6 +489,8 @@ namespace IPSCIMOB.Controllers
             var roleDocenteID = (await _context.Roles.SingleOrDefaultAsync(m => m.Name.Equals("Funcionário"))).Id;
             ApplicationUser utilizador = null;
             List<ApplicationUser> utilizadoresMobilidade = new List<ApplicationUser>();
+            ViewBag.docentesMobilidade = 0;
+            ViewBag.alunosMobilidade = 0;
             ViewBag.docentes = 0;
             ViewBag.alunos = 0;
             foreach (var c in _context.UserRoles)
@@ -496,23 +498,29 @@ namespace IPSCIMOB.Controllers
                 foreach (CandidaturaModel a in _context.CandidaturaModel)
                 {
                     utilizador = await _context.ApplicationUser.SingleOrDefaultAsync(m => m.Id == c.UserId);
-                    if (c.RoleId.Equals(roleAlunoID) && utilizador.IsMobilidade == true && a.Nome.Equals(utilizador.Nome) &&
-                        a.Programa.Equals(programaAtual.Nome))
+                    if (c.RoleId.Equals(roleAlunoID) && a.Nome.Equals(utilizador.Nome) && a.Programa.Equals(programaAtual.Nome))
                     {
+                        if (utilizador.IsMobilidade == true)
+                        {
                             if (utilizador.PartilhaMobilidade == true)
                             {
                                 utilizadoresMobilidade.Add(utilizador);
                             }
-                            ViewBag.alunos++;
+                            ViewBag.alunosMobilidade++;
+                        }
+                        ViewBag.alunos++;
                     }
-                    else if (c.RoleId.Equals(roleDocenteID) && utilizador.IsMobilidade == true && a.Nome.Equals(utilizador.Nome) &&
-                        a.Programa.Equals(programaAtual.Nome))
+                    else if (c.RoleId.Equals(roleDocenteID) && a.Nome.Equals(utilizador.Nome) && a.Programa.Equals(programaAtual.Nome))
                     {
+                        if (utilizador.IsMobilidade == true)
+                        {
                             if (utilizador.PartilhaMobilidade == true)
                             {
                                 utilizadoresMobilidade.Add(utilizador);
                             }
-                            ViewBag.docentes++;
+                            ViewBag.docentesMobilidade++;
+                        }
+                        ViewBag.docentes++;
                     }
                 }
             }
