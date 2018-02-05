@@ -171,11 +171,11 @@ namespace IPSCIMOB.Controllers
                     }
                     if(candidaturaModel.Estado == EstadoCandidatura.EmMobilidade)
                     {                      
-                        user.IsEmMobilidade = true;
+                        user.IsMobilidade = true;
                     }
                     if (candidaturaModel.Estado == EstadoCandidatura.Finalizou)
                     {
-                        user.IsEmMobilidade = false;
+                        user.IsMobilidade = false;
                     }
                     _context.Update(candidaturaModel);
                     await _context.SaveChangesAsync();
