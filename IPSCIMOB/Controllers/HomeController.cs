@@ -37,6 +37,32 @@ namespace IPSCIMOB.Controllers
             {
                 return View("~/Views/Home/CIMOB.cshtml", await _context.ProgramaModel.ToListAsync());
             }
+
+            DateTime semestre1 = new DateTime();
+            DateTime semestre2 = new DateTime();
+            foreach (ProgramaModel p in _context.ProgramaModel)
+            {
+                semestre1 = p.PrazoCandidaturaPrimeiroSemestre;
+                semestre2 = p.PrazoCandidaturaSegundoSemestre;
+                break;
+            }
+            TimeSpan date1Semestre = semestre1 - DateTime.Now;
+            TimeSpan date2Semestre = semestre2 - DateTime.Now;
+            if(date1Semestre.Days < 0)
+            {
+                ViewBag.Dias1Semestre = 0;
+                ViewBag.Dias2Semestre = date2Semestre.Days;
+            }else if(date2Semestre.Days < 0)
+            {
+                ViewBag.Dias1Semestre = date1Semestre.Days;
+                ViewBag.Dias2Semestre = 0;
+            }else if(date1Semestre.Days < 0 && date2Semestre.Days < 0)
+            {
+                ViewBag.Dias1Semestre = 0;
+                ViewBag.Dias2Semestre = 0;
+            }
+            
+
             return View();
         }
 

@@ -2,6 +2,23 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    .countdownContainer {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        text-align: center;
+        /*background: #ddd;
+                border: 1px solid #999;
+                box-shadow: 0 0 5px 3px #ccc;*/
+    }
+
+    .info {
+        font-size: 80px;
+    }
+</style>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -36,6 +53,26 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+
+<table class="countdownContainer">
+    <tr class="info">
+        <td colspan="4">Prazo para se Candidatar</td>
+    </tr>
+    <tr>
+        <td>1º Semestre</td>
+        <td>2º Semestre</td>
+    </tr>
+    <tr class="info">
+        <td id="dias">@ViewBag.Dias1Semestre</td>
+        <td id="dias">@ViewBag.Dias2Semestre</td>
+    </tr>
+    <tr>
+        <td>Dias</td>
+        <td>Dias</td>
+    </tr>
+</table>
+
 
 @*<div class="row">
     <div class="col-md-3">

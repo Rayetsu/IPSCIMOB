@@ -12,7 +12,7 @@ using System;
 namespace IPSCIMOB.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180205140620_data")]
+    [Migration("20180205201812_data")]
     partial class data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -358,9 +358,11 @@ namespace IPSCIMOB.Migrations
                     b.Property<int>("SugestaoID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("EmailUtilizador");
+                    b.Property<string>("EmailUtilizador")
+                        .IsRequired();
 
-                    b.Property<string>("TextoSugestao");
+                    b.Property<string>("TextoSugestao")
+                        .IsRequired();
 
                     b.HasKey("SugestaoID");
 

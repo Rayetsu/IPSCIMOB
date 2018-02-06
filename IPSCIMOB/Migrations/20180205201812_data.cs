@@ -245,8 +245,8 @@ namespace IPSCIMOB.Migrations
                 {
                     SugestaoID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    EmailUtilizador = table.Column<string>(nullable: true),
-                    TextoSugestao = table.Column<string>(nullable: true)
+                    EmailUtilizador = table.Column<string>(nullable: false),
+                    TextoSugestao = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
