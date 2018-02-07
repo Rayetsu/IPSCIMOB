@@ -37,10 +37,10 @@
 
     <div class="sidenav" >
         <ul>
-            <li>@Html.ActionLink("Inicio", "Inicio", "Candidatura")</li>
-            <li>@Html.ActionLink("Consultar Candidatura", "ConsultarCandidatura", "Candidatura")</li>
-            <li>@Html.ActionLink("Documentação", "Documentacao", "Candidatura", new { id = 7 }, null)</li>
-            <li>@Html.ActionLink("Entrevista", "Entrevista", "Candidatura")</li>
+            @Html.ActionLink("Inicio", "Inicio", "Candidatura")
+            @Html.ActionLink("Consultar Candidatura", "ConsultarCandidatura", "Candidatura")
+            @Html.ActionLink("Documentação", "Documentacao", "Candidatura", new { id = 7 }, null)
+            @Html.ActionLink("Entrevista", "Entrevista", "Candidatura")
         </ul> 
     </div>
 
