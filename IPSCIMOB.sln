@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPSCIMOB", "IPSCIMOB\IPSCIMOB.csproj", "{350DA993-34A3-4CDF-90FC-F25747DD6CFC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject1", "XUnitTestProject1\XUnitTestProject1.csproj", "{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "Selenium\Selenium.csproj", "{61587271-43C3-4606-8060-AA600E35EDA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{9D619B00-A344-40E7-84F4-9390ED9E8CA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61587271-43C3-4606-8060-AA600E35EDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61587271-43C3-4606-8060-AA600E35EDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61587271-43C3-4606-8060-AA600E35EDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61587271-43C3-4606-8060-AA600E35EDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D619B00-A344-40E7-84F4-9390ED9E8CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D619B00-A344-40E7-84F4-9390ED9E8CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D619B00-A344-40E7-84F4-9390ED9E8CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D619B00-A344-40E7-84F4-9390ED9E8CA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
