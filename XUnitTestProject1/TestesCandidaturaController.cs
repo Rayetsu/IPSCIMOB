@@ -20,9 +20,9 @@ namespace XUnitTestProject1
     {
         private DbContextOptionsBuilder<ApplicationDbContext> optionsBuilder;
         private ApplicationDbContext _dbContext;
-        private CandidaturaController candidaturas;
-        private UserManager<ApplicationUser> userManager;
-        private RoleManager<IdentityRole> _roleManager;
+        //private CandidaturaController candidaturas;
+        //private UserManager<ApplicationUser> userManager;
+        //private RoleManager<IdentityRole> _roleManager;
 
 
         [Fact]
@@ -32,13 +32,27 @@ namespace XUnitTestProject1
             optionsBuilder.UseInMemoryDatabase();
             _dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
+            var userStore = new Mock<IUserStore<ApplicationUser>>();
+            var userManager = new UserManager<ApplicationUser>(userStore.Object, null, null, null, null, null, null, null, null);
             ApplicationUser a = new ApplicationUser();
             _dbContext.Users.Add(a);
 
             var controller = new CandidaturaController(_dbContext, userManager);
 
+            var c = new CandidaturaModel()
+            {
+                Programa = "Programa Vasco Da Gama"
+            };
+            var result = await controller.Create(c);
 
-            
+            var candidatura = await _dbContext.CandidaturaModel.SingleOrDefaultAsync(m => m.CandidaturaID == c.CandidaturaID);
+            Assert.Equal(c, candidatura);
+            Assert.Equal("Programa Vasco Da Gama", candidatura.Programa);
+
+            var result2 = await controller.Edit(candidatura.CandidaturaID) as ViewResult;
+            Assert.Equal(result2.Model, c);
         }
+
+    
     }
 }
