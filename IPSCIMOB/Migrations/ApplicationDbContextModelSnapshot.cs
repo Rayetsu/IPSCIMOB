@@ -357,8 +357,7 @@ namespace IPSCIMOB.Migrations
                     b.Property<int>("SugestaoID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("EmailUtilizador")
-                        .IsRequired();
+                    b.Property<string>("EmailUtilizador");
 
                     b.Property<string>("TextoSugestao")
                         .IsRequired();

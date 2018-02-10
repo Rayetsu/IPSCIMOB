@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -45,7 +44,6 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Sugestao/Create
-
         public IActionResult Create()
         {
             return View();
@@ -56,15 +54,15 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> Create([Bind("SugestaoID,EmailUtilizador,TextoSugestao")] Sugestao sugestao)
         {
+            sugestao.EmailUtilizador = User.Identity.Name;
             if (ModelState.IsValid)
             {
-                sugestao.EmailUtilizador = User.Identity.Name;
                 _context.Add(sugestao);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Sugestao");
+                return View();
+                //return RedirectToAction(nameof(Index));
             }
             return View(sugestao);
         }

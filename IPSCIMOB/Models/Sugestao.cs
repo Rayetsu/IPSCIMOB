@@ -10,7 +10,6 @@ namespace IPSCIMOB.Models
     {
         [Key]
         public int SugestaoID { get; set; }
-        [Required]
         public String EmailUtilizador { get; set; }
         [Required]
         public String TextoSugestao { get; set; }

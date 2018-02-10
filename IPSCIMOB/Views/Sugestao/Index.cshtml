@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<IPSCIMOB.Models.Sugestao>
 
 @{
-    ViewData["Title"] = "Lista de Feedbacks";
+    ViewData["Title"] = "Index";
 }
 
-<h2>FeedBacks</h2>
+<h2>Index</h2>
 
-<p></p>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -29,15 +31,11 @@
                 @Html.DisplayFor(modelItem => item.TextoSugestao)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.SugestaoID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.SugestaoID">Apagar</a>
+                <a asp-action="Edit" asp-route-id="@item.SugestaoID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SugestaoID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SugestaoID">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-
-
-<div align="center">
-    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
-</div>
