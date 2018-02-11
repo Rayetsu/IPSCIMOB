@@ -29,19 +29,19 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="~/images/erasmus.png" alt="Programa Erasmus+" class="img-responsive" href = "" />
+            <img src="~/images/erasmus1.png" alt="Programa Erasmus+" class="img-responsive" href = "" />
         </div>
         <div class="item">
-            <img src="~/images/lusoBrasileiro.png" alt="Programa Luso Brasileiro" class="img-responsive" />
+            <img src="~/images/lusoBrasileiro1.png" alt="Programa Luso Brasileiro" class="img-responsive" />
         </div>
         <div class="item">
-            <img src="~/images/iberoAmericano.png" alt="Programa Ibero Americano" class="img-responsive" />
+            <img src="~/images/iberoAmericano1.png" alt="Programa Ibero Americano" class="img-responsive" />
         </div>
         <div class="item">
-            <img src="~/images/vascoGama.png" alt="Programa Vasco da Gama" class="img-responsive" />
+            <img src="~/images/vascoGama1.png" alt="Programa Vasco da Gama" class="img-responsive" />
         </div>
         <div class="item">
-            <img src="~/images/mapaMacau.png" alt="Cooperação Politécnico de Macau" class="img-responsive" />
+            <img src="~/images/mapaMacau1.png" alt="Cooperação Politécnico de Macau" class="img-responsive" />
         </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -55,65 +55,75 @@
 </div>
 
 
-<table class="countdownContainer">
-    <tr class="info">
-        <td colspan="4">Prazo para se Candidatar</td>
-    </tr>
-    <tr>
-        <td>1º Semestre</td>
-        <td>2º Semestre</td>
-    </tr>
-    <tr class="info">
-        <td id="dias">@ViewBag.Dias1Semestre</td>
-        <td id="dias">@ViewBag.Dias2Semestre</td>
-    </tr>
-    <tr>
-        <td>Dias</td>
-        <td>Dias</td>
-    </tr>
-</table>
 
 
-@*<div class="row">
-    <div class="col-md-3">
-        <h3>Programa Erasmus</h3>
-        <ul>
-            <li><a href="">Estudantes para período de ESTUDOS</a></li>
-            <li><a href="">Estudantes para período de ESTÁGIO</a></li>
-            <li><a href="">Carta Universitária para o Ensino Superior (ECHE - Erasmus Charter for Higher Education)</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h3>Programa de Bolsas Luso-Brasileiras Santander Universidades</h3>
-        <ul>
-            <li><a href="">Estudantes do IPS</a></li>
-            <li><a href="">Estudantes Brasileiros/Incoming</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h3>Programas de Bolsas Ibero-Americanas Santander Universidades</h3>
-        <ul>
-            <li><a href="">Estudantes do IPS</a></li>
-            <li><a href="">Estudantes Brasileiros/Incoming</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h3>Cooperação com Instituto Politécnico de Macau</h3>
-        <ul>
-            <li><a href="">Estudantes</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h3>Mobilidade Vasco da Gama</h3>
-        <ul>
-            <li><a href="">Estudantes</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h3>Links Recomendados</h3>
-        <ul>
-            <li><a href="www.erasmusmais.pt">Agência Nacional Erasmus+ Educação e Formação</a></li>
-            <li><a href="www.ec.europa.eu/education/index_en.htm">Comissão Europeia - Educação e Formação</a></li>
-        </ul>
-    </div>
-</div>*@
+    <table class="countdownContainer">
+        <tr class="info">
+            @if (ViewBag.Dias1Semestre != 0 || ViewBag.Dias2Semestre != 0)
+            {
+                <td colspan="4">Ainda vais a tempo!</td>
+            }
+            else
+            {
+                <td colspan="4">Já não vais a tempo :(</td>
+
+            }
+        </tr>
+        <tr>
+            <td>1º Semestre</td>
+            <td>2º Semestre</td>
+        </tr>
+        <tr class="info">
+            <td id="dias">@ViewBag.Dias1Semestre</td>
+            <td id="dias">@ViewBag.Dias2Semestre</td>
+        </tr>
+        <tr>
+            <td>Dias</td>
+            <td>Dias</td>
+        </tr>
+    </table>
+
+
+    @*<div class="row">
+            <div class="col-md-3">
+                <h3>Programa Erasmus</h3>
+                <ul>
+                    <li><a href="">Estudantes para período de ESTUDOS</a></li>
+                    <li><a href="">Estudantes para período de ESTÁGIO</a></li>
+                    <li><a href="">Carta Universitária para o Ensino Superior (ECHE - Erasmus Charter for Higher Education)</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Programa de Bolsas Luso-Brasileiras Santander Universidades</h3>
+                <ul>
+                    <li><a href="">Estudantes do IPS</a></li>
+                    <li><a href="">Estudantes Brasileiros/Incoming</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Programas de Bolsas Ibero-Americanas Santander Universidades</h3>
+                <ul>
+                    <li><a href="">Estudantes do IPS</a></li>
+                    <li><a href="">Estudantes Brasileiros/Incoming</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Cooperação com Instituto Politécnico de Macau</h3>
+                <ul>
+                    <li><a href="">Estudantes</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Mobilidade Vasco da Gama</h3>
+                <ul>
+                    <li><a href="">Estudantes</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Links Recomendados</h3>
+                <ul>
+                    <li><a href="www.erasmusmais.pt">Agência Nacional Erasmus+ Educação e Formação</a></li>
+                    <li><a href="www.ec.europa.eu/education/index_en.htm">Comissão Europeia - Educação e Formação</a></li>
+                </ul>
+            </div>
+        </div>*@

@@ -35,7 +35,7 @@ namespace IPSCIMOB.Models
         [Display(Name = "Programa Atual")]
         public Boolean ProgramaAtual { get; set; }
 
-        [Display(Name = "Profissão Indicada")]
+        [Display(Name = "Profissão")]
         public UtilizadorProfissao UtilizadorProfissao { get; set; }
 
 
@@ -45,13 +45,13 @@ namespace IPSCIMOB.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "Prazo Candidatura 1º Semestre")]
+        [Display(Name = "Candidatura 1º Semestre")]
         public DateTime PrazoCandidaturaPrimeiroSemestre { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "Prazo Candidatura 2º Semestre")]
+        [Display(Name = "Candidatura 2º Semestre")]
         public DateTime PrazoCandidaturaSegundoSemestre { get; set; }
 
 

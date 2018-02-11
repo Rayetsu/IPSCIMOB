@@ -12,7 +12,7 @@
 <body>
 
     <br />
-    <h1 align ="center">Lista de Programas De Mobilidade </h1>
+    <h1 align ="center" style="color:lightseagreen;">Lista de Programas de Mobilidade </h1>
     <hr />
     <table class="table">
         <thead>
@@ -49,7 +49,7 @@
                         @Html.DisplayFor(modelItem => item.PrazoCandidaturaSegundoSemestre)
                     </td>
                     <td>
-                        <a asp-action="DetalhesProgramaEscolhido" asp-route-id="@item.ProgramaID">Detalhes</a> 
+                        <a asp-action="DetalhesProgramaEscolhido" asp-route-id="@item.ProgramaID" style="color:lightseagreen;">Detalhes</a> 
                     </td>
                 </tr>
             }
