@@ -11,6 +11,7 @@ using IPSCIMOB.Models;
 using Moq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace XUnitTestProject1
 {
@@ -24,26 +25,93 @@ namespace XUnitTestProject1
         private UserManager<ApplicationUser> userManager;
         //private RoleManager<IdentityRole> _roleManager;
 
+        public TestesCandidaturaController()
+        {
+            optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\\mssqllocaldb;Database=aspnet-IPSCIMOB-62721098-BD60-4CA2-8125-8EB3F02474C3;Trusted_Connection=True;MultipleActiveResultSets=true");
+            optionsBuilder.UseInMemoryDatabase();
+            _dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var userStore = new Mock<IUserStore<ApplicationUser>>();
+            //var passwordManager = userStore.As<IUserPasswordStore<ApplicationUser>>();
+            userManager = new UserManager<ApplicationUser>(userStore.Object, null, null, null, null, null, null, null, null);
+        }
+
+
+        [Fact]
+        public async Task TestIndex()
+        {
+            // Arrange
+            var sut = new CandidaturaController(_dbContext, userManager);
+            
+
+            // Act
+            var result = sut.Index() as Task<IActionResult>;
+            
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsAssignableFrom<IActionResult>(await result);
+        }
+
+        [Fact]
+        public void ConsultarCandidaturaAluno()
+        {
+            // Arrange
+            var sut = new CandidaturaController(_dbContext, userManager);
+
+
+            // Act
+            var result = sut.ConsultarCandidaturaAluno();
+
+            // Assert
+            Assert.IsType<ViewResult>(result);
+        }
 
         //[Fact]
         //public async Task CandidaturaCreateTest()
-        //{          
-        //    optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\\mssqllocaldb;Database=aspnet-IPSCIMOB-62721098-BD60-4CA2-8125-8EB3F02474C3;Trusted_Connection=True;MultipleActiveResultSets=true");
-        //    optionsBuilder.UseInMemoryDatabase();
-        //    _dbContext = new ApplicationDbContext(optionsBuilder.Options);
+        //{
+        //    ApplicationUser user = new ApplicationUser
+        //    {
+        //        UserName = "aluno@email.com",
+        //        Email = "aluno@email.com",
+        //        Nome = "ALUNO",
+        //        NumeroInterno = 142327134,
+        //        NumeroDoBI = 915542421,
+        //        Morada = "rua",
+        //        NumeroDaPorta = 3,
+        //        Andar = "2ºDto.",
+        //        CodigoPostal = "2844-014",
+        //        Cidade = "Seixal",
+        //        Distrito = "Setúbal",
+        //        Nacionalidade = "Portugal",
+        //        Telefone = 123453489,
+        //        DataDeNascimento = new DateTime(2000, 12, 9),
+        //        EmailConfirmed = true,
+        //        IsDadosVerificados = true,
+        //        PartilhaMobilidade = true,
+        //        IsFuncionario = false
+        //    };
+
+
+        //    //IdentityResult result2 = userManager.CreateAsync(user, "Ips123!").Result;
+        //    _dbContext.Add(user);
+
+        //    //var cp = new Mock<ClaimsPrincipal>();
+
+        //    var signIn = new Mock<SignInManager<ApplicationUser>>();
+
+        //    await userManager.GetUserAsync(User);
 
         //    //ApplicationUser a = new ApplicationUser();
         //    //_dbContext.Users.Add(a);
-            
-        //    var userStore = new Mock<IUserStore<ApplicationUser>>();
-        //    var userManager = new UserManager<ApplicationUser>(userStore.Object,null, null, null, null, null, null, null, null);
-            
+
+        //    //var userStore = new Mock<IUserStore<ApplicationUser>>();
+        //    //var userManager = new UserManager<ApplicationUser>(userStore.Object, null, null, null, null, null, null, null, null);
+
         //    var controller = new CandidaturaController(_dbContext, userManager);
 
         //    var c = new CandidaturaModel()
         //    {
-        //        Programa = "Santander Universidades - BOLSAS IBERO-AMERICANAS"                
+        //        Programa = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
         //    };
 
         //    var result = await controller.Create(c);
