@@ -35,27 +35,28 @@
 
 <br />
 <br />
-<table class="table">   
+<table class="table" id="table">
     <tbody>
     @foreach (var item in Model)
     {
+        
         if (@item.UtilizadorProfissao.Equals(@ViewBag.UserProfissao))
         {
-            <tr align ="center">
-                <td>
-                    <a asp-action="Inicio" asp-route-id="@item.ProgramaID">@Html.DisplayFor(modelItem => item.Nome)</a>
+            <tr align ="center" id="@item.Nome">
+                <td id="@item.Nome">
+                    <a asp-action="Inicio" asp-route-id="@item.ProgramaID" id="@item.Nome">@Html.DisplayFor(modelItem => item.Nome)</a>
                 </td>
-            </tr>         
+            </tr>
         }
         if (@item.UtilizadorProfissao.ToString().Equals("FuncionarioAluno"))
         {
             <tr align ="center">
                 <td>
-                    <a asp-action="Inicio" asp-route-id="@item.ProgramaID">@Html.DisplayFor(modelItem => item.Nome)</a>
+                    <a asp-action="Inicio" asp-route-id="@item.ProgramaID" id="@item.Nome">@Html.DisplayFor(modelItem => item.Nome)</a>
                 </td>
             </tr>
         }
-     }
+    }
      </tbody>
 </table>
 

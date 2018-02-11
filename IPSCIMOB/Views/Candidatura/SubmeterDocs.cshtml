@@ -18,7 +18,7 @@
     <br />
     <form asp-controller="Upload" asp-action="UploadFiles" method="post"
           enctype="multipart/form-data">
-        <input type="file" name="files" multiple />
+        <input type="file" name="files" multiple id="subDocs"/>
         <br />
         <button type="submit">Upload Files</button>
         <p>
@@ -38,6 +38,6 @@
     <br />
     <br />
 <div align="center">
-    <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("MarcarEntrevistas", "Candidatura") + "'");" />
+    <input type="button" value="Passo Seguinte" onclick="@("window.location.href='" + @Url.Action("MarcarEntrevistas", "Candidatura") + "'");" id="passoSeguinte"/>
 </div>
 }
