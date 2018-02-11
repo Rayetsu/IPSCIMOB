@@ -4,11 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Lista de Instituições Parceiras - Programas de Mobilidade</h2>
-
+<h2 align ="center">Lista de Instituições Parceiras - Programas de Mobilidade</h2>
+<hr />
 <p>
     <a asp-action="Create">Criar Nova Instituição</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,3 +52,8 @@
 }
     </tbody>
 </table>
+
+
+<div align="center">
+    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>

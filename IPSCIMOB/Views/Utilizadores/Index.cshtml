@@ -4,8 +4,9 @@
     ViewData["Title"] = "Lista de utilizadores";
 }
 
-<h2>Utilizadores</h2>
+<h2 align="center">Lista de Utilizadores</h2>
 
+<hr />
 @*<p>
     <a asp-action="Create">Create New</a>
 </p>*@
@@ -21,7 +22,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.NumeroDoBI)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.DataDeNascimento)
                 </th>
                 <th>
@@ -44,7 +45,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nacionalidade)
-            </th>
+            </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Telefone)
                 </th>
@@ -60,10 +61,10 @@
                 @*<th>
                     @Html.DisplayNameFor(model => model.NormalizedEmail)
                 </th>*@
-                <th>
-                    @Html.DisplayNameFor(model => model.EmailConfirmed)
-                </th>
             <th>
+                    @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.IsMobilidade)
             </th>
             <th>
@@ -71,7 +72,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsFuncionario)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.IsDadosVerificados)
             </th>
@@ -117,7 +118,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NumeroDoBI)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.DataDeNascimento)
             </td>
             <td>
@@ -140,7 +141,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nacionalidade)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Telefone)
             </td>  
@@ -156,10 +157,10 @@
             @*<td>
                 @Html.DisplayFor(modelItem => item.NormalizedEmail)
             </td>*@
-            <td>
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.EmailConfirmed)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.IsMobilidade)
             </td>
             <td>
@@ -167,8 +168,8 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsFuncionario)
-            </td>
-            <td>
+            </td>*@
+            <td align="center">
                 @Html.DisplayFor(modelItem => item.IsDadosVerificados)
             </td>
             @*<td>

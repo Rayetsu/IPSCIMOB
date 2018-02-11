@@ -15,7 +15,8 @@
 <body>
 
     <br />
-<h1>Lista de Programas De Mobilidade </h1>
+<h1 align="center">Lista de Programas de Mobilidade </h1>
+    <hr />
 <p>
     <a asp-action="Create">Criar Novo Programa</a>
 </p>
@@ -25,9 +26,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Nome)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Descricao)
-                </th>
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.UtilizadorProfissao)
             </th>
@@ -46,9 +47,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.UtilizadorProfissao)
             </td>
@@ -69,3 +70,7 @@
 </table>
 </body>
 </html>
+
+<div align="center">
+    <input type="button" value="VOLTAR PARA HOME" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+</div>

@@ -4,11 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Lista de todas as Candidaturas </h2>
+<h2 align ="center" >Lista de todas as Candidaturas </h2>
+
+<hr />
 
 <table class="table">
-    <thead>
-        <tr>
+    <thead >
+        <tr >
                 <th>
                     @Html.DisplayNameFor(model => model.Nome)
                 </th>
@@ -28,12 +30,12 @@
                     @Html.DisplayNameFor(model => model.Email)
                 </th>*@           
                
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.IsBolsa)
                 </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoBolsa)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoBolsa)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.IsEstudo)
                 </th>
@@ -48,100 +50,105 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.IsFormacao)
-                </th>
-                <th>
-                    Leu Regulamento @*@Html.DisplayNameFor(model => model.IsConfirmado)*@
-                </th>
+                </th>*@
+                @*<th>
+                    Leu Regulamento @Html.DisplayNameFor(model => model.IsConfirmado)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Semestre)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.DataInicioCandidatura)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataFimCandidatura)
-            </th>
-                <th>
+            </th>*@
+                @*<th>
                     @Html.DisplayNameFor(model => model.InstituicaoPais)
                 </th>
             <th>
                 @Html.DisplayNameFor(model => model.InstituicaoCidade)
-            </th>
-                <th>
+            </th>*@
+                <th >
                     @Html.DisplayNameFor(model => model.Estado)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroInterno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Programa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoDocumentos)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.EntrevistaID)
-            </td>*@         
-            <td>
-                @Html.DisplayFor(modelItem => item.IsBolsa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoBolsa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsEstudo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsEstagio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsInvestigacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsLecionar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsFormacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsConfirmado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Semestre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicioCandidatura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFimCandidatura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoPais)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstituicaoCidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CandidaturaID">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.CandidaturaID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.CandidaturaID">Eliminar</a>
-            </td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.NumeroInterno)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.InstituicaoNome)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.Programa)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.EstadoDocumentos)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.EntrevistaID)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.IsBolsa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoBolsa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsEstudo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsEstagio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsInvestigacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsLecionar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFormacao)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.IsConfirmado)
+                </td>*@
+                <td >
+                    @Html.DisplayFor(modelItem => item.Semestre)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.DataInicioCandidatura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFimCandidatura)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoPais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstituicaoCidade)
+                </td>*@
+                <td >
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td >
+                    <a asp-action="Edit" asp-route-id="@item.CandidaturaID">Editar</a> 
+                </td>
+                <td >
+                     <a asp-action="Details" asp-route-id="@item.CandidaturaID">Detalhes</a> 
+                </td>
+                <td >
+                     <a asp-action="Delete" asp-route-id="@item.CandidaturaID">Eliminar</a> 
+                </td>
+        </tr>      
 }
     </tbody>
 </table>
