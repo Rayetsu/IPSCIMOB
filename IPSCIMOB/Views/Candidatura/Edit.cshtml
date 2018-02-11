@@ -124,7 +124,7 @@
             <div class="form-group">
                  <label asp-for="EstadoDocumentos"></label>
                  <div class="col-md-10">
-                    <select asp-for="EstadoDocumentos" asp-items="Html.GetEnumSelectList<EstadoDocumentos>()">
+                    <select asp-for="EstadoDocumentos" asp-items="Html.GetEnumSelectList<EstadoDocumentos>()" id="EstadoDocumentos">
                      <option selected="selected" value="">Selecione Estado </option>
                 </select>
                 </div>
@@ -168,7 +168,7 @@
             <br />
 
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-default" id="Guardar"/>
             </div>
         </form>
     </div>

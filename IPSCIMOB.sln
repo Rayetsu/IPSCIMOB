@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPSCIMOB", "IPSCIMOB\IPSCIM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject1", "XUnitTestProject1\XUnitTestProject1.csproj", "{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestesSelenium", "TestesSelenium\TestesSelenium.csproj", "{17BB04E5-3192-4FA7-8A4A-BEC419140D8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24A8C6E7-A9AE-4F4C-BFB0-CF1BBAB85524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17BB04E5-3192-4FA7-8A4A-BEC419140D8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BB04E5-3192-4FA7-8A4A-BEC419140D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BB04E5-3192-4FA7-8A4A-BEC419140D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BB04E5-3192-4FA7-8A4A-BEC419140D8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

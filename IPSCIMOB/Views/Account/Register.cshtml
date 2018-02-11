@@ -16,57 +16,57 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome"></label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control" id="Nome"/>
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumeroInterno"></label>
-                <input asp-for="NumeroInterno" class="form-control" />
+                <input asp-for="NumeroInterno" class="form-control" id="NumeroInterno"/>
                 <span asp-validation-for="NumeroInterno" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumeroDoBI"></label>
-                <input asp-for="NumeroDoBI" class="form-control" />
+                <input asp-for="NumeroDoBI" class="form-control" id="NumeroBI"/>
                 <span asp-validation-for="NumeroDoBI" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataDeNascimento"></label>
-                <input asp-for="DataDeNascimento" class="form-control" />
+                <input asp-for="DataDeNascimento" class="form-control" id="DataDeNascimento"/>
                 <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Morada"></label>
-                <input asp-for="Morada" class="form-control" />
+                <input asp-for="Morada" class="form-control" id="Morada"/>
                 <span asp-validation-for="Morada" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumeroDaPorta"></label>
-                <input asp-for="NumeroDaPorta" class="form-control" />
+                <input asp-for="NumeroDaPorta" class="form-control" id="NumeroDaPorta"/>
                 <span asp-validation-for="NumeroDaPorta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Andar"></label>
-                <input asp-for="Andar" class="form-control" />
+                <input asp-for="Andar" class="form-control" id="Andar"/>
                 <span asp-validation-for="Andar" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CodigoPostal"></label>
-                <input asp-for="CodigoPostal" placeholder= "exemplo 2800-064" class="form-control" pattern="[0-9]{4}[\-]?[0-9]{3}"/>
+                <input asp-for="CodigoPostal" placeholder= "exemplo 2800-064" class="form-control" pattern="[0-9]{4}[\-]?[0-9]{3}" id="CodigoPostal"/>
                 <span asp-validation-for="CodigoPostal" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cidade"></label>
-                <input asp-for="Cidade" class="form-control"/>
+                <input asp-for="Cidade" class="form-control" id="Cidade"/>
                 <span asp-validation-for="Cidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Distrito"></label>
-                <input asp-for="Distrito" class="form-control" />
+                <input asp-for="Distrito" class="form-control" id="Distrito"/>
                 <span asp-validation-for="Distrito" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nacionalidade"></label>
-                <input asp-for="Nacionalidade" class="form-control" />
+                <input asp-for="Nacionalidade" class="form-control" id="Nacionalidade"/>
                 @*<select asp-for="Distrito" nome ="Nacionalidade" class="form-control">
                     <option value=""></option>
                     <option value="australia">Australia</option>
@@ -89,30 +89,30 @@
             </div>
             <div class="form-group">
                 <label asp-for="Telefone"></label>
-                <input asp-for="Telefone" class="form-control"/>
+                <input asp-for="Telefone" class="form-control" id="Telefone"/>
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" id="Email"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" id="Password"/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+                <input asp-for="ConfirmPassword" class="form-control" id="ConfirmPassword"/>
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IsFuncionario"></label>
-                <input asp-for="IsFuncionario" class="form-control" />
+                <input asp-for="IsFuncionario" class="form-control" id="IsFuncionario"/>
                 <span asp-validation-for="IsFuncionario" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-default">Registar</button>
+            <button type="submit" class="btn btn-default" id="Registar">Registar</button>
             <p>
                 <a target="_blank" href="/Ajudas/Details/10" align="right">Ajuda</a>
             </p>
