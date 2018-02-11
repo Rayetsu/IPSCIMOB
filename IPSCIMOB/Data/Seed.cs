@@ -1007,7 +1007,7 @@ namespace IPSCIMOB.Data
                 Email = "someone1995@hotmail.com",
                 EntrevistaAtual = false,
                 DataDeEntrevista = new DateTime (2017, 08, 16, 10, 30, 0),
-                Estado = EstadoEntrevista.Aceite,
+                Estado = EstadoEntrevista.Entrevistado,
                 NomePrograma = "Santander Universidades - BOLSAS IBERO-AMERICANAS"
             });
             //Candidatura 1 do Aluno Tiago
@@ -1044,7 +1044,7 @@ namespace IPSCIMOB.Data
                 Email = "paulofournier@email.com",
                 EntrevistaAtual = false,
                 DataDeEntrevista = new DateTime(2017, 07, 23, 10, 30, 0),
-                Estado = EstadoEntrevista.Aceite,
+                Estado = EstadoEntrevista.Entrevistado,
                 NomePrograma = "Erasmus+ FUNCIONÁRIOS"
             });
             // Candidatura 2 do Funcionário Paulo
@@ -1081,7 +1081,7 @@ namespace IPSCIMOB.Data
                 Email = "francisco.alves@estudantes.ips.pt",
                 EntrevistaAtual = false,
                 DataDeEntrevista = new DateTime(2017, 07, 23, 10, 30, 0),
-                Estado = EstadoEntrevista.Aceite,
+                Estado = EstadoEntrevista.Entrevistado,
                 NomePrograma = "Erasmus+ ALUNOS"
             });
             // Candidatura 3 do Aluno Francisco
@@ -1118,7 +1118,7 @@ namespace IPSCIMOB.Data
                 Email = "140221075@estudantes.ips.pt",
                 EntrevistaAtual = false,
                 DataDeEntrevista = new DateTime(2017, 07, 21, 10, 30, 0),
-                Estado = EstadoEntrevista.Aceite,
+                Estado = EstadoEntrevista.Entrevistado,
                 NomePrograma = "Erasmus+ ALUNOS"
             });
             // Candidatura 4 do Aluno Gabriel
@@ -1155,7 +1155,7 @@ namespace IPSCIMOB.Data
                 Email = "140221051@estudantes.ips.pt",
                 EntrevistaAtual = false,
                 DataDeEntrevista = new DateTime(2017, 07, 11, 10, 30, 0),
-                Estado = EstadoEntrevista.Aceite,
+                Estado = EstadoEntrevista.Entrevistado,
                 NomePrograma = "Santander Universidades - BOLSAS LUSO-BRASILEIRAS"
             });
             // Candidatura 5 do Aluno Diogo
