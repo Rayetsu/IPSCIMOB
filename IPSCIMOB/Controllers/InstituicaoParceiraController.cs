@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -26,6 +27,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InstituicaoParceira/Details/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InstituicaoParceira/Create
+        [Authorize(Roles = "CIMOB")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +57,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Create([Bind("InstituicaoParceiraID,Nome,Pais,Cidade,ProgramaNome")] InstituicaoParceiraModel instituicaoParceiraModel)
         {
             if (ModelState.IsValid)
@@ -66,6 +70,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InstituicaoParceira/Edit/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +91,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("InstituicaoParceiraID,Nome,Pais,Cidade, ProgramaNome")] InstituicaoParceiraModel instituicaoParceiraModel)
         {
             if (id != instituicaoParceiraModel.InstituicaoParceiraID)
@@ -117,6 +123,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: InstituicaoParceira/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +144,7 @@ namespace IPSCIMOB.Controllers
         // POST: InstituicaoParceira/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var instituicaoParceiraModel = await _context.InstituicaoParceiraModel.SingleOrDefaultAsync(m => m.InstituicaoParceiraID == id);

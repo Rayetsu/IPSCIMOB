@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -24,12 +25,14 @@ namespace IPSCIMOB.Controllers
 
 
         // GET: Entrevistas
+        [Authorize(Roles = "CIMOB, Aluno, Funcionário")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Entrevista.ToListAsync());
         }
 
         // GET: Entrevistas/Details/5
+        [Authorize(Roles = "CIMOB, Aluno, Funcionário")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,6 +51,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Entrevistas/Create
+        [Authorize(Roles = "CIMOB, Aluno, Funcionário")]
         public async Task<IActionResult> Create()
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
@@ -87,6 +91,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB, Aluno, Funcionário")]
         public async Task<IActionResult> Create([Bind("EntrevistaId,NumeroAluno,Email, EntrevistaAtual,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -108,6 +113,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Entrevistas/Edit/5
+        [Authorize(Roles = "CIMOB, Aluno, Funcionário")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -128,6 +134,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB, Aluno, Funcionário")]
         public async Task<IActionResult> Edit(int id, [Bind("EntrevistaId,NumeroAluno,Email,DataDeEntrevista,Estado,NomePrograma")] Entrevista entrevista)
         {
             var userEmail = entrevista.Email;
@@ -170,6 +177,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Entrevistas/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -190,6 +198,7 @@ namespace IPSCIMOB.Controllers
         // POST: Entrevistas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var entrevista = await _context.Entrevista.SingleOrDefaultAsync(m => m.EntrevistaId == id);
@@ -198,6 +207,7 @@ namespace IPSCIMOB.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "CIMOB")]
         private bool EntrevistaExists(int id)
         {
             return _context.Entrevista.Any(e => e.EntrevistaId == id);

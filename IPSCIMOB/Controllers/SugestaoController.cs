@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -20,12 +21,14 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Sugestao
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Sugestao.ToListAsync());
         }
 
         // GET: Sugestao/Details/5
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Sugestao/Create
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +58,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Create([Bind("SugestaoID,EmailUtilizador,TextoSugestao")] Sugestao sugestao)
         {
             sugestao.EmailUtilizador = User.Identity.Name;
@@ -68,6 +73,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Sugestao/Edit/5
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,6 +94,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("SugestaoID,EmailUtilizador,TextoSugestao")] Sugestao sugestao)
         {
             if (id != sugestao.SugestaoID)
@@ -119,6 +126,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Sugestao/Delete/5
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,6 +147,7 @@ namespace IPSCIMOB.Controllers
         // POST: Sugestao/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var sugestao = await _context.Sugestao.SingleOrDefaultAsync(m => m.SugestaoID == id);

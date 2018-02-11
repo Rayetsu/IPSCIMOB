@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using IPSCIMOB.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -32,6 +33,7 @@ namespace IPSCIMOB.Controllers
 
         }
 
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public IActionResult Index()
         {
             return View();
@@ -71,6 +73,7 @@ namespace IPSCIMOB.Controllers
         //}
 
         [HttpPost]
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> UploadFiles(List<IFormFile> files)
         {
             if (files == null || files.Count == 0)
@@ -134,6 +137,7 @@ namespace IPSCIMOB.Controllers
         //    return RedirectToAction("Index");
         //}
 
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Files()
         {
             /*var model = new FilesViewModel();
@@ -162,6 +166,7 @@ namespace IPSCIMOB.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<IActionResult> Download(string filename)
         {
             if (filename == null)
@@ -179,6 +184,7 @@ namespace IPSCIMOB.Controllers
             return File(memory, GetContentType(path), Path.GetFileName(path));
         }
 
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         private string GetContentType(string path)
         {
             var types = GetMimeTypes();
@@ -186,6 +192,7 @@ namespace IPSCIMOB.Controllers
             return types[ext];
         }
 
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         private Dictionary<string, string> GetMimeTypes()
         {
             return new Dictionary<string, string>

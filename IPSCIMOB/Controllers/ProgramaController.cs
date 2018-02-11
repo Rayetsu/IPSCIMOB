@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -68,6 +69,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Programa/Create
+        [Authorize(Roles = "CIMOB")]
         public IActionResult Create()
         {
             return View();
@@ -78,6 +80,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Create([Bind("ProgramaID,Nome,Descricao,ProgramaAtual, UtilizadorProfissao, PrazoCandidaturaPrimeiroSemestre, PrazoCandidaturaSegundoSemestre")] ProgramaModel programaModel)
         {
             if (ModelState.IsValid)
@@ -96,6 +99,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Programa/Edit/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -116,6 +120,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("ProgramaID,Nome,Descricao,ProgramaAtual, UtilizadorProfissao,PrazoCandidaturaPrimeiroSemestre, PrazoCandidaturaSegundoSemestre")] ProgramaModel programaModel)
         {
             if (id != programaModel.ProgramaID)
@@ -153,6 +158,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Programa/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -173,6 +179,7 @@ namespace IPSCIMOB.Controllers
         // POST: Programa/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var programaModel = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaID == id);

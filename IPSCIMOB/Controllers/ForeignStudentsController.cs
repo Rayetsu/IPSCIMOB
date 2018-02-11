@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -20,12 +21,14 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: ForeignStudents
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.ForeignStudent.ToListAsync());
         }
 
         // GET: ForeignStudents/Details/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: ForeignStudents/Create
+        [Authorize(Roles = "CIMOB")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +58,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Create([Bind("Id,Nome,Nacionalidade,Email,DataDeNascimento,EscolaIPSECurso,Morada,NumeroDaPorta,Andar,Cidade,Distrito,CodigoPostal,Universidade,Telefone,IsBolseiro,PartilhaMobilidade,IsFuncionario,IsDadosVerificados")] ForeignStudents foreignStudents)
         {
             if (ModelState.IsValid)
@@ -66,6 +71,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: ForeignStudents/Edit/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +92,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Nacionalidade,Email,DataDeNascimento,EscolaIPSECurso,Morada,NumeroDaPorta,Andar,Cidade,Distrito,CodigoPostal,Universidade,Telefone,IsBolseiro,PartilhaMobilidade,IsFuncionario,IsDadosVerificados")] ForeignStudents foreignStudents)
         {
             if (id != foreignStudents.Id)
@@ -117,6 +124,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: ForeignStudents/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +145,7 @@ namespace IPSCIMOB.Controllers
         // POST: ForeignStudents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var foreignStudents = await _context.ForeignStudent.SingleOrDefaultAsync(m => m.Id == id);

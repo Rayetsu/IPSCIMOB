@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using IPSCIMOB.Data;
 using IPSCIMOB.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IPSCIMOB.Controllers
 {
@@ -20,12 +21,14 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: EnviarMsgs
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.EnviarMsg_1.ToListAsync());
         }
 
         // GET: EnviarMsgs/Details/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: EnviarMsgs/Create
+        [Authorize(Roles = "CIMOB")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +58,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Create([Bind("EnviarId,ToEmail,EMailBody,EmailSubject")] EnviarMsg enviarMsg)
         {
             if (ModelState.IsValid)
@@ -72,6 +77,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: EnviarMsgs/Edit/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +98,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Edit(int id, [Bind("EnviarId,ToEmail,EMailBody,EmailSubject")] EnviarMsg enviarMsg)
         {
             if (id != enviarMsg.EnviarId)
@@ -123,6 +130,7 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: EnviarMsgs/Delete/5
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,6 +151,7 @@ namespace IPSCIMOB.Controllers
         // POST: EnviarMsgs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "CIMOB")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var enviarMsg = await _context.EnviarMsg_1.SingleOrDefaultAsync(m => m.EnviarId == id);
@@ -151,6 +160,7 @@ namespace IPSCIMOB.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "CIMOB")]
         private bool EnviarMsgExists(int id)
         {
             return _context.EnviarMsg_1.Any(e => e.EnviarId == id);

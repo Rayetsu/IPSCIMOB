@@ -53,11 +53,13 @@ namespace IPSCIMOB.Controllers
         }
 
         // GET: Candidatura/Create
+        [Authorize(Roles = "Aluno, Funcionário")]
         public IActionResult ConsultarCandidaturaAluno()
         {
             return View();
         }
 
+        [Authorize(Roles = "Aluno, Funcionário")]
         public IActionResult ConsultarCandidaturaFuncionario()
         {
             return View();
@@ -68,6 +70,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> Create([Bind("CandidaturaID, Programa, InstituicaoNome, InstituicaoPais, InstituicaoCidade, DataInicioCandidatura, DataFimCandidatura, Semestre, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado, EstadoDocumentos")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -216,6 +219,7 @@ namespace IPSCIMOB.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Aluno, Funcionário")]
         public async Task<IActionResult> EditRegulamento([Bind("CandidaturaID,Programa,InstituicaoNome, InstituicaoPais, InstituicaoCidade,DataInicioCandidatura, DataFimCandidatura, Semestre, Email, EntrevistaID,Nome,NumeroInterno,IsBolsa,EstadoBolsa,IsEstudo,IsEstagio,IsInvestigacao,IsLecionar,IsFormacao,IsConfirmado,Estado")] CandidaturaModel candidaturaModel)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -414,7 +418,7 @@ namespace IPSCIMOB.Controllers
             return View(candidaturaModel);
         }
 
-
+        [Authorize(Roles = "Aluno, Funcionário, CIMOB")]
         public async Task<Entrevista> GetEntrevista()
         {
             var programaAtual = await _context.ProgramaModel.SingleOrDefaultAsync(m => m.ProgramaAtual == true);
@@ -560,7 +564,7 @@ namespace IPSCIMOB.Controllers
         }
 
 
-
+        [Authorize(Roles = "CIMOB")]
         public Boolean verificarUtilizador(int numero, List<CandidaturaModel> candidaturasUser)
         {
             foreach (CandidaturaModel c in candidaturasUser)
