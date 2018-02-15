@@ -66,7 +66,7 @@ namespace IPSCIMOB.Controllers
             {
                 _context.Add(sugestao);
                 await _context.SaveChangesAsync();
-                return View();
+                return RedirectToAction(nameof(Create));
                 //return RedirectToAction(nameof(Index));
             }
             return View(sugestao);

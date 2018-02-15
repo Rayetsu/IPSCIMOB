@@ -61,13 +61,17 @@ namespace IPSCIMOB.Controllers
             Entrevista entrevista = null;
             foreach (Entrevista e in _context.Entrevista)
             {
-                if (e.Estado.Equals(EstadoEntrevista.Entrevistado))
+                //if (e.Estado.Equals(EstadoEntrevista.Entrevistado))
+                //{
+                //    return RedirectToAction("FinalCandidatura", "Candidatura");
+                //}
+                if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Nome) && e.EntrevistaAtual == true)
                 {
-                    return RedirectToAction("FinalCandidatura", "Candidatura");
-                }
-                else if (e.NumeroAluno == user.NumeroInterno && e.NomePrograma.Equals(programaAtual.Nome) && e.EntrevistaAtual == true)
-                {
-                    if (e.Estado.Equals(EstadoEntrevista.Recusado))
+                    if (e.Estado.Equals(EstadoEntrevista.Entrevistado))
+                    {
+                        return RedirectToAction("FinalCandidatura", "Candidatura");
+                    }
+                    else if (e.Estado.Equals(EstadoEntrevista.Recusado))
                     {
                         e.EntrevistaAtual = false;
                         entrevista = e;

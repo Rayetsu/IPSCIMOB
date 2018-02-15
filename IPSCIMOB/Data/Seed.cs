@@ -552,23 +552,21 @@ namespace IPSCIMOB.Data
 
             _context.Ajuda.Add(new Ajuda
             {
-                Nome = "Esqueceu-se da PW?",
-                Descricao = "Coloque o email que utilizou no registo e verifique o email para redefinir a password."
+                Nome = "Esqueceu-se da PassWord?",
+                Descricao = "Coloque o email. De seguida receberá um link no seu email para poder colocar uma nova PassWord."
             });
 
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Alterar Dados",
-                Descricao = "Altere os dados."
+                Descricao = "Altere os dados nos campos que pertende alterar. Por fim clique em guardar. <p>Lembre-se, terá que usar dados válidos.</p>"
             });
 
             _context.Ajuda.Add(new Ajuda
             {
-                Nome = "Alterar Pw",
-                Descricao = "Coloque a sua pw atual.Em seguida coloque uma nova pw e repita-a para finalizar.<p>A password deverá ter pelo menos um caracter especial, exemplo pw : Ola123!</p>"
+                Nome = "Alterar PassWord",
+                Descricao = "Coloque a sua password atual.Em seguida coloque uma nova pw e repita-a para finalizar.<p>A password deverá ter pelo menos um caracter especial, exemplo pw : Ola123!</p>"
             });
-
-
 
             _context.Ajuda.Add(new Ajuda
             {
@@ -603,8 +601,9 @@ namespace IPSCIMOB.Data
             _context.Ajuda.Add(new Ajuda
             {
                 Nome = "Processo de Candidatura: Passo 5 Dados Finais da Candidatura",
-                Descricao = "Nesta página encontra-se os dados referentes à sua candidatura. <p>Se o estado da candidatura estiver em realização é porque ainda está em avaliação</p>"
+                Descricao = "Nesta página encontra-se os dados referentes à sua candidatura. <p>Se o estado da candidatura estiver \"EmEspera\" é porque ainda está a ser processada pelo CIMOB. </p> <p>Aguarde por favor, será enviado um email assim que o Estado da mesma for alterado.</p>"
             });
+
 
             // Alunos Estrangeiros
 
@@ -695,7 +694,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Aluno,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -705,7 +704,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Aluno,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -715,7 +714,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Funcionario,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -725,7 +724,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Aluno,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -735,7 +734,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Aluno,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -745,7 +744,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Aluno,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
             _context.ProgramaModel.Add(new ProgramaModel
@@ -755,7 +754,7 @@ namespace IPSCIMOB.Data
                 ProgramaAtual = false,
                 UtilizadorProfissao = UtilizadorProfissao.Funcionario,
                 PrazoCandidaturaPrimeiroSemestre = new DateTime(2017, 09, 15),
-                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 15)
+                PrazoCandidaturaSegundoSemestre = new DateTime(2018, 02, 25)
             });
 
 
